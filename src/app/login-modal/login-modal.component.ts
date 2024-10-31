@@ -19,19 +19,21 @@ export class LoginModalComponent {
     this.close.emit();
   }
 
-  async onSubmit() {
-    try {
-      const userData = await this.userService.loginUser(this.username, this.password);
-      if (userData) {
-        alert(`¡Has iniciado sesión correctamente! \n Datos del usuario: ${JSON.stringify(userData)}`);
-      } else {
-        alert('No se encontraron datos para este usuario.');
+  onSubmit() {
+    this.userService.loginUser(this.username, this.password).subscribe(
+      (userData: any) => {
+        if (userData) {
+          alert(`¡Has iniciado sesión correctamente! \n Datos del usuario: ${JSON.stringify(userData)}`);
+        } else {
+          alert('No se encontraron datos para este usuario.');
+        }
+        this.closeModal(); // Cierra el modal
+      },
+      (error: any) => {
+        console.error("Error en onSubmit:", error);
+        alert('Error: Usuario o contraseña incorrectos');
       }
-      this.closeModal(); // Cierra el modal
-    } catch (error) {
-      console.error("Error en onSubmit:", error);
-      alert('Error: Usuario o contraseña incorrectos');
-    }
+    );
   }
 
   onRegister() {

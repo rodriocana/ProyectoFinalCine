@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,22 +10,41 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class UserService {
   constructor(private auth: AngularFireAuth, private firestore: AngularFirestore) {}
 
-  async loginUser(correo: string, contrasena: string) {
-    try {
-      const userCredential = await this.auth.signInWithEmailAndPassword(correo, contrasena);
-      const userId = userCredential.user?.uid;
+  loginUser(correo: string, contrasena: string): Observable<any> {
+    return new Observable(observer => {
+      this.auth.signInWithEmailAndPassword(correo, contrasena)
+        .then(userCredential => {
+          const userId = userCredential.user?.uid;
+          console.log("User ID:", userId); // Verificar que el ID de usuario se obtenga
 
-      if (userId) {
-        const userDocRef = this.firestore.collection('Usuarios').doc(userId);
-        const userDoc = await userDocRef.get().toPromise(); // Convertir el observable en promesa
-
-        return userDoc?.exists ? userDoc.data() : null;
-      } else {
-        return null; // Si userId es undefined
-      }
-    } catch (error) {
-      console.error("Error al iniciar sesión:", error);
-      throw error;
-    }
+          if (userId) {
+            const userDocRef = this.firestore.collection('Usuarios').doc(userId);
+            userDocRef.get().pipe(
+              map(userDoc => {
+                if (userDoc.exists) {
+                  return userDoc.data();
+                } else {
+                  console.warn("No se encontraron datos para el usuario con ID:", userId);
+                  return null;
+                }
+              }),
+              catchError(error => {
+                console.error("Error al obtener el documento del usuario:", error);
+                return of(null);
+              })
+            ).subscribe(data => {
+              observer.next(data);
+              observer.complete();
+            });
+          } else {
+            observer.next(null);
+            observer.complete();
+          }
+        })
+        .catch(error => {
+          console.error("Error al iniciar sesión:", error);
+          observer.error(error);
+        });
+    });
   }
 }
