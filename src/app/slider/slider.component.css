@@ -1,0 +1,56 @@
+
+.slider-container {
+  position: relative;
+  width: 450px; /* Ancho del slider */
+  height: 450px; /* Altura del slider */
+  overflow: hidden;
+  text-align: center;
+  border-radius: 10px; /* Bordes redondeados */
+
+
+}
+
+.slide img {
+  width: 60%;
+  height: 40%;
+  object-fit: fill; /* La imagen cubre el recuadro y se ajusta */
+  border-radius: 10px; /* Coincide con los bordes del contenedor */
+  border: 3px solid black;
+
+}
+
+.movie-title {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  color: white;
+  border-radius: 10px;
+  background: rgba(250, 103, 17, 1);
+  padding: 10px;
+  font-size: 1.2rem;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.nav-button.prev {
+  left: 10px;
+}
+
+.nav-button.next {
+  right: 10px;
+}
+
+.nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

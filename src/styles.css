@@ -1,0 +1,100 @@
+/* Estilos para el encabezado */
+body, html {
+  height: 100%; /* Asegura que el body ocupe el 100% de la altura */
+  margin: 0; /* Elimina el margen por defecto */
+  padding: 0px; /* Elimina el padding por defecto */
+
+}
+header {
+  background-image: url('./assets/mandoo.jpg'); /* Cambia esta ruta a la imagen que desees */
+  background-size: cover; /* La imagen cubrirá todo el fondo */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que se repita */
+  padding-top: 20px;
+  display: flex; /* Usar flexbox */
+  flex-direction: column; /* Coloca el contenido en columna */
+  justify-content: flex-start; /* Alinea el contenido al inicio */
+  align-items: flex-start; /* Alinea los elementos a la izquierda */
+  border-right: 2px solid rgba(255, 255, 255, 0.956);
+  position: fixed; /* Fijo en la parte superior */
+  width: 200px; /* Ancho fijo para la barra lateral */
+  height: 100vh; /* Altura completa de la ventana */
+  z-index: 10; /* Asegúrate de que el header esté por encima de otros elementos */
+}
+
+/* Estilos para la barra de navegación */
+nav {
+  display: flex; /* Cambia a flex para alinearlo */
+  flex-direction: column; /* Coloca los elementos en columna */
+  width: 100%; /* Ocupa todo el ancho del header */
+  padding-top: 15px; /* Espacio superior para el contenido del nav */
+}
+
+nav a {
+  color: rgb(255, 255, 255);
+  text-decoration: solid;
+  margin: 10px 45px; /* Espacio vertical entre los enlaces */
+  font-size: 1.1em;
+  font-weight: 100;
+  font-family: Tahoma, sans-serif;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #80bfff;
+}
+
+/* Estilos para el pie de página */
+footer {
+  background-color: rgb(179, 80, 15);
+  text-align: center;
+  padding: 10px;
+  color: #ffffff;
+  border-top: 2px solid #002244;
+  font-size: 0.9em;
+}
+
+footer p {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 600px) {
+  header h1 {
+      font-size: 1.5em;
+  }
+
+  nav a {
+      margin: 0 10px;
+      font-size: 1em;
+  }
+
+  footer {
+      font-size: 0.8em;
+  }
+}
+
+.divider {
+  border: none; /* Elimina el borde predeterminado */
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  margin: 10px 0px; /* Espacio vertical antes y después de la línea */
+  width: 100%; /* Asegúrate de que ocupe todo el ancho del nav */
+}
+
+
+#icono{
+
+  color:white;
+  font-size: 30px;
+  margin-left: 16px;
+
+}
+
+.tituloLogo{
+
+  font-size: 30px;
+  padding-left: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color:white;
+}

@@ -1,0 +1,28 @@
+<header *ngIf="isMovieDetailsPage()">
+  <div class="icon-container">
+    <i class="fa-solid fa-ticket" id="icono"></i>
+    <span class="tituloLogo">CINEMA</span>
+  </div>
+  <nav>
+    <a [routerLink]="['/']"><i class="fas fa-home"></i> Inicio</a>
+    <hr class="divider">
+    <a [routerLink]="['/movieList']"><i class="fas fa-film"></i> Cartelera</a>
+    <hr class="divider">
+    <a routerLink="/store"><i class="fas fa-shopping-cart"></i> Tienda</a>
+    <hr class="divider">
+    <a routerLink="/"><i class="fas fa-envelope"></i> Contacto</a>
+    <hr class="divider">
+    <a (click)="openModal()"><i class="fas fa-sign-in-alt"></i> Login</a> <!-- Abre el modal -->
+  </nav>
+</header>
+
+<!-- Muestra el contenido de las rutas -->
+<router-outlet></router-outlet>
+
+<!-- Footer -->
+<footer>
+  <p>© 2024 Mi Aplicación de Películas</p>
+</footer>
+
+<!-- Modal de Login, se abre solo si isModalOpen es true -->
+<app-login-modal *ngIf="isModalOpen" (close)="closeModal()"></app-login-modal>

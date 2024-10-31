@@ -1,0 +1,92 @@
+/* Fondo semitransparente detrás del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* Fondo oscuro y semitransparente */
+  z-index: 999;
+}
+
+/* Contenedor principal del contenido modal */
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff; /* Fondo blanco para el modal */
+  padding: 30px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Título del formulario */
+.modal-content h2 {
+  color: #333;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Estilos de los inputs */
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="password"]:focus {
+  border-color: #007bff; /* Color de borde en foco */
+}
+
+/* Estilo del botón de login */
+.modal-content button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button[type="submit"]:hover {
+  background-color: #0056b3; /* Color al pasar el ratón */
+}
+
+/* Estilo para el enlace de registro */
+.register-link {
+  display: block;
+  margin-top: 15px;
+  color: #007bff;
+  font-size: 0.9em;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  color: #0056b3;
+}
+
+/* Estilo adicional para el mensaje de error */
+.error-message {
+  color: #ff4d4f;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}

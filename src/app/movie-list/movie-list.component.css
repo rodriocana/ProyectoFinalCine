@@ -1,0 +1,68 @@
+/* Fondo general para el contenedor de películas */
+.movie-container {
+  background-image: url('wallpaper.jpg'); /* Cambia esta ruta a la imagen que desees */
+  background-size: cover; /* La imagen cubrirá todo el fondo */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que se repita */
+  padding-left: 220px;
+  padding-right: 30px;
+  padding-top: 15px;
+  display: grid; /* Mantiene el diseño de grid */
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* Crea columnas automáticas */
+  gap: 20px; /* Espacio entre las tarjetas de películas */
+  min-height: 100vh; /* Asegura que la altura mínima sea 100% de la vista */
+  justify-items: center; /* Centra cada elemento dentro de la celda de la cuadrícula */
+  position: relative; /* Para posicionar el h2 en el contenedor */
+}
+
+.movie-container h2 {
+  font-size: 44px;
+  color: rgb(178 25 25);
+  text-align: left;
+  margin-bottom: 0px;
+  width: 100%;
+  grid-column: 1 / -1; /* Hace que el título ocupe todo el ancho del grid */
+}
+
+/* Estilos para las tarjetas */
+.movie-card {
+  position: relative;
+  overflow: visible;
+  transition: transform 0.3s;
+}
+
+.movie-card:hover {
+  transform: scale(1.04);
+}
+
+.movie-card img {
+  width: 250px;
+  height: 100%;
+  max-width: 100%;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  box-shadow: 2px 10px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Estilos para el contenedor del título */
+.title-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(50, 50, 50, 0.7);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Muestra el título al pasar el ratón */
+.movie-card:hover .title-container {
+  opacity: 1;
+}
+
+h1{
+  font-size: 15px;
+}
