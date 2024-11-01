@@ -1,6 +1,7 @@
 .tienda-container {
   text-align: center; /* Cambiar a left si quieres que el contenido esté alineado a la izquierda */
   padding: 20px; /* Ajusta el padding si necesitas espacio en el contenedor */
+  position: relative; /* Necesario para el posicionamiento absoluto de la cesta */
 }
 
 .productos {
@@ -25,7 +26,6 @@
   border-radius: 8px;
 }
 
-
 .filtros {
   display: flex;
   align-items: center;
@@ -45,55 +45,76 @@
   border: 1px solid #ddd;
 }
 
-
 .cesta-icon {
   cursor: pointer;
-  position: relative;
-  display: inline-block;
-  font-size: 24px;
+  font-size: 24px; /* Tamaño del icono */
+  margin-bottom: 10px; /* Espacio debajo del icono */
 }
 
-.cesta-icon span {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 14px;
-}
+.cesta {
+  position: absolute; /* Posicionamiento absoluto */
+  top: 60px; /* Ajusta según el espacio necesario desde el icono */
+  right: 0; /* Alinea el desplegable a la derecha */
+  background-color: #f8f9fa; /* Color de fondo claro */
+  border: 1px solid #ccc; /* Borde gris */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para el efecto de elevación */
+  z-index: 10; /* Asegúrate de que esté por encima de otros elementos */
+  padding: 10px; /* Espacio interno */
+  margin-right: 300px;
+  height: auto;
+  width: 400px;
 
-
-.cesta-imagen{
-
-  height: 100px;
-  width: 100px;
-
-}
-
-.cesta-card{
   display: flex;
-  position: absolute;
-  right: 20px; /* Ajusta la posición según sea necesario */
-  top: 50px; /* Ajusta la posición según sea necesario */
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 100; /* Asegúrate de que esté por encima de otros elementos */
+  flex-direction: column; /* Disposición en columna */
 }
 
-.cesta ul {
-  list-style-type: none;
-  padding: 0;
+h2 {
+  text-align: center; /* Centrar el título */
+  color: #333; /* Color del título */
+  margin-bottom: 15px; /* Espacio debajo del título */
 }
 
-.cesta li {
-  padding: 5px 0;
+.producto-cesta {
+  display: flex; /* Usar flexbox para alinear los elementos */
+  align-items: center; /* Alinear elementos verticalmente */
+  justify-content: space-between; /* Espacio entre imagen y texto */
+  border-bottom: 1px solid #ddd; /* Línea divisoria entre productos */
+  padding: 10px 0; /* Espaciado vertical */
 }
 
-.titulo-cesta{
-  font-size: 20px;
+.producto-cesta:last-child {
+  border-bottom: none; /* Eliminar la línea divisoria del último producto */
+}
+
+.imagen-cesta {
+  width: 50px; /* Ancho fijo de la imagen */
+  height: auto; /* Mantener la proporción de la imagen */
+  border-radius: 5px; /* Bordes redondeados para la imagen */
+  margin-right: 15px; /* Espacio entre la imagen y el texto */
+}
+
+.producto-cesta h2 {
+  font-size: 1.2em; /* Tamaño de fuente para el nombre del producto */
+  color: #333; /* Color del texto */
+  flex: 1; /* Permitir que el nombre del producto use el espacio disponible */
+}
+
+.producto-cesta p {
+  margin: 0; /* Eliminar márgenes por defecto */
+  color: #666; /* Color del precio */
+}
+
+.producto-cesta i {
+  cursor: pointer; /* Cambiar el cursor a puntero */
+  color: red; /* Color del icono de eliminar */
+  font-size: 1.2em; /* Tamaño del icono */
+  margin-left: 10px; /* Espacio a la izquierda del icono */
+}
+
+.producto-cesta i:hover {
+  color: darkred; /* Cambiar color al pasar el ratón sobre el icono */
+}
+
+.producto-cesta p {
+  color: #666; /* Color del precio */
 }

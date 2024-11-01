@@ -57,4 +57,8 @@ export class TiendaComponent implements OnInit {
       alert(`${producto.nombreProducto} eliminado de la cesta`);
     }
   }
+
+  getTotalCesta(): number {
+    return this.productosEnCesta.reduce((total, producto) => total + producto.precioProducto, 0);
+  }
 }
