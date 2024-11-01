@@ -1,0 +1,66 @@
+<div class="tienda-container">
+  <h1>Tienda</h1>
+
+  <!-- Icono de cesta -->
+  <div class="cesta-icon" (click)="toggleCesta()">
+    <i class="fas fa-shopping-cart"></i>
+    <span *ngIf="productosEnCesta.length > 0">{{ productosEnCesta.length }}</span> <!-- Muestra el número de productos en la cesta -->
+  </div>
+
+
+  <!-- Barra de filtros -->
+  <div class="filtros">
+    <label for="categoria">Categoría:</label>
+    <select id="categoria" [(ngModel)]="filtroCategoria" (change)="filtrarProductos()">
+      <option value="">Todas</option>
+      <option value="Star Wars">Star Wars</option>
+      <option value="Vengadores">Vengadores</option>
+      <!-- Añade más opciones de categoría según tus necesidades -->
+    </select>
+
+    <label for="precioMin">Precio mínimo:</label>
+    <select id="precioMin" [(ngModel)]="filtroPrecioMin" (change)="filtrarProductos()">
+      <option [ngValue]="null">Sin mínimo</option>
+      <option [ngValue]="10">10</option>
+      <option [ngValue]="50">50</option>
+      <option [ngValue]="100">100</option>
+      <option [ngValue]="500">500</option>
+      <!-- Añade más opciones según tus necesidades -->
+    </select>
+
+    <label for="precioMax">Precio máximo:</label>
+    <select id="precioMax" [(ngModel)]="filtroPrecioMax" (change)="filtrarProductos()">
+      <option [ngValue]="null">Sin máximo</option>
+      <option [ngValue]="50">50</option>
+      <option [ngValue]="100">100</option>
+      <option [ngValue]="500">500</option>
+      <option [ngValue]="1000">1000</option>
+      <!-- Añade más opciones según tus necesidades -->
+    </select>
+  </div>
+
+  <!-- Lista de productos -->
+  <div class="productos">
+    <div *ngFor="let producto of productosFiltrados" class="producto-card">
+      <img [src]="producto.imgProducto" alt="{{ producto.nombreProducto }}" class="producto-imagen">
+      <h2>{{ producto.nombreProducto }}</h2>
+      <p>Precio: {{ producto.precioProducto | currency }}</p>
+      <button (click)="agregarACesta(producto)">Comprar</button> <!-- Llama al método agregarACesta -->
+    </div>
+  </div>
+
+<!-- Sección de la cesta -->
+
+</div>
+
+
+
+  <div *ngFor="let producto of productosEnCesta" class="cesta-card">
+    <img [src]="producto.imgProducto" alt="{{ producto.nombreProducto }}" class="cesta-imagen">
+    <h2 class="titulo-cesta">{{ producto.nombreProducto }}</h2>
+    <p class="parrafo-cesta">Precio: {{ producto.precioProducto | currency }}</p>
+    <i class="fas fa-trash" (click)="eliminarDeCesta(producto)" title="Eliminar producto"></i> <!-- Icono para eliminar -->
+  </div>
+  <div *ngIf="productosEnCesta.length === 0">La cesta está vacía</div>
+
+

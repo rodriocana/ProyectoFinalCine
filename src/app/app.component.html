@@ -8,7 +8,7 @@
     <hr class="divider">
     <a [routerLink]="['/movieList']"><i class="fas fa-film"></i> Cartelera</a>
     <hr class="divider">
-    <a routerLink="/store"><i class="fas fa-shopping-cart"></i> Tienda</a>
+    <a routerLink="/tienda"><i class="fas fa-shopping-cart"></i> Tienda</a>
     <hr class="divider">
     <a routerLink="/"><i class="fas fa-envelope"></i> Contacto</a>
     <hr class="divider">
@@ -26,3 +26,4 @@
 
 <!-- Modal de Login, se abre solo si isModalOpen es true -->
 <app-login-modal *ngIf="isModalOpen" (close)="closeModal()"></app-login-modal>
+

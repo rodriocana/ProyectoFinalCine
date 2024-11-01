@@ -6,12 +6,14 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { FormsModule } from '@angular/forms';
 import { FormularioRegistroComponent } from './formulario-registro/formulario-registro.component';
+import { TiendaComponent } from './tienda/tienda.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'movieList', component: MovieListComponent },
   { path: 'movieDetail/:id', component: MovieDetailComponent },
   { path: 'registro', component: FormularioRegistroComponent }, // Nueva ruta para el registro
+  { path: 'tienda', component: TiendaComponent },
 
 
 ];

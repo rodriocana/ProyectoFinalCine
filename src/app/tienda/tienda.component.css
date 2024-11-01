@@ -1,0 +1,99 @@
+.tienda-container {
+  text-align: center; /* Cambiar a left si quieres que el contenido esté alineado a la izquierda */
+  padding: 20px; /* Ajusta el padding si necesitas espacio en el contenedor */
+}
+
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Alinea los productos a la izquierda */
+  gap: 20px;
+}
+
+.producto-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.producto-imagen {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+
+.filtros {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.filtros label {
+  font-weight: bold;
+}
+
+.filtros input,
+.filtros select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+
+.cesta-icon {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
+}
+
+.cesta-icon span {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 14px;
+}
+
+
+.cesta-imagen{
+
+  height: 100px;
+  width: 100px;
+
+}
+
+.cesta-card{
+  display: flex;
+  position: absolute;
+  right: 20px; /* Ajusta la posición según sea necesario */
+  top: 50px; /* Ajusta la posición según sea necesario */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+.cesta ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.cesta li {
+  padding: 5px 0;
+}
+
+.titulo-cesta{
+  font-size: 20px;
+}

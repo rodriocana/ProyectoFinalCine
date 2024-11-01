@@ -14,6 +14,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { SliderComponent } from './slider/slider.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { FormularioRegistroComponent } from './formulario-registro/formulario-registro.component';
+import { TiendaComponent } from './tienda/tienda.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { FormularioRegistroComponent } from './formulario-registro/formulario-re
     MovieDetailComponent,
     SliderComponent,
     LoginModalComponent,
-    FormularioRegistroComponent
+    FormularioRegistroComponent,
+    TiendaComponent,
+
   ],
   imports: [
     BrowserModule,
