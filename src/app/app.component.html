@@ -29,13 +29,18 @@
     </div>
     <div *ngIf="userName" class="opciones-user">
       <p class="textPerfil">MENU</p>
+      <div *ngIf="userName" class="user-info">
+        <p>Bienvenido, {{ userName }}</p> <!-- Mostrar el nombre del usuario -->
+      </div>
       <hr class="dividerUser">
       <a routerLink="/tienda"><i class="fa-solid fa-clapperboard"></i> Mi lista</a>
+      <hr class="dividerUser">
+      <a routerLink="/tienda"><i class="fa-solid fa-trophy"></i> Top 250</a>
+      <hr class="dividerUser">
+      <a routerLink="/tienda"><i class="fa-solid fa-head-side-virus"></i> Ver perfil</a>
     </div>
   </nav>
-  <div *ngIf="userName" class="user-info">
-    <p>Bienvenido, {{ userName }}</p> <!-- Mostrar el nombre del usuario -->
-  </div>
+
 </header>
 <!-- Muestra el contenido de las rutas -->
 <router-outlet></router-outlet>

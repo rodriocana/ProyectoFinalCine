@@ -14,6 +14,7 @@ export class MovieDetailComponent implements OnInit {
   backdrops: string[] = [];
   trailerUrl: string | null = null;
   user: any;
+  selectedImage: string | null = null;
 
 
   constructor(
@@ -40,7 +41,7 @@ export class MovieDetailComponent implements OnInit {
       // Obtener las imágenes de fondo
       this.movieService.getMovieImages(+movieId).subscribe(
         response => {
-          this.backdrops = response.backdrops.slice(0, 20).map((img: any) => `https://image.tmdb.org/t/p/w500${img.file_path}`);
+          this.backdrops = response.backdrops.slice(0, 20).map((img: any) => `https://image.tmdb.org/t/p/original${img.file_path}`);
         },
         error => {
           console.error('Error al obtener imágenes de la película', error);
@@ -70,5 +71,13 @@ export class MovieDetailComponent implements OnInit {
     if (this.trailerUrl) {
       window.open(this.trailerUrl, '_blank');
     }
+  }
+
+  openImage(backdrop: string): void {
+    this.selectedImage = backdrop;
+  }
+
+  closeImage(): void {
+    this.selectedImage = null;
   }
 }

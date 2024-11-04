@@ -121,14 +121,13 @@ footer p {
 
 .user-info {
   color: #feffff; /* Color del texto */
-  margin-top: 170px; /* Espacio superior */
-  margin-left:10px;
+  margin-top: 0px; /* Espacio superior */
   text-align: center; /* Centrar el texto */
 }
 
 .dividerUser{
   border: none; /* Elimina el borde predeterminado */
-  border-top: 2px solid rgba(255, 0, 0, 0.815);
+  border-top: 2px solid #1ef8af;
   margin: 10px 0px; /* Espacio vertical antes y después de la línea */
   width: 100%; /* Asegúrate de que ocupe todo el ancho del nav */
 
@@ -137,14 +136,13 @@ footer p {
 .textPerfil{
 
   color:rgb(255, 255, 255);
-  font-size: 30px;
-  padding-left: 40px;
+  text-align: center; /* Centrar el texto */
   font-family: 'Poppins', sans-serif;
 
 }
 
 .opciones-user{
 
-  padding-top: 80px;
+  padding-top: 10px;
 }
 

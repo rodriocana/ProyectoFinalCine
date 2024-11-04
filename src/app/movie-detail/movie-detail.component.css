@@ -20,21 +20,20 @@
 .movie-details h2 {
   font-size: 3em;
   font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
   margin-top: 20px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Sombra para mejor visibilidad */
 }
 
 /* Imagen del póster */
-.movie-details img {
+.poster-image {
   width: 250px;
   height: auto;
   margin-top: -20px;
   border-radius: 10px;
   border: 2px solid rgb(230, 127, 31);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
-
 }
-
 
 .thumbnail-button-container {
   display: flex; /* Usar flexbox para alinear horizontalmente */
@@ -43,13 +42,19 @@
 
 .thumbnail-container {
   display: flex;
-  flex-direction: row; /* Apilar miniaturas horizontalmente */
-  gap: 7px; /* Espacio entre miniaturas */
-  margin-right: 0px; /* Espacio entre miniaturas y botón */
+  gap: 10px; /* Espacio entre las miniaturas */
   margin-top: 30px;
-  animation: marquee 30s linear infinite; /* Duración de la animación */
+  animation: marquee 30s linear infinite;
   animation-play-state: paused;
+}
 
+.thumbnail {
+  width: 250px; /* Ajusta el tamaño de las miniaturas */
+  height: auto;
+  border-radius: 5px;
+  border: 2px solid rgb(230, 127, 31);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .thumbnail-container:hover {
@@ -97,17 +102,6 @@
 }
 
 
-.thumbnail img {
-  width: 80px; /* Ajusta el ancho según sea necesario */
-  height: auto;
-  border-radius: 5px;
-  transition: transform 0.3s ease;
-}
-
-.thumbnail img:hover {
-  transform: scale(1.1); /* Efecto de zoom al pasar el ratón */
-}
-
 .button-container {
   display: flex; /* Alinear el contenido en el contenedor */
   align-items: flex-end; /* Alinear el botón en la parte inferior */
@@ -151,25 +145,59 @@
   width: 80px; /* Ancho del botón */
   height: 40px; /* Alto del botón */
   transition: background-color 0.3s ease; /* Suaviza el cambio de color al pasar el ratón */
-
 }
 
 #verTrailer:hover{
   background-color: #cc3939; /* Color de fondo al pasar el ratón */
-
-
 }
 
 #sinopsis:hover {
   background-color: #cc3939; /* Color de fondo al pasar el ratón */
-
 }
 
 #comprarEntrada:hover {
   background-color: #cc3939; /* Color de fondo al pasar el ratón */
-
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease;
+  z-index: 1000;
+}
+
+.enlarged-image {
+  width: 70vw;
+  height: 80vh;
+  border-radius: 10px;
+  border: 2px solid #e98009;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.7);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 
 
 

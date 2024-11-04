@@ -1,18 +1,22 @@
 <div *ngIf="movie" class="movie-details" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + movie.backdrop_path + ')'}">
   <h2>{{ movie.title }}</h2>
-
   <div class="main-content">
-    <img [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path" [alt]="movie.title" class="movie-poster">
+    <img [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path" [alt]="movie.title" class="poster-image">
     <div class="button-container">
       <button (click)="verSinopsis()" id="sinopsis">Ver Sinopsis</button>
       <button id="comprarEntrada">Comprar Entrada</button>
-      <button id="verTrailer" *ngIf="trailerUrl" (click)="openTrailer()">Ver Trailer</button> <!-- Botón para ver trailer -->
+      <button id="verTrailer" *ngIf="trailerUrl" (click)="openTrailer()">Ver Trailer</button>
     </div>
   </div>
 
   <div class="thumbnail-button-container">
     <div class="thumbnail-container">
-      <img *ngFor="let backdrop of backdrops" [src]="backdrop" class="thumbnail">
+      <img *ngFor="let backdrop of backdrops" [src]="backdrop" class="thumbnail" (click)="openImage(backdrop)">
     </div>
+  </div>
+
+  <!-- Contenedor para la imagen ampliada -->
+  <div *ngIf="selectedImage" class="overlay" (click)="closeImage()">
+    <img [src]="selectedImage" class="enlarged-image">
   </div>
 </div>
