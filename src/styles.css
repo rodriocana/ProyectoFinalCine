@@ -3,14 +3,15 @@ body, html {
   height: 100%; /* Asegura que el body ocupe el 100% de la altura */
   margin: 0; /* Elimina el margen por defecto */
   padding: 0px; /* Elimina el padding por defecto */
-
 }
+
 header {
-  background-image: url('./assets/mandoo.jpg'); /* Cambia esta ruta a la imagen que desees */
+  /* background-image: url('./assets/mandoo.jpg'); /* Cambia esta ruta a la imagen que desees
   background-size: cover; /* La imagen cubrirá todo el fondo */
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que se repita */
   padding-top: 20px;
+  background-color: #131516;
   display: flex; /* Usar flexbox */
   flex-direction: column; /* Coloca el contenido en columna */
   justify-content: flex-start; /* Alinea el contenido al inicio */
@@ -30,18 +31,39 @@ nav {
   padding-top: 15px; /* Espacio superior para el contenido del nav */
 }
 
+/* Estilos para cada contenedor de enlace */
+.nav-item {
+  padding: 10px 0; /* Espacio interno para cada enlace */
+  transition: background-color 0.4s ease; /* Transición suave */
+  width: 100%;
+}
+
+/* hover del fondo de las opciones del nav*/
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Cambia a tu color preferido */
+}
+
 nav a {
   color: rgb(255, 255, 255);
-  text-decoration: solid;
-  margin: 10px 45px; /* Espacio vertical entre los enlaces */
+  text-decoration: none;
+  margin: 0 20px; /* Espacio horizontal entre el texto y el borde del contenedor */
   font-size: 1.1em;
   font-weight: 100;
-  font-family: Tahoma, sans-serif;
+  font-family: 'Poppins', sans-serif;
   transition: color 0.3s ease;
+  display: inline-block; /* Permite el padding dentro de nav-item */
+  width: calc(100% - 40px); /* Para que ocupe el ancho del contenedor menos el margen */
+}
+
+/* estilos de los iconos del nav */
+nav a i {
+  margin-right: 10px; /* Ajusta este valor para aumentar o reducir la separación */
+  font-size: 20px;
+  color: #ffffff;
 }
 
 nav a:hover {
-  color: #80bfff;
+  color: #1ef8af;
 }
 
 /* Estilos para el pie de página */
@@ -58,6 +80,7 @@ footer p {
   margin: 0;
   font-weight: 400;
 }
+
 
 /* Responsivo para pantallas pequeñas */
 @media (max-width: 600px) {
@@ -82,19 +105,46 @@ footer p {
   width: 100%; /* Asegúrate de que ocupe todo el ancho del nav */
 }
 
-
-#icono{
-
-  color:white;
+#icono {
+  color: white;
   font-size: 30px;
   margin-left: 16px;
-
 }
 
-.tituloLogo{
-
-  font-size: 30px;
+.tituloLogo {
+  font-size: 28px;
   padding-left: 10px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color:white;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  color: #1ef8af;
 }
+
+.user-info {
+  color: #feffff; /* Color del texto */
+  margin-top: 170px; /* Espacio superior */
+  margin-left:10px;
+  text-align: center; /* Centrar el texto */
+}
+
+.dividerUser{
+  border: none; /* Elimina el borde predeterminado */
+  border-top: 2px solid rgba(255, 0, 0, 0.815);
+  margin: 10px 0px; /* Espacio vertical antes y después de la línea */
+  width: 100%; /* Asegúrate de que ocupe todo el ancho del nav */
+
+}
+
+.textPerfil{
+
+  color:rgb(255, 255, 255);
+  font-size: 30px;
+  padding-left: 40px;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+.opciones-user{
+
+  padding-top: 80px;
+}
+

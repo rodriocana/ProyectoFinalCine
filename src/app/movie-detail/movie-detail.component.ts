@@ -1,7 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MovieService } from '../movie.service';
+import { ImageCacheService, MovieService } from '../movie.service';
+import { forkJoin } from 'rxjs';
+import { AuthService } from '../services/auth-service.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -11,15 +12,20 @@ import { MovieService } from '../movie.service';
 export class MovieDetailComponent implements OnInit {
   movie: any;
   backdrops: string[] = [];
-  trailerUrl: string | null = null; // Agregar propiedad para el trailer
+  trailerUrl: string | null = null;
+  user: any;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
-    private router: Router
+    private router: Router,
+    private imageCacheService: ImageCacheService, // Inyectar el servicio de caché,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.user = this.authService.getCurrentUser(); // para traer al usuario logueado en ese momento.
     const movieId = this.activatedRoute.snapshot.params['id'];
     if (movieId) {
       this.movieService.getMovieDetails(+movieId).subscribe(
@@ -54,17 +60,15 @@ export class MovieDetailComponent implements OnInit {
     }
   }
 
+
+
   verSinopsis(): void {
     alert(this.movie.overview);
   }
 
-  goBack(): void {
-    this.router.navigate(['/movies']);
-  }
-
-  openTrailer(): void { // Método para abrir el trailer
+  openTrailer(): void {
     if (this.trailerUrl) {
-      window.open(this.trailerUrl, '_blank'); // Abre el trailer en una nueva pestaña
+      window.open(this.trailerUrl, '_blank');
     }
   }
 }

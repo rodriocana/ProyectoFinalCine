@@ -22,7 +22,7 @@ export class SliderComponent implements OnInit, OnDestroy {
     // Configura el auto-desplazamiento cada 3 segundos
     this.intervalId = setInterval(() => {
       this.nextSlide();
-    }, 6000);
+    }, 2500);
   }
 
   ngOnDestroy(): void {

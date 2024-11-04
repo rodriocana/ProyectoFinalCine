@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-modal',
@@ -10,10 +11,21 @@ import { UserService } from '../services/user.service';
 export class LoginModalComponent {
   username: string = '';
   password: string = '';
-
+  @Input() isLogin: boolean = true;
   @Output() close = new EventEmitter<void>();
+  registroForm: FormGroup;
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private router: Router, private userService: UserService,
+    private fb: FormBuilder
+  ) {
+        // Inicializa el FormGroup
+        this.registroForm = this.fb.group({
+          nombre: ['', Validators.required],
+          correo: ['', [Validators.required, Validators.email]],
+          contrasena: ['', Validators.required],
+          saldo: ['', Validators.required],
+        });
+  }
 
   closeModal() {
     this.close.emit();
@@ -37,6 +49,23 @@ export class LoginModalComponent {
   }
 
   onRegister() {
-    this.router.navigate(['registro']);
+    if (this.registroForm.valid) {
+      this.userService.registerUser(this.registroForm.value).subscribe(
+        (userData: any) => {
+          if (userData) {
+            alert(`¡Te has registrado correctamente! \n Datos del usuario: ${JSON.stringify(userData)}`);
+            this.closeModal(); // Cierra el modal solo después de un registro exitoso
+          } else {
+            alert('No se encontraron datos para este usuario.');
+          }
+        },
+        (error: any) => {
+          console.error("Error en onRegister:", error);
+          alert('Error: No se pudo registrar al usuario. Verifica los datos ingresados.');
+        }
+      );
+    } else {
+      alert('Por favor, completa todos los campos requeridos.');
+    }
   }
 }

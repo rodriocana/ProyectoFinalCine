@@ -31,3 +31,22 @@ export class MovieService {
     return this.http.get<any>(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${this.apiKey}&language=es-ES`);
   }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ImageCacheService {
+  private cache: { [url: string]: boolean } = {};
+
+  preloadImage(url: string): void {
+    if (!this.cache[url]) {
+      const img = new Image();
+      img.src = url;
+      this.cache[url] = true;
+    }
+  }
+
+  isImageCached(url: string): boolean {
+    return !!this.cache[url];
+  }
+}

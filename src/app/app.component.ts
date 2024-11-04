@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-root',
@@ -7,36 +10,48 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private router: Router) {}
-
   isCestaModalOpen: boolean = false;
-  productosEnCesta: any[] = []; // Aquí almacenarás los productos en la cest
+  productosEnCesta: any[] = [];
   isModalOpen = false;
+  user$: Observable<any> | undefined;
+  userName: string | null = null; // Para almacenar el nombre del usuario
 
-  isMovieDetailsPage(): boolean {
-    // Verifica si la ruta actual contiene 'movie/'
-    return this.router.url.includes('movieList');   // si esto es true, se pasa al app-component.html para verificar
+  constructor(private router: Router, private afAuth: AngularFireAuth, private firestore: AngularFirestore) {}
+
+  ngOnInit() {
+    this.user$ = this.afAuth.authState;
+    this.user$.subscribe(user => {
+      if (user) {
+        console.log("Usuario autenticado:", user);
+        this.firestore.collection('Usuarios').doc(user.uid).valueChanges().subscribe((userData: any) => {
+          if (userData) {
+            this.userName = userData.nombreUsuario; // Asumiendo que 'nombre' es un campo en tu colección de usuarios
+          }
+        });
+      } else {
+        console.log("No hay usuario autenticado");
+        this.userName = null; // Resetea el nombre si no hay usuario
+      }
+    });
   }
 
-
+  isMovieDetailsPage(): boolean {
+    return this.router.url.includes('movieList') || this.router.url.includes('tienda');
+  }
 
   openModal() {
     console.log('Modal abierto');
     this.isModalOpen = true;
   }
+
   closeModal() {
     this.isModalOpen = false;
   }
 
-   // Método para abrir el modal de cesta
-   openCestaModal() {
-    this.isCestaModalOpen = true;
+  logout() {
+    this.afAuth.signOut().then(() => {
+      this.userName = null; // Resetea el nombre del usuario después de cerrar sesión
+      this.router.navigate(['/']); // Redirige a la página principal
+    });
   }
-
-  // Método para cerrar el modal de cesta
-  closeCestaModal() {
-    this.isCestaModalOpen = false;
-  }
-
-
 }

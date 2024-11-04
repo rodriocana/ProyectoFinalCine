@@ -1,21 +1,42 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 <header *ngIf="isMovieDetailsPage()">
   <div class="icon-container">
     <i class="fa-solid fa-ticket" id="icono"></i>
     <span class="tituloLogo">CINEMA</span>
   </div>
   <nav>
-    <a [routerLink]="['/']"><i class="fas fa-home"></i> Inicio</a>
+    <div class="nav-item">
+      <a [routerLink]="['/']"><i class="fas fa-home"></i> Inicio</a>
+    </div>
     <hr class="divider">
-    <a [routerLink]="['/movieList']"><i class="fas fa-film"></i> Cartelera</a>
+    <div class="nav-item">
+      <a [routerLink]="['/movieList']"><i class="fa-solid fa-film"></i> Cartelera</a>
+    </div>
     <hr class="divider">
-    <a routerLink="/tienda"><i class="fas fa-shopping-cart"></i> Tienda</a>
+    <div class="nav-item">
+      <a routerLink="/tienda"><i class="fas fa-shopping-cart"></i> Tienda</a>
+    </div>
     <hr class="divider">
-    <a routerLink="/"><i class="fas fa-envelope"></i> Contacto</a>
+    <div class="nav-item">
+      <a routerLink="/"><i class="fas fa-envelope"></i> Contacto</a>
+    </div>
     <hr class="divider">
-    <a (click)="openModal()"><i class="fas fa-sign-in-alt"></i> Login</a> <!-- Abre el modal -->
+    <div class="nav-item">
+      <a *ngIf="!userName" (click)="openModal()"><i class="fas fa-sign-in-alt"></i> Login</a>
+      <a *ngIf="userName" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a>
+    </div>
+    <div *ngIf="userName" class="opciones-user">
+      <p class="textPerfil">MENU</p>
+      <hr class="dividerUser">
+      <a routerLink="/tienda"><i class="fa-solid fa-clapperboard"></i> Mi lista</a>
+    </div>
   </nav>
+  <div *ngIf="userName" class="user-info">
+    <p>Bienvenido, {{ userName }}</p> <!-- Mostrar el nombre del usuario -->
+  </div>
 </header>
-
 <!-- Muestra el contenido de las rutas -->
 <router-outlet></router-outlet>
 

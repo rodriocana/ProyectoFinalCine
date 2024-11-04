@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Firestore, collection, doc, setDoc } from '@angular/fire/firestore'; // Actualizado
-import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth'; // Actualizado
+import { AngularFireAuth} from '@angular/fire/compat/auth'; // Actualizado
 import { FormsModule } from '@angular/forms';
 
 
@@ -15,11 +15,11 @@ export class FormularioRegistroComponent {
   contrasena: string = '';
   saldo: number | null = null; // Cambié el tipo a number | null
 
-  constructor(private auth: Auth, private firestore: Firestore) {}
+  constructor(private auth: AngularFireAuth, private firestore: Firestore) {}
 
   async onRegister() {
     try {
-      const userCredential = await createUserWithEmailAndPassword(this.auth, this.correo, this.contrasena); // Actualizado
+      const userCredential = await this.auth.createUserWithEmailAndPassword(this.correo, this.contrasena); // Actualizado
       const userId = userCredential.user?.uid;
 
       if (userId) {

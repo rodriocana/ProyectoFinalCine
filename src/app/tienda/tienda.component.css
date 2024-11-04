@@ -1,6 +1,7 @@
 .tienda-container {
   text-align: center; /* Cambiar a left si quieres que el contenido esté alineado a la izquierda */
   padding: 20px; /* Ajusta el padding si necesitas espacio en el contenedor */
+  margin-left: 210px;
   position: relative; /* Necesario para el posicionamiento absoluto de la cesta */
 }
 

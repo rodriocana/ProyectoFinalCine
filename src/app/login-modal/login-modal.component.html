@@ -1,5 +1,5 @@
 <div class="modal-overlay" (click)="closeModal()"></div>
-<div class="modal-content">
+<div class="modal-content" *ngIf="isLogin; else isRegister">
   <h3>Iniciar Sesión</h3>
   <form (ngSubmit)="onSubmit()">
     <label for="username">Usuario:</label>
@@ -10,5 +10,34 @@
 
     <button type="submit">Iniciar Sesión</button>
   </form>
-  <button (click)="onRegister()">Registrar</button> <!-- Asegúrate de que este botón llama a onRegister -->
+  <button (click)="isLogin = false">Registrar</button> <!-- Asegúrate de que este botón llama a onRegister -->
 </div>
+<ng-template #isRegister>
+  <div class="modal-content">
+    <div class="formulario-registro">
+      <h2>Registro</h2>
+      <form [formGroup]="registroForm" (ngSubmit)="onRegister()">
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" formControlName="nombre" required>
+        </div>
+        <div>
+          <label for="correo">Correo Electrónico:</label>
+          <input type="email" id="correo" formControlName="correo" required>
+        </div>
+        <div>
+          <label for="contrasena">Contraseña:</label>
+          <input type="password" id="contrasena" formControlName="contrasena" required>
+        </div>
+        <div>
+          <label for="saldo">Saldo Inicial:</label>
+          <input type="number" id="saldo" formControlName="saldo" required>
+        </div>
+        <button type="submit" [disabled]="registroForm.invalid">Registrar</button>
+      </form>
+    </div>
+  </div>
+
+
+</ng-template>
+

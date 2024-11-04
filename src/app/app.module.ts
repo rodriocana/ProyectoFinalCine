@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -15,6 +15,8 @@ import { SliderComponent } from './slider/slider.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { FormularioRegistroComponent } from './formulario-registro/formulario-registro.component';
 import { TiendaComponent } from './tienda/tienda.component';
+import { FirestoreModule } from '@angular/fire/firestore';
+import { FirebaseAppModule } from '@angular/fire/app';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,9 @@ import { TiendaComponent } from './tienda/tienda.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    FirestoreModule,
+    FirebaseAppModule,
+    ReactiveFormsModule
 
   ],
   providers: [],

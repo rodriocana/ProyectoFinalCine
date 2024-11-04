@@ -34,8 +34,7 @@
 }
 
 /* Estilos de los inputs */
-.modal-content input[type="text"],
-.modal-content input[type="password"] {
+.modal-content input {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
@@ -47,8 +46,7 @@
   transition: border-color 0.3s;
 }
 
-.modal-content input[type="text"]:focus,
-.modal-content input[type="password"]:focus {
+.modal-content input:focus {
   border-color: #007bff; /* Color de borde en foco */
 }
 
@@ -68,6 +66,9 @@
 
 .modal-content button[type="submit"]:hover {
   background-color: #0056b3; /* Color al pasar el ratón */
+}
+.modal-content button[type="submit"]:disabled {
+  background-color: grey; /* Color al pasar el ratón */
 }
 
 /* Estilo para el enlace de registro */

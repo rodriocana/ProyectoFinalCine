@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { AuthService } from '../services/auth-service.service';
+
 
 
 @Component({
@@ -18,11 +20,16 @@ export class TiendaComponent implements OnInit {
   filtroPrecioMin: number | null = null;
   filtroPrecioMax: number | null = null;
   isCestaVisible: boolean = false; // Propiedad para controlar la visibilidad de la cesta
+  user: any;
 
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,private authService: AuthService) {}
 
   ngOnInit(): void {
+
+    this.user = this.authService.getCurrentUser();
+
+
     this.productService.getProductos().subscribe((productos) => {
       this.productos = productos;
       this.productosFiltrados = productos; // Inicialmente muestra todos
