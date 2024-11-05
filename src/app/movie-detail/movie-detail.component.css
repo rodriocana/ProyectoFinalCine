@@ -43,13 +43,13 @@
 .thumbnail-container {
   display: flex;
   gap: 10px; /* Espacio entre las miniaturas */
-  margin-top: 30px;
+  margin-top: 15px;
   animation: marquee 30s linear infinite;
   animation-play-state: paused;
 }
 
 .thumbnail {
-  width: 250px; /* Ajusta el tamaño de las miniaturas */
+  width: 240px; /* Ajusta el tamaño de las miniaturas */
   height: auto;
   border-radius: 5px;
   border: 2px solid rgb(230, 127, 31);
@@ -106,8 +106,8 @@
   display: flex; /* Alinear el contenido en el contenedor */
   align-items: flex-end; /* Alinear el botón en la parte inferior */
   gap: 7px;
-  padding: 5px;
-  margin-left: -13px;
+  padding-top: 10px;
+  margin-left: -14px;
 }
 
 #sinopsis {

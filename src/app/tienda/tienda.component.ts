@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth-service.service';
 })
 export class TiendaComponent implements OnInit {
 
+
   productos: any[] = [];
   productosFiltrados: any[] = [];
   productosEnCesta: any[] = []; // Arreglo para almacenar los productos añadidos a la cesta
@@ -46,6 +47,13 @@ export class TiendaComponent implements OnInit {
     });
   }
 
+  ReiniciarFiltro() {
+    this.filtroCategoria = '';
+    this.filtroPrecioMin = null;
+    this.filtroPrecioMax = null;
+    this.filtrarProductos();
+  }
+
   agregarACesta(producto: any): void {
     this.productosEnCesta.push(producto);
     alert(`${producto.nombreProducto} añadido a la cesta`);
@@ -68,4 +76,6 @@ export class TiendaComponent implements OnInit {
   getTotalCesta(): number {
     return this.productosEnCesta.reduce((total, producto) => total + producto.precioProducto, 0);
   }
+
+
 }

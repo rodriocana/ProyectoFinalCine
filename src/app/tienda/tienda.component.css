@@ -1,9 +1,12 @@
 .tienda-container {
   text-align: center; /* Cambiar a left si quieres que el contenido esté alineado a la izquierda */
   padding: 20px; /* Ajusta el padding si necesitas espacio en el contenedor */
-  margin-left: 210px;
+  margin-left: 200px;
   position: relative; /* Necesario para el posicionamiento absoluto de la cesta */
+  background-color: #242729;
 }
+
+
 
 .productos {
   display: flex;
@@ -18,13 +21,19 @@
   padding: 16px;
   max-width: 200px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  color:white;
 }
 
 .producto-imagen {
   width: 100%;
   height: auto;
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.nombreProducto{
+  color:white;
 }
 
 .filtros {
@@ -37,6 +46,7 @@
 
 .filtros label {
   font-weight: bold;
+  color:white;
 }
 
 .filtros input,
@@ -49,7 +59,7 @@
 .cesta-icon {
   cursor: pointer;
   font-size: 24px; /* Tamaño del icono */
-  margin-bottom: 10px; /* Espacio debajo del icono */
+  margin-bottom: 20px; /* Espacio debajo del icono */
 }
 
 .cesta {
@@ -68,6 +78,7 @@
   display: flex;
   flex-direction: column; /* Disposición en columna */
 }
+
 
 h2 {
   text-align: center; /* Centrar el título */

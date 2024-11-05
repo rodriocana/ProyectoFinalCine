@@ -15,6 +15,7 @@ export class AppComponent {
   isModalOpen = false;
   user$: Observable<any> | undefined;
   userName: string | null = null; // Para almacenar el nombre del usuario
+  token:string = "";
 
   constructor(private router: Router, private afAuth: AngularFireAuth, private firestore: AngularFirestore) {}
 
@@ -26,6 +27,8 @@ export class AppComponent {
         this.firestore.collection('Usuarios').doc(user.uid).valueChanges().subscribe((userData: any) => {
           if (userData) {
             this.userName = userData.nombreUsuario; // Asumiendo que 'nombre' es un campo en tu colección de usuarios
+            localStorage.setItem("token", user.uid);
+            this.closeModal();
           }
         });
       } else {

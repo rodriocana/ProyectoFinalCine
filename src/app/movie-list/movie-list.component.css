@@ -9,7 +9,7 @@
   padding-top: 15px;
   display: grid; /* Mantiene el diseño de grid */
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* Crea columnas automáticas */
-  gap: 20px; /* Espacio entre las tarjetas de películas */
+  gap: 15px; /* Espacio entre las tarjetas de películas */
   min-height: 100vh; /* Asegura que la altura mínima sea 100% de la vista */
   justify-items: center; /* Centra cada elemento dentro de la celda de la cuadrícula */
   position: relative; /* Para posicionar el h2 en el contenedor */
