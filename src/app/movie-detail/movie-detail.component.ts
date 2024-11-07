@@ -15,7 +15,7 @@ export class MovieDetailComponent implements OnInit {
   trailerUrl: string | null = null;
   user: any;
   selectedImage: string | null = null;
-
+  actors: any[] = [];  // Añadir esta propiedad para almacenar los actores
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,15 +26,16 @@ export class MovieDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.user = this.authService.getCurrentUser(); // para traer al usuario logueado en ese momento.
+    this.user = this.authService.getCurrentUser(); // Para traer al usuario logueado
     const movieId = this.activatedRoute.snapshot.params['id'];
     if (movieId) {
+      // Obtener detalles de la película
       this.movieService.getMovieDetails(+movieId).subscribe(
         response => {
           this.movie = response.body;
         },
         error => {
-          console.error('Error al obtener detalles de la pelicula', error);
+          console.error('Error al obtener detalles de la película', error);
         }
       );
 
@@ -52,19 +53,33 @@ export class MovieDetailComponent implements OnInit {
       this.movieService.getMovieVideos(+movieId).subscribe(
         response => {
           const trailer = response.results.find((video: any) => video.type === 'Trailer');
-          this.trailerUrl = trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null; // Guarda la URL del trailer
+          this.trailerUrl = trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
         },
         error => {
           console.error('Error al obtener videos de la película', error);
         }
       );
+
+      // Obtener el elenco de la película
+      this.movieService.getMovieCredits(+movieId).subscribe(
+        response => {
+          this.actors = response.cast.slice(0, 5); // Obtener los primeros 5 actores, puedes modificar esto según tu necesidad
+        },
+        error => {
+          console.error('Error al obtener el elenco de la película', error);
+        }
+      );
     }
   }
 
-
+  showSynopsisModal: boolean = false;
 
   verSinopsis(): void {
-    alert(this.movie.overview);
+    this.showSynopsisModal = true;
+  }
+
+  closeSynopsisModal(): void {
+    this.showSynopsisModal = false;
   }
 
   openTrailer(): void {

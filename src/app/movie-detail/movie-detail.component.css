@@ -40,6 +40,54 @@
   align-items: flex-end; /* Alinear los elementos en la parte inferior */
 }
 
+/* Contenedor de las miniaturas y actores */
+.thumbnail-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  position: relative;
+  animation: slide 10s infinite linear; /* Añadido para aplicar la animación continua */
+}
+
+/* Contenedor de los actores */
+.actors-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  position: absolute; /* Los actores estarán posicionados de manera absoluta dentro de la miniatura */
+  top: 64%; /* Aparecen arriba de la miniatura */
+  left: 50%; /* Centrados horizontalmente sobre las miniaturas */
+  transform: translateX(-50%); /* Centrado perfecto */
+  z-index: 2; /* Asegura que los actores estén por encima de las miniaturas */
+}
+
+/* Tarjetas de los actores */
+.actor-card {
+  text-align: center;
+  width: 200px;
+  font-size: 0.75em;
+  border: 2px solid rgb(230, 127, 31);
+  border-radius: 8px;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  margin-top: -120px;/* Margen superior para separar los actores */
+}
+/* Imagen de los actores */
+.actor-card img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+}
+
+/* Nombres de los actores */
+.modal-content .actor-name {
+  color: #ffffff;
+  font-size: 1.5em; /* O el tamaño que prefieras */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+/* Miniaturas */
 .thumbnail-container {
   display: flex;
   gap: 10px; /* Espacio entre las miniaturas */
@@ -74,6 +122,7 @@
 }
 
 
+
 @keyframes marquee {
   100% {
     transform: translateX(100%);
@@ -86,8 +135,7 @@
 /* Estilos de la descripción */
 .movie-details p {
   font-size: 1.1em;
-  max-width: 300px;
-  padding: 0px;
+  padding-bottom: 10px;
   border-radius: 8px;
   margin: 5px 0;
 }
@@ -198,6 +246,77 @@
     transform: scale(1);
   }
 }
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  color: #333;
+  padding: 20px;
+  padding-top: 10px; /* Asegura un padding-top consistente */
+  border-radius: 10px;
+  max-width: 900px;
+  width: 600px;
+  border: #e98009 solid 2px;
+  margin-bottom: 360px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: zoomIn 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* Asegura que los elementos dentro estén centrados */
+}
+
+.modal-content h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  font-size: 1.1em;
+  color: rgb(0, 0, 0);
+
+  text-align: center; /* Centra el texto dentro del párrafo */
+}
+
+.modal-content button {
+  background-color: #e98009;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.modal-content button:hover {
+  background-color: #cc3939;
+}
+
+/* Animación de zoom al aparecer el modal */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.7);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
 
 
 

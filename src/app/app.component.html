@@ -12,15 +12,15 @@
     </div>
     <hr class="divider">
     <div class="nav-item">
-      <a [routerLink]="['/movieList']"><i class="fa-solid fa-film"></i> Cartelera</a>
+      <a [routerLink]="['/movieList']" routerLinkActive="active"><i class="fa-solid fa-film"></i> Cartelera</a>
     </div>
     <hr class="divider">
     <div class="nav-item">
-      <a routerLink="/tienda"><i class="fas fa-shopping-cart"></i> Tienda</a>
+      <a routerLink="/tienda" routerLinkActive="active"><i class="fas fa-shopping-cart"></i> Tienda</a>
     </div>
     <hr class="divider">
     <div class="nav-item">
-      <a routerLink="/"><i class="fas fa-envelope"></i> Contacto</a>
+      <a routerLink="/contacto" routerLinkActive="active"><i class="fas fa-envelope"></i> Contacto</a>
     </div>
     <hr class="divider">
     <div class="nav-item">
@@ -28,16 +28,15 @@
       <a *ngIf="userName" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a>
     </div>
     <div *ngIf="userName" class="opciones-user">
-      <p class="textPerfil">MENU</p>
       <div *ngIf="userName" class="user-info">
-        <p>Bienvenido, {{ userName }}</p> <!-- Mostrar el nombre del usuario -->
+        <p>Bienvenido, {{ userName }}</p>
       </div>
       <hr class="dividerUser">
-      <a routerLink="/tienda"><i class="fa-solid fa-clapperboard"></i> Mi lista</a>
+      <a routerLink="/tienda" routerLinkActive="active"><i class="fa-solid fa-clapperboard"></i> Mi lista</a>
       <hr class="dividerUser">
-      <a routerLink="/tienda"><i class="fa-solid fa-trophy"></i> Top 250</a>
+      <a routerLink="/top250" routerLinkActive="active"><i class="fa-solid fa-trophy"></i> Top 250</a>
       <hr class="dividerUser">
-      <a routerLink="/tienda"><i class="fa-solid fa-head-side-virus"></i> Ver perfil</a>
+      <a routerLink="/perfil" routerLinkActive="active"><i class="fa-solid fa-head-side-virus"></i> Ver perfil</a>
     </div>
   </nav>
 

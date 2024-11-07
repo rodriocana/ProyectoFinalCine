@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -17,6 +18,7 @@ import { FormularioRegistroComponent } from './formulario-registro/formulario-re
 import { TiendaComponent } from './tienda/tienda.component';
 import { FirestoreModule } from '@angular/fire/firestore';
 import { FirebaseAppModule } from '@angular/fire/app';
+import { Top250MoviesComponent } from './top250-movies/top250-movies.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { FirebaseAppModule } from '@angular/fire/app';
     LoginModalComponent,
     FormularioRegistroComponent,
     TiendaComponent,
+    Top250MoviesComponent,
 
   ],
   imports: [

@@ -18,7 +18,7 @@ header {
   align-items: flex-start; /* Alinea los elementos a la izquierda */
   border-right: 2px solid rgba(255, 255, 255, 0.956);
   position: fixed; /* Fijo en la parte superior */
-  width: 200px; /* Ancho fijo para la barra lateral */
+  width: 220px; /* Ancho fijo para la barra lateral */
   height: 100vh; /* Altura completa de la ventana */
   z-index: 10; /* Asegúrate de que el header esté por encima de otros elementos */
 }
@@ -64,6 +64,19 @@ nav a i {
 
 nav a:hover {
   color: #1ef8af;
+}
+
+.nav-item a.active {
+  color: #1ef8af;
+}
+
+.opciones-user a:hover {
+  color: #1ef8af;
+}
+
+.opciones-user a.active {
+  color: #1ef8af;
+
 }
 
 /* Estilos para el pie de página */

@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-modal',
@@ -11,9 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginModalComponent {
   username: string = '';
   password: string = '';
-  @Input() isLogin: boolean = true;
+  @Input() isLogin: boolean = true;  // este true en el formulario es el que hace que salga form de inicio de sesion.
   @Output() close = new EventEmitter<void>();
   registroForm: FormGroup;
+  inicioForm: FormGroup;
 
   constructor(
     private router: Router,
@@ -27,6 +28,11 @@ export class LoginModalComponent {
       contrasena: ['', Validators.required],
       saldo: ['', Validators.required],
     });
+
+    this.inicioForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
   }
 
   closeModal() {
@@ -34,25 +40,27 @@ export class LoginModalComponent {
   }
 
   onSubmit() {
-    this.userService.loginUser(this.username, this.password).subscribe({
-      next: (userData: any) => {
-        if (userData) {
-          alert(
-            `¡Has iniciado sesión correctamente! \n Datos del usuario: ${JSON.stringify(
-              userData
-            )}`
-          );
-        } else {
-          alert('No se encontraron datos para este usuario.');
-        }
+    if (this.inicioForm.valid) {
+      this.userService.loginUser(this.inicioForm.value).subscribe({
+        next: (userData: any) => {
+          if (userData) {
+            alert(
+              `¡Has iniciado sesión correctamente! \n Datos del usuario: ${JSON.stringify(
+                userData
+              )}`
+            );
+          } else {
+            alert('No se encontraron datos para este usuario.');
+          }
 
-        this.closeModal(); // Cierra el modal
-      },
-      error: (error: any) => {
-        console.error('Error en onSubmit:', error);
-        alert('Error: Usuario o contraseña incorrectos');
-      },
-    });
+          this.closeModal(); // Cierra el modal
+        },
+        error: (error: any) => {
+          console.error('Error en onSubmit:', error);
+          alert('Error: Usuario o contraseña incorrectos');
+        },
+      });
+    }
   }
 
   onRegister() {
@@ -68,7 +76,7 @@ export class LoginModalComponent {
           } else {
             alert('No se encontraron datos para este usuario.');
           }
-            this.closeModal(); // Cierra el modal
+          this.closeModal(); // Cierra el modal
         },
         error: (error: any) => {
           console.error('Error en onSubmit:', error);

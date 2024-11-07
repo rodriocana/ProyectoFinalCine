@@ -1,7 +1,7 @@
 .tienda-container {
   text-align: center; /* Cambiar a left si quieres que el contenido esté alineado a la izquierda */
   padding: 20px; /* Ajusta el padding si necesitas espacio en el contenedor */
-  margin-left: 200px;
+  margin-left: 220px;
   position: relative; /* Necesario para el posicionamiento absoluto de la cesta */
   background-color: #242729;
 }
@@ -58,6 +58,7 @@
 
 .cesta-icon {
   cursor: pointer;
+  color: white;
   font-size: 24px; /* Tamaño del icono */
   margin-bottom: 20px; /* Espacio debajo del icono */
 }

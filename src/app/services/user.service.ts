@@ -10,15 +10,16 @@ import { catchError, map } from 'rxjs/operators';
 export class UserService {
   constructor(private auth: AngularFireAuth, private firestore: AngularFirestore) {}
 
-  loginUser(correo: string, contrasena: string): Observable<any> {
+  loginUser(form:any): Observable<any> {
     return new Observable(observer => {
-      this.auth.signInWithEmailAndPassword(correo, contrasena)
+      this.auth.signInWithEmailAndPassword(form.username, form.password)
         .then(userCredential => {
           const userId = userCredential.user?.uid;
           console.log("User ID:", userId); // Verificar que el ID de usuario se obtenga
           })
     });
   }
+
   registerUser(form: any): Observable<any> {
     return new Observable(observer => {
       this.auth.createUserWithEmailAndPassword(form.correo, form.contrasena)
