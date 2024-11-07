@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { FormBuilder, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
+import { user } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login-modal',
@@ -52,6 +53,8 @@ export class LoginModalComponent {
           } else {
             alert('No se encontraron datos para este usuario.');
           }
+
+          console.log("hola" + JSON.stringify(userData));
 
           this.closeModal(); // Cierra el modal
         },

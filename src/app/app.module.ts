@@ -20,6 +20,7 @@ import { FirestoreModule } from '@angular/fire/firestore';
 import { FirebaseAppModule } from '@angular/fire/app';
 import { Top250MoviesComponent } from './top250-movies/top250-movies.component';
 import { ActorMoviesDetailComponent } from './actor-movies-detail/actor-movies-detail.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ActorMoviesDetailComponent } from './actor-movies-detail/actor-movies-d
     TiendaComponent,
     Top250MoviesComponent,
     ActorMoviesDetailComponent,
+    HeaderComponent,
 
   ],
   imports: [

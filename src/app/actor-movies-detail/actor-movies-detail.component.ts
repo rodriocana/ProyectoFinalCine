@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { Router } from '@angular/router';
 import { MovieService } from '../movie.service';
-import { Movie } from '../movie.model';
+import { Movie } from '../interfaces/movie.model';
   //
 
 @Component({

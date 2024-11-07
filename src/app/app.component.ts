@@ -22,24 +22,24 @@ export class AppComponent {
   constructor(private router: Router, private afAuth: AngularFireAuth, private firestore: AngularFirestore, private auth:AuthService) {}
 
   ngOnInit() {
-    this.user$ = this.afAuth.authState;
-    this.user$.subscribe(user => {
-      if (user) {
-        console.log("Usuario autenticado:", user);
-        this.firestore.collection('Usuarios').doc(user.uid).valueChanges().subscribe((userData: any) => {
-          if (userData) {
-            this.userName = userData.nombreUsuario; // Asumiendo que 'nombre' es un campo en tu colección de usuarios
-            localStorage.setItem("token", user.refreshToken);
-            this.closeModal();
-            console.log(this.auth.isLoggedIn());
+    // this.user$ = this.afAuth.authState;
+    // this.user$.subscribe(user => {
+    //   if (user) {
+    //     console.log("Usuario autenticado:", user);
+    //     this.firestore.collection('Usuarios').doc(user.uid).valueChanges().subscribe((userData: any) => {
+    //       if (userData) {
+    //         this.userName = userData.nombreUsuario; // Asumiendo que 'nombre' es un campo en tu colección de usuarios
+    //         localStorage.setItem("token", user.refreshToken);
+    //         this.closeModal();
+    //         console.log(this.auth.isLoggedIn());
 
-          }
-        });
-      } else {
-        console.log("No hay usuario autenticado");
-        this.userName = null; // Resetea el nombre si no hay usuario
-      }
-    });
+    //       }
+    //     });
+    //   } else {
+    //     console.log("No hay usuario autenticado");
+    //     this.userName = null; // Resetea el nombre si no hay usuario
+    //   }
+    // });
   }
 
   isMovieDetailsPage(): boolean {
@@ -61,4 +61,7 @@ export class AppComponent {
       this.router.navigate(['/']); // Redirige a la página principal
     });
   }
+
+
+
 }

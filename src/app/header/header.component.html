@@ -1,0 +1,41 @@
+<header *ngIf="isMovieDetailsPage()">
+  <div class="icon-container">
+    <i class="fa-solid fa-ticket" id="icono"></i>
+    <span class="tituloLogo">CINEMA</span>
+  </div>
+  <nav>
+    <div class="nav-item">
+      <a [routerLink]="['/']"><i class="fas fa-home"></i> Inicio</a>
+    </div>
+    <hr class="divider">
+    <div class="nav-item">
+      <a [routerLink]="['/movieList']" routerLinkActive="active"><i class="fa-solid fa-film"></i> Cartelera</a>
+    </div>
+    <hr class="divider">
+    <div class="nav-item">
+      <a routerLink="/tienda" routerLinkActive="active"><i class="fas fa-shopping-cart"></i> Tienda</a>
+    </div>
+    <hr class="divider">
+    <div class="nav-item">
+      <a routerLink="/contacto" routerLinkActive="active"><i class="fas fa-envelope"></i> Contacto</a>
+    </div>
+    <hr class="divider">
+    <div class="nav-item">
+      <a *ngIf="!userName" (click)="openModal()"><i class="fas fa-sign-in-alt"></i> Login</a>
+      <a *ngIf="userName" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a>
+    </div>
+    <div *ngIf="userName" class="opciones-user">
+      <div *ngIf="userName" class="user-info">
+        <p>Bienvenido, {{ userName }}</p>
+      </div>
+      <hr class="dividerUser">
+      <a routerLink="/tienda" routerLinkActive="active"><i class="fa-solid fa-clapperboard"></i> Mi lista</a>
+      <hr class="dividerUser">
+      <a routerLink="/top250" routerLinkActive="active"><i class="fa-solid fa-trophy"></i> Top 250</a>
+      <hr class="dividerUser">
+      <a routerLink="/perfil" routerLinkActive="active"><i class="fa-solid fa-head-side-virus"></i> Ver perfil</a>
+    </div>
+  </nav>
+</header>
+
+<app-login-modal *ngIf="isModalOpen" (close)="closeModal()"></app-login-modal>
