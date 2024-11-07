@@ -16,6 +16,8 @@ export class MovieDetailComponent implements OnInit {
   user: any;
   selectedImage: string | null = null;
   actors: any[] = [];  // Añadir esta propiedad para almacenar los actores
+  isFavorite = false; // Estado de favoritos para la película actual
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -70,6 +72,21 @@ export class MovieDetailComponent implements OnInit {
         }
       );
     }
+  }
+
+  toggleFavorite() {
+    this.isFavorite = !this.isFavorite;
+    if (this.isFavorite) {
+      // Lógica para añadir a favoritos
+      console.log('Película añadida a favoritos');
+    } else {
+      // Lógica para eliminar de favoritos
+      console.log('Película eliminada de favoritos');
+    }
+  }
+
+    goToActorMovies(actorId: number) {
+      this.router.navigate(['/actor', actorId]); // Aquí se asume que tienes una ruta '/actor/:id'
   }
 
   showSynopsisModal: boolean = false;

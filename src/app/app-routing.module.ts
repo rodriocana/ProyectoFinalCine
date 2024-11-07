@@ -9,6 +9,7 @@ import { FormularioRegistroComponent } from './formulario-registro/formulario-re
 import { TiendaComponent } from './tienda/tienda.component';
 import { AuthGuardService } from './auth-guard.service';
 import { Top250MoviesComponent } from './top250-movies/top250-movies.component';
+import { ActorMoviesDetailComponent } from './actor-movies-detail/actor-movies-detail.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'movieDetail/:id', component: MovieDetailComponent },
   { path: 'registro', component: FormularioRegistroComponent }, // Nueva ruta para el registro
   { path: 'tienda', component: TiendaComponent , canActivate:[AuthGuardService]},
-  {path: 'top250', component: Top250MoviesComponent}
+  {path: 'top250', component: Top250MoviesComponent},
+  { path: 'actor/:id', component: ActorMoviesDetailComponent },
 ];
 
 @NgModule({

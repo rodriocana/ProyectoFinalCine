@@ -19,6 +19,7 @@ import { TiendaComponent } from './tienda/tienda.component';
 import { FirestoreModule } from '@angular/fire/firestore';
 import { FirebaseAppModule } from '@angular/fire/app';
 import { Top250MoviesComponent } from './top250-movies/top250-movies.component';
+import { ActorMoviesDetailComponent } from './actor-movies-detail/actor-movies-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { Top250MoviesComponent } from './top250-movies/top250-movies.component';
     FormularioRegistroComponent,
     TiendaComponent,
     Top250MoviesComponent,
+    ActorMoviesDetailComponent,
 
   ],
   imports: [

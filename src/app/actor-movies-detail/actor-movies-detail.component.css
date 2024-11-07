@@ -1,0 +1,106 @@
+/* Contenedor principal para las películas */
+.actor-movies-container {
+  display: grid;                      /* Usamos Grid para organizar las tarjetas */
+  grid-template-columns: repeat(8, 1fr); /* Cuatro columnas en la grilla */
+  gap: 10px;                           /* Reduce el espacio entre las tarjetas */
+  justify-items: center;               /* Centra las tarjetas horizontalmente */
+  padding: 20px;                       /* Ajusta el padding del contenedor */
+  background-color: #333;              /* Fondo oscuro */
+}
+
+/* Estilo para las tarjetas de películas */
+.movie-card {
+  position: relative;
+  width: 100%;                          /* Hace que la tarjeta ocupe todo el ancho disponible */
+  max-width: 250px;                     /* Define el ancho máximo de la tarjeta */
+  cursor: pointer;                     /* Cambia el cursor al pasar sobre la tarjeta */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave para las tarjetas */
+  border-radius: 10px;                  /* Redondea las esquinas de la tarjeta */
+  overflow: hidden;                     /* Evita que la imagen sobresalga de los bordes */
+  padding: 0;                           /* Elimina el padding de las tarjetas */
+}
+
+/* Estilo para la imagen de la película */
+.movie-card img {
+  width: 100%;                          /* Hace que la imagen ocupe todo el ancho de la tarjeta */
+  height: auto;                         /* Mantiene la proporción de la imagen */
+  border-radius: 8px;                   /* Redondea las esquinas de la imagen */
+  transition: transform 0.3s ease;      /* Añade una transición a la imagen */
+}
+
+/* Efecto al hacer hover en la tarjeta */
+.movie-card:hover img {
+  transform: scale(1.05);               /* Escala la imagen ligeramente al pasar el ratón sobre ella */
+}
+
+/* Estilos para el contenedor del título */
+.title-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro y semitransparente */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  opacity: 0;                           /* Inicialmente oculto */
+  transition: opacity 0.3s ease;         /* Hace que el título aparezca con una animación */
+}
+
+/* Muestra el título al pasar el ratón sobre la tarjeta */
+.movie-card:hover .title-container {
+  opacity: 1;
+}
+
+/* Estilo para el título de la película */
+.movie-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  text-overflow: ellipsis;              /* Añade puntos suspensivos si el título es muy largo */
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Estilo para la fecha de estreno */
+.movie-release-date {
+  font-size: 14px;
+  color: #ccc;
+  margin: 5px 0 0 0;
+}
+
+/* Mensaje cuando no se encuentran películas */
+.no-movies-message {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  padding: 20px;
+}
+
+/* Estilo para el botón "Volver al Menú Principal" */
+.back-to-home {
+  position: fixed; /* Fijar el botón en la pantalla */
+  bottom: 20px;    /* Ubicar el botón a 20px de la parte inferior */
+  left: 20px;      /* Ubicar el botón a 20px de la parte izquierda */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;  /* Asegura que el botón se quede encima de otros elementos */
+}
+
+.back-to-home:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.back-to-home:focus {
+  outline: none;
+}

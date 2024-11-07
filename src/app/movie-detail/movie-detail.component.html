@@ -6,16 +6,15 @@
       <button (click)="verSinopsis()" id="sinopsis">Ver Sinopsis</button>
       <button id="comprarEntrada">Comprar Entrada</button>
       <button id="verTrailer" *ngIf="trailerUrl" (click)="openTrailer()">Ver Trailer</button>
-    </div>
-  </div>
 
-  <!-- Contenedor de actores -->
-   <!-- <div class="actors-container">
-    <div *ngFor="let actor of actors" class="actor-card">
-      <img *ngIf="actor.profile_path" [src]="'https://image.tmdb.org/t/p/w200' + actor.profile_path" [alt]="actor.name">
-       <p>{{ actor.name }}</p>
+      <!-- Contenedor con fondo de color para el botón de favoritos -->
+      <div class="favorite-container">
+        <button id="favoritos" (click)="toggleFavorite()" [ngClass]="{'favorited': isFavorite}">
+          <span class="heart-icon" [ngClass]="{'favorited': isFavorite}">❤</span>
+          Añadir a Favoritos
+        </button>
+      </div>
     </div>
-  </div> -->
 
 
   <div class="thumbnail-button-container">
@@ -29,18 +28,18 @@
     <img [src]="selectedImage" class="enlarged-image">
   </div>
 
-  <!-- Modal para mostrar la sinopsis -->
-  <div *ngIf="showSynopsisModal" class="modal-overlay" (click)="closeSynopsisModal()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <h3>Sinopsis</h3>
-      <div class="actors-container">
-        <div *ngFor="let actor of actors" class="actor-card">
-          <img *ngIf="actor.profile_path" [src]="'https://image.tmdb.org/t/p/original' + actor.profile_path" [alt]="actor.name">
-          <p class="actor-name">{{ actor.name }}</p> <!-- Aquí se aplica la clase actor-name -->
-        </div>
+<!-- Modal para mostrar la sinopsis -->
+<div *ngIf="showSynopsisModal" class="modal-overlay" (click)="closeSynopsisModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Sinopsis</h3>
+    <div class="actors-container">
+      <div *ngFor="let actor of actors" class="actor-card" (click)="goToActorMovies(actor.id)">
+        <!-- Aquí el actor es un enlace que redirige a la ruta de sus películas -->
+        <img *ngIf="actor.profile_path" [src]="'https://image.tmdb.org/t/p/w500' + actor.profile_path" [alt]="actor.name">
+        <p class="actor-name">{{ actor.name }}</p>
       </div>
-      <p>{{ movie.overview }}</p>
-      <button (click)="closeSynopsisModal()">Cerrar</button>
     </div>
+    <p>{{ movie.overview }}</p>
+    <button (click)="closeSynopsisModal()">Cerrar</button>
   </div>
 </div>

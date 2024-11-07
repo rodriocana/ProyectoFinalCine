@@ -316,8 +316,41 @@
   }
 }
 
+/* BOTON FAVORTIOS */
+/* Contenedor con fondo de color */
+.favorite-container {
+  background-color: #0fa6e2; /* Color de fondo */
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 12px; /* Espacio alrededor del botón */
+  display: inline-flex; /* Alineación del contenido */
+  height: 15px;
+  width: auto;
+}
 
+/* Botón de favoritos con el nuevo contenedor */
+.button-container #favoritos {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 6px;
+}
 
+/* Estilos del ícono de corazón */
+.heart-icon {
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  transition: color 0.3s;
+}
 
+.heart-icon.favorited {
+  color: red; /* Cambia de color cuando esté en favoritos */
+}
 
-
+.button-container #favoritos:hover .heart-icon {
+  color: #ff4d4d; /* Color de corazón al pasar el cursor */
+}
