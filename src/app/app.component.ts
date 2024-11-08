@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
@@ -15,6 +15,7 @@ export class AppComponent {
   isCestaModalOpen: boolean = false;
   productosEnCesta: any[] = [];
   isModalOpen = false;
+  @Output() close = new EventEmitter<void>();
   user$: Observable<any> | undefined;
   userName: string | null = null; // Para almacenar el nombre del usuario
   token:string = "";
@@ -29,12 +30,12 @@ export class AppComponent {
     //     this.firestore.collection('Usuarios').doc(user.uid).valueChanges().subscribe((userData: any) => {
     //       if (userData) {
     //         this.userName = userData.nombreUsuario; // Asumiendo que 'nombre' es un campo en tu colección de usuarios
-    //         localStorage.setItem("token", user.refreshToken);
     //         this.closeModal();
     //         console.log(this.auth.isLoggedIn());
-
     //       }
-    //     });
+    //      });
+
+    //     localStorage.setItem("token", user.refreshToken);  // si comento esta linea, no acepta ninguna peticion http
     //   } else {
     //     console.log("No hay usuario autenticado");
     //     this.userName = null; // Resetea el nombre si no hay usuario
@@ -42,24 +43,18 @@ export class AppComponent {
     // });
   }
 
+
   isMovieDetailsPage(): boolean {
     return this.router.url.includes('movieList') || this.router.url.includes('tienda') || this.router.url.includes('top250') || this.router.url.includes('movieDetail');
   }
 
   openModal() {
-    console.log('Modal abierto');
+    console.log('Modal');
     this.isModalOpen = true;
   }
 
   closeModal() {
     this.isModalOpen = false;
-  }
-
-  logout() {
-    this.afAuth.signOut().then(() => {
-      this.userName = null; // Resetea el nombre del usuario después de cerrar sesión
-      this.router.navigate(['/']); // Redirige a la página principal
-    });
   }
 
 

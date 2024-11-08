@@ -29,12 +29,12 @@ export class HeaderComponent {
         this.firestore.collection('Usuarios').doc(user.uid).valueChanges().subscribe((userData: any) => {
           if (userData) {
             this.userName = userData.nombreUsuario; // Asumiendo que 'nombre' es un campo en tu colección de usuarios
-            localStorage.setItem("token", user.refreshToken);
             this.closeModal();
             console.log(this.auth.isLoggedIn());
-
           }
-        });
+         });
+
+        localStorage.setItem("token", user.refreshToken);  // si comento esta linea, no acepta ninguna peticion http
       } else {
         console.log("No hay usuario autenticado");
         this.userName = null; // Resetea el nombre si no hay usuario
@@ -58,6 +58,8 @@ export class HeaderComponent {
   logout() {
     this.afAuth.signOut().then(() => {
       this.userName = null; // Resetea el nombre del usuario después de cerrar sesión
+      localStorage.clear();
+      console.log("localstorage borrado")
       this.router.navigate(['/']); // Redirige a la página principal
     });
   }

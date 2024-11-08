@@ -44,27 +44,40 @@ export class LoginModalComponent {
     if (this.inicioForm.valid) {
       this.userService.loginUser(this.inicioForm.value).subscribe({
         next: (userData: any) => {
-          if (userData) {
-            alert(
-              `¡Has iniciado sesión correctamente! \n Datos del usuario: ${JSON.stringify(
-                userData
-              )}`
-            );
-          } else {
-            alert('No se encontraron datos para este usuario.');
-          }
-
-          console.log("hola" + JSON.stringify(userData));
-
-          this.closeModal(); // Cierra el modal
         },
         error: (error: any) => {
-          console.error('Error en onSubmit:', error);
-          alert('Error: Usuario o contraseña incorrectos');
+
         },
       });
     }
   }
+
+  // onSubmit() {
+  //   if (this.inicioForm.valid) {
+  //     this.userService.loginUser(this.inicioForm.value).subscribe({
+  //       next: (userData: any) => {
+  //         if (userData) {
+  //           alert(
+  //             `¡Has iniciado sesión correctamente! \n Datos del usuario: ${JSON.stringify(
+  //               userData
+  //             )}`
+
+  //           );
+  //         } else {
+  //           alert('No se encontraron datos para este usuario.');
+  //         }
+
+  //         console.log("hola" + JSON.stringify(userData));
+
+  //         this.closeModal(); // Cierra el modal
+  //       },
+  //       error: (error: any) => {
+  //         console.error('Error en onSubmit:', error);
+  //         alert('Error: Usuario o contraseña incorrectos');
+  //       },
+  //     });
+  //   }
+  // }
 
   onRegister() {
     if (this.registroForm.valid) {

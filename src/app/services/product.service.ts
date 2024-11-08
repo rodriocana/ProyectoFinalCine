@@ -35,16 +35,4 @@ export class ProductService {
     );
   }
 
-  // Obtiene un producto específico por ID
-  getProductoById(id: string): Observable<Producto | undefined> {
-    return this.productosCollection.doc(id).valueChanges().pipe(
-      map(producto => {
-        if (producto) {
-          return { id, ...producto };
-        } else {
-          return undefined;
-        }
-      })
-    );
-  }
 }

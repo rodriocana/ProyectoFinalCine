@@ -8,8 +8,8 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // No interceptar las solicitudes que vayan a 'datos2.json'
-    if (request.url.includes('datos2.json')) {
+    // No interceptar las solicitudes que vayan a la ruta de includes
+    if (request.url.includes('')) {
       return next.handle(request);
     }
 
