@@ -25,8 +25,9 @@
       <a *ngIf="userName" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a>
     </div>
     <div *ngIf="userName" class="opciones-user">
+     <img class="avatar" src="https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png" >
       <div *ngIf="userName" class="user-info">
-        <p>Bienvenido, {{ userName }}</p>
+        <p class="user-name">Bienvenido, {{ userName }}</p>
       </div>
       <hr class="dividerUser">
       <a routerLink="/tienda" routerLinkActive="active"><i class="fa-solid fa-clapperboard"></i> Mi lista</a>

@@ -7,41 +7,57 @@ import { AuthService } from '../services/auth-service.service';
 @Component({
   selector: 'app-tienda',
   templateUrl: './tienda.component.html',
-  styleUrls: ['./tienda.component.css']
+  styleUrls: ['./tienda.component.css'],
 })
 export class TiendaComponent implements OnInit {
-
-
   productos: any[] = [];
   productosFiltrados: any[] = [];
   productosEnCesta: any[] = []; // Arreglo para almacenar los productos añadidos a la cesta
-
-
   filtroCategoria: string = '';
   filtroPrecioMin: number | null = null;
   filtroPrecioMax: number | null = null;
   isCestaVisible: boolean = false; // Propiedad para controlar la visibilidad de la cesta
   user: any;
+  token = '';
 
-
-  constructor(private productService: ProductService,private authService: AuthService) {}
+  constructor(
+    private productService: ProductService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.token = localStorage.getItem("token")
 
-    this.user = this.authService.getCurrentUser();
+    if(!this.token){
 
+      alert("Para acceder a la tienda debes estar logueado");
+    }else{
+      this.productService.getProductos().subscribe({
+        next: (productos) => {
+          this.productos = productos;
+          this.productosFiltrados = productos; // Inicialmente muestra todos
+        },
+        error: (err) => {
+          console.error('Error al obtener productos', err);
+        },
+      });
+    }
 
-    this.productService.getProductos().subscribe((productos) => {
-      this.productos = productos;
-      this.productosFiltrados = productos; // Inicialmente muestra todos
-    });
   }
 
   filtrarProductos(): void {
     this.productosFiltrados = this.productos.filter((producto) => {
-      const cumpleCategoria = this.filtroCategoria ? producto.categoriaProducto === this.filtroCategoria : true;
-      const cumplePrecioMin = this.filtroPrecioMin !== null ? producto.precioProducto >= this.filtroPrecioMin : true;
-      const cumplePrecioMax = this.filtroPrecioMax !== null ? producto.precioProducto <= this.filtroPrecioMax : true;
+      const cumpleCategoria = this.filtroCategoria
+        ? producto.categoriaProducto === this.filtroCategoria
+        : true;
+      const cumplePrecioMin =
+        this.filtroPrecioMin !== null
+          ? producto.precioProducto >= this.filtroPrecioMin
+          : true;
+      const cumplePrecioMax =
+        this.filtroPrecioMax !== null
+          ? producto.precioProducto <= this.filtroPrecioMax
+          : true;
 
       return cumpleCategoria && cumplePrecioMin && cumplePrecioMax;
     });
@@ -59,11 +75,9 @@ export class TiendaComponent implements OnInit {
     alert(`${producto.nombreProducto} añadido a la cesta`);
   }
 
-
   toggleCesta(): void {
     this.isCestaVisible = !this.isCestaVisible; // Cambia la visibilidad de la cesta
   }
-
 
   eliminarDeCesta(producto: any): void {
     const index = this.productosEnCesta.indexOf(producto);
@@ -74,8 +88,9 @@ export class TiendaComponent implements OnInit {
   }
 
   getTotalCesta(): number {
-    return this.productosEnCesta.reduce((total, producto) => total + producto.precioProducto, 0);
+    return this.productosEnCesta.reduce(
+      (total, producto) => total + producto.precioProducto,
+      0
+    );
   }
-
-
 }

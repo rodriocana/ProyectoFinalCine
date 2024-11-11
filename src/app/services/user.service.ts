@@ -1,22 +1,36 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private auth: AngularFireAuth, private firestore: AngularFirestore) {}
+  private authStatus = new BehaviorSubject<boolean>(false);
 
-  loginUser(form:any): Observable<any> {
+  constructor(private auth: AngularFireAuth, private firestore: AngularFirestore) {
+    // Escuchar cambios en el estado de autenticación de Firebase
+    this.auth.authState.subscribe((user) => {
+      this.authStatus.next(!!user);  // Emitir `true` si el usuario está autenticado, `false` si no
+    });
+  }
+
+  getAuthStatus(): Observable<boolean> {
+    return this.authStatus.asObservable();
+  }
+
+  loginUser(form: any): Observable<any> {
     return new Observable(observer => {
-      this.auth.signInWithEmailAndPassword(form.username, form.password)
+      this.auth.signInWithEmailAndPassword(form.email, form.password)
         .then(userCredential => {
-          const userId = userCredential.user?.uid;
-          console.log("User ID:", userId); // Verificar que el ID de usuario se obtenga
-          })
+          this.authStatus.next(true);  // Emitir `true` al iniciar sesión exitosamente
+          observer.next(userCredential);
+          observer.complete();
+        })
+        .catch(error => {
+          observer.error(error);
+        });
     });
   }
 
@@ -25,18 +39,21 @@ export class UserService {
       this.auth.createUserWithEmailAndPassword(form.correo, form.contrasena)
         .then(userCredential => {
           const userId = userCredential.user?.uid;
-          console.log("User ID:", userId); // Verificar que el ID de usuario se obtenga
           if (userId) {
-            // Guardar la información del usuario en Firestore
+            // Guardar información adicional del usuario en Firestore
             this.firestore.collection('Usuarios').doc(userId).set({
-              nombre: form.nombre, // Asegúrate de que el formulario tenga este campo
+              nombre: form.nombre,
               correo: form.correo,
-              saldo: form.saldo, // Asegúrate de que el formulario tenga este campo
-              // Puedes agregar más campos aquí si es necesario
-            })
+              saldo: form.saldo,
+            });
+            this.authStatus.next(true);  // Emitir `true` al registrarse exitosamente
           }
+          observer.next(userCredential);
+          observer.complete();
         })
-
+        .catch(error => {
+          observer.error(error);
+        });
     });
   }
 }

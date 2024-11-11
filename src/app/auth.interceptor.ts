@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { Router } from '@angular/router';
  // Para obtener el token
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private router: Router) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // No interceptar las solicitudes que vayan a la ruta de includes
-    if (request.url.includes('')) {
+    if (this.router.url.includes('movieList') || (this.router.url.includes("/"))){
       return next.handle(request);
     }
 

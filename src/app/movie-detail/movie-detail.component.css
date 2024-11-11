@@ -64,14 +64,15 @@
 /* Tarjetas de los actores */
 .actor-card {
   text-align: center;
-  width: 200px;
+  width: 165px;
   font-size: 0.75em;
   border: 2px solid rgb(230, 127, 31);
   border-radius: 8px;
   padding: 5px;
+
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  margin-top: -120px;/* Margen superior para separar los actores */
+  margin-top: -140px;/* Margen superior para separar los actores */
 }
 /* Imagen de los actores */
 .actor-card img {
@@ -85,6 +86,12 @@
 .modal-content .actor-name {
   color: #ffffff;
   font-size: 1.5em; /* O el tamaño que prefieras */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.modal-content .actor-character {
+  color: #ffffff;
+  font-size: 1.2em; /* O el tamaño que prefieras */
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 /* Miniaturas */
@@ -225,7 +232,7 @@
   width: 70vw;
   height: 80vh;
   border-radius: 10px;
-  border: 2px solid #e98009;
+  border: 3px solid #e98009;
    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   object-fit: cover;
 }
@@ -252,7 +259,6 @@
   position: fixed;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
@@ -262,20 +268,61 @@
   z-index: 1000;
 }
 
+.modal-overlay-trailer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  padding-bottom: 500px;
+}
+
+/* Contenedor del modal que incluye el iframe */
+.modal-content-trailer {
+  position: relative;
+  background-color: #e7e7e7;
+  padding: 10px;
+  max-width: 75%; /* Tamaño máximo del modal */
+  max-height: 92%; /* Tamaño máximo del modal */
+  border: #e98009 solid 4px;
+  height: 1000px;
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Asegura que no se desborde el contenido */
+}
+
+/* Estilo para el iframe */
+iframe {
+  width: 1170px;
+  height: 900px; /* Altura fija para el video */
+  border-radius: 5px; /* Bordes redondeados para el iframe */
+
+
+}
+
 .modal-content {
   background-color: #ffffff;
   color: #333;
-  padding: 20px;
+  padding: 10px;
   padding-top: 10px; /* Asegura un padding-top consistente */
   border-radius: 10px;
-  max-width: 900px;
-  width: 600px;
-  border: #e98009 solid 2px;
-  margin-bottom: 360px;
+
+  width: 1000px;
+  border: #e98009 solid 3px;
+  margin-bottom: 400px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   animation: zoomIn 0.3s ease;
-  display: flex;
   flex-direction: column;
   align-items: center;   /* Asegura que los elementos dentro estén centrados */
 }
@@ -292,6 +339,24 @@
   text-align: center; /* Centra el texto dentro del párrafo */
 }
 
+.trailer-button{
+
+  margin-top: 10px;
+  background-color: #e98009;
+  color: white;
+  border: none;
+  height: 40px;
+  width: 100px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.trailer-button:hover{
+
+  background-color: #cc3939; /* Color de fondo al pasar el ratón */
+}
 .modal-content button {
   background-color: #e98009;
   color: white;
@@ -301,6 +366,7 @@
   cursor: pointer;
   font-size: 1em;
 }
+
 
 .modal-content button:hover {
   background-color: #cc3939;
@@ -353,4 +419,11 @@
 
 .button-container #favoritos:hover .heart-icon {
   color: #ff4d4d; /* Color de corazón al pasar el cursor */
+}
+
+.divider-actor {
+  border: none;                /* Elimina el borde por defecto */
+  height: 1px;                 /* Ajusta el grosor de la línea */
+  background-color: #e98009;   /* Establece el color de la línea */
+  margin: 10px 0;              /* Añade un margen para separarla de otros elementos */
 }

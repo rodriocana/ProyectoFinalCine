@@ -1,82 +1,15 @@
-/* Estilos para el encabezado */
+/* Asegura que el body ocupe toda la pantalla y usa flexbox para su contenido */
 body, html {
-  height: 100%; /* Asegura que el body ocupe el 100% de la altura */
-  margin: 0; /* Elimina el margen por defecto */
-  padding: 0px; /* Elimina el padding por defecto */
+  height: 100%;
+  margin: 0;
+  background-color:#242729;
+  display: flex;
+  flex-direction: column;
 }
 
-header {
-  /* background-image: url('./assets/mandoo.jpg'); /* Cambia esta ruta a la imagen que desees
-  background-size: cover; /* La imagen cubrirá todo el fondo */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que se repita */
-  padding-top: 20px;
-  background-color: #131516;
-  display: flex; /* Usar flexbox */
-  flex-direction: column; /* Coloca el contenido en columna */
-  justify-content: flex-start; /* Alinea el contenido al inicio */
-  align-items: flex-start; /* Alinea los elementos a la izquierda */
-  border-right: 2px solid rgba(255, 255, 255, 0.956);
-  position: fixed; /* Fijo en la parte superior */
-  width: 220px; /* Ancho fijo para la barra lateral */
-  height: 100vh; /* Altura completa de la ventana */
-  z-index: 10; /* Asegúrate de que el header esté por encima de otros elementos */
-}
-
-/* Estilos para la barra de navegación */
-nav {
-  display: flex; /* Cambia a flex para alinearlo */
-  flex-direction: column; /* Coloca los elementos en columna */
-  width: 100%; /* Ocupa todo el ancho del header */
-  padding-top: 15px; /* Espacio superior para el contenido del nav */
-}
-
-/* Estilos para cada contenedor de enlace */
-.nav-item {
-  padding: 10px 0; /* Espacio interno para cada enlace */
-  transition: background-color 0.4s ease; /* Transición suave */
-  width: 100%;
-}
-
-/* hover del fondo de las opciones del nav*/
-.nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Cambia a tu color preferido */
-}
-
-nav a {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  margin: 0 20px; /* Espacio horizontal entre el texto y el borde del contenedor */
-  font-size: 1.1em;
-  font-weight: 100;
-  font-family: 'Poppins', sans-serif;
-  transition: color 0.3s ease;
-  display: inline-block; /* Permite el padding dentro de nav-item */
-  width: calc(100% - 40px); /* Para que ocupe el ancho del contenedor menos el margen */
-}
-
-/* estilos de los iconos del nav */
-nav a i {
-  margin-right: 10px; /* Ajusta este valor para aumentar o reducir la separación */
-  font-size: 20px;
-  color: #ffffff;
-}
-
-nav a:hover {
-  color: #1ef8af;
-}
-
-.nav-item a.active {
-  color: #1ef8af;
-}
-
-.opciones-user a:hover {
-  color: #1ef8af;
-}
-
-.opciones-user a.active {
-  color: #1ef8af;
-
+/* El contenedor principal ocupará todo el espacio restante */
+main {
+  flex: 1;
 }
 
 /* Estilos para el pie de página */
@@ -94,68 +27,9 @@ footer p {
   font-weight: 400;
 }
 
-
 /* Responsivo para pantallas pequeñas */
 @media (max-width: 600px) {
-  header h1 {
-      font-size: 1.5em;
-  }
-
-  nav a {
-      margin: 0 10px;
-      font-size: 1em;
-  }
-
   footer {
       font-size: 0.8em;
   }
 }
-
-.divider {
-  border: none; /* Elimina el borde predeterminado */
-  border-top: 2px solid rgba(255, 255, 255, 0.5);
-  margin: 10px 0px; /* Espacio vertical antes y después de la línea */
-  width: 100%; /* Asegúrate de que ocupe todo el ancho del nav */
-}
-
-#icono {
-  color: white;
-  font-size: 30px;
-  margin-left: 16px;
-}
-
-.tituloLogo {
-  font-size: 28px;
-  padding-left: 10px;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  color: #1ef8af;
-}
-
-.user-info {
-  color: #feffff; /* Color del texto */
-  margin-top: 0px; /* Espacio superior */
-  text-align: center; /* Centrar el texto */
-}
-
-.dividerUser{
-  border: none; /* Elimina el borde predeterminado */
-  border-top: 2px solid #1ef8af;
-  margin: 10px 0px; /* Espacio vertical antes y después de la línea */
-  width: 100%; /* Asegúrate de que ocupe todo el ancho del nav */
-
-}
-
-.textPerfil{
-
-  color:rgb(255, 255, 255);
-  text-align: center; /* Centrar el texto */
-  font-family: 'Poppins', sans-serif;
-
-}
-
-.opciones-user{
-
-  padding-top: 10px;
-}
-

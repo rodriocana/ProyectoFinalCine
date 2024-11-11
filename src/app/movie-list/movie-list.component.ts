@@ -30,4 +30,9 @@ export class MovieListComponent implements OnInit {
   goToMovieDetails(movieId: number): void {
     this.router.navigate(['/movieDetail', movieId]);
   }
+
+  onImageError(event: Event) {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = 'https://www.serieslike.com/img/shop_01.png';
+  }
 }

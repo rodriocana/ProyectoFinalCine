@@ -44,4 +44,10 @@ export class ActorMoviesDetailComponent {
   goToHome(): void {
     this.router.navigate(['/movieList']); // Asegúrate de tener la ruta "/home" definida en tu enrutador
   }
+
+  onImageError(event: Event) {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = 'https://www.serieslike.com/img/shop_01.png';
+  }
+
 }

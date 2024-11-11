@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { FormBuilder, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
@@ -9,9 +9,7 @@ import { user } from '@angular/fire/auth';
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.css'],
 })
-export class LoginModalComponent {
-  username: string = '';
-  password: string = '';
+export class LoginModalComponent implements OnInit {
   @Input() isLogin: boolean = true;  // este true en el formulario es el que hace que salga form de inicio de sesion.
   @Output() close = new EventEmitter<void>();
   registroForm: FormGroup;
@@ -22,18 +20,21 @@ export class LoginModalComponent {
     private userService: UserService,
     private fb: FormBuilder
   ) {
-    // Inicializa el FormGroup
-    this.registroForm = this.fb.group({
-      nombre: ['', Validators.required],
-      correo: ['', [Validators.required, Validators.email]],
-      contrasena: ['', Validators.required],
-      saldo: ['', Validators.required],
-    });
 
-    this.inicioForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    });
+  }
+  ngOnInit(): void {
+      // Inicializa el FormGroup
+      this.registroForm = this.fb.group({
+        nombre: ['', Validators.required],
+        correo: ['', [Validators.required, Validators.email]],
+        contrasena: ['', Validators.required],
+        saldo: ['', Validators.required],
+      });
+
+      this.inicioForm = this.fb.group({
+        email: ['rodrogo92@gmail.com', Validators.required],
+        password: ['123456', [Validators.required, Validators.minLength(6)]],
+      });
   }
 
   closeModal() {
@@ -44,6 +45,7 @@ export class LoginModalComponent {
     if (this.inicioForm.valid) {
       this.userService.loginUser(this.inicioForm.value).subscribe({
         next: (userData: any) => {
+          location.reload(); // refresca la pagina
         },
         error: (error: any) => {
 

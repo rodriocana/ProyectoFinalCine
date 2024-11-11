@@ -1,14 +1,12 @@
 <div *ngIf="actorMovies.length > 0" class="actor-movies-container">
   <div *ngFor="let movie of actorMovies" class="movie-card" (click)="goToMovieDetails(movie.id)">
-    <!-- Enlace a la página de detalles de la película -->
+    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" [alt]="movie.title" class="poster-image" (error)="onImageError($event)">
 
-      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" [alt]="movie.title">
-      <div class="title-container">
+    <!-- Mueve el contenedor del título fuera de la imagen -->
+    <div class="title-container">
       <h3 class="movie-title">{{ movie.title }}</h3>
-      <p class="movie-release-date">{{ movie.release_date }}</p>
     </div>
   </div>
-
 </div>
 
 <div *ngIf="actorMovies.length === 0" class="no-movies-message">
@@ -16,6 +14,3 @@
 </div>
 
 <button class="back-to-home" (click)="goToHome()">Volver al Menú Principal</button>
-
-
-

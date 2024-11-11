@@ -36,6 +36,12 @@ export class Top250MoviesComponent implements OnInit {
     });
   }
 
+  onImageError(event: Event) {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = 'https://www.serieslike.com/img/shop_01.png';
+  }
+
+
   goToMovieDetails(movieId: number): void {
     this.router.navigate(['/movieDetail', movieId]);
   }

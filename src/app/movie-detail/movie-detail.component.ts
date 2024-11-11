@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ImageCacheService, MovieService } from '../movie.service';
 import { forkJoin } from 'rxjs';
 import { AuthService } from '../services/auth-service.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-movie-detail',
@@ -17,6 +19,9 @@ export class MovieDetailComponent implements OnInit {
   selectedImage: string | null = null;
   actors: any[] = [];  // Añadir esta propiedad para almacenar los actores
   isFavorite = false; // Estado de favoritos para la película actual
+  selectedTrailerUrl: SafeResourceUrl;
+  showTrailerModal: boolean = false;
+
 
 
   constructor(
@@ -24,7 +29,8 @@ export class MovieDetailComponent implements OnInit {
     private movieService: MovieService,
     private router: Router,
     private imageCacheService: ImageCacheService, // Inyectar el servicio de caché,
-    private authService: AuthService
+    private authService: AuthService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -99,11 +105,11 @@ export class MovieDetailComponent implements OnInit {
     this.showSynopsisModal = false;
   }
 
-  openTrailer(): void {
-    if (this.trailerUrl) {
-      window.open(this.trailerUrl, '_blank');
-    }
-  }
+  // openTrailer(): void {
+  //   if (this.trailerUrl) {
+  //     window.open(this.trailerUrl, '_blank');
+  //   }
+  // }
 
   openImage(backdrop: string): void {
     this.selectedImage = backdrop;
@@ -112,4 +118,21 @@ export class MovieDetailComponent implements OnInit {
   closeImage(): void {
     this.selectedImage = null;
   }
+
+  openTrailer() {
+    const videoId = this.trailerUrl.split('v=')[1]; // Extrae el ID del video de la URL
+    const unsafeUrl = `https://www.youtube.com/embed/${videoId}`;
+    this.selectedTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl); // Sanitiza la URL
+    this.showTrailerModal = true; // Muestra el modal del trailer
+  }
+
+  onImageError(event: Event) {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = 'https://www.serieslike.com/img/shop_01.png';
+  }
+
+closeTrailerModal() {
+  this.showTrailerModal = false;
+  this.selectedTrailerUrl = ''; // Limpia la URL para evitar mostrar el trailer después de cerrarlo
+}
 }

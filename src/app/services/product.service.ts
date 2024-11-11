@@ -1,38 +1,35 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { map, Observable, of } from 'rxjs';
-
+import { Firestore, collection, query, orderBy, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 interface Producto {
   id?: string;
   nombreProducto: string;
   precioProducto: number;
   imgProducto: string;
-  categoriaProducto:string;
+  categoriaProducto: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class ProductService {
-  private productosCollection: AngularFirestoreCollection<Producto>;
+  // Esta variable ya es un Observable<Producto[]> y no necesitamos hacer cast.
+  private productosCollection: Observable<Producto[]>;
 
-  constructor(private firestore: AngularFirestore) {
-    // Accede a la colección "producto"
-    this.productosCollection = this.firestore.collection<Producto>('Producto');
+  constructor(private firestore: Firestore) {
+    // Referencia a la colección 'productos' en Firestore
+    const productosRef = collection(this.firestore, "Producto");
+
+    // Crear una consulta ordenando por 'nombreProducto'
+    const consulta = query(productosRef, orderBy('nombreProducto', 'asc'));
+
+    // Obtener los datos de los productos y almacenarlos en la variable 'productosCollection'
+    this.productosCollection = collectionData(consulta, { idField: 'id' });
   }
 
   // Obtiene todos los productos
   getProductos(): Observable<Producto[]> {
-    return this.productosCollection.snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as Producto;
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    );
+    return this.productosCollection; // Retorna directamente el observable de productos
   }
-
 }

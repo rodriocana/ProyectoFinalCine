@@ -22,6 +22,7 @@ import { Top250MoviesComponent } from './top250-movies/top250-movies.component';
 import { ActorMoviesDetailComponent } from './actor-movies-detail/actor-movies-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AuthInterceptor } from './auth.interceptor';
     Top250MoviesComponent,
     ActorMoviesDetailComponent,
     HeaderComponent,
+    ContactComponent,
 
   ],
   imports: [

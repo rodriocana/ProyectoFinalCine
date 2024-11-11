@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth-service.service';
+import { ProductService } from '../services/product.service';
+
 
 @Component({
   selector: 'app-header',
@@ -31,10 +33,12 @@ export class HeaderComponent {
             this.userName = userData.nombreUsuario; // Asumiendo que 'nombre' es un campo en tu colección de usuarios
             this.closeModal();
             console.log(this.auth.isLoggedIn());
+
           }
          });
 
-        localStorage.setItem("token", user.refreshToken);  // si comento esta linea, no acepta ninguna peticion http
+        localStorage.setItem("token", user.refreshToken);
+
       } else {
         console.log("No hay usuario autenticado");
         this.userName = null; // Resetea el nombre si no hay usuario

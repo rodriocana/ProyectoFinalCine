@@ -3,7 +3,7 @@
   <h3>Iniciar Sesión</h3>
   <form [formGroup]="inicioForm" (ngSubmit)="onSubmit()">
     <label for="username">Usuario:</label>
-    <input type="text" id="username" formControlName="username" name="username" required>
+    <input type="email" email="true" id="email" formControlName="email" name="email" required>
 
     <label for="password">Contraseña:</label>
     <input type="password" id="password" formControlName="password" name="password" required>

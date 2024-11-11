@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './services/auth-service.service';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
@@ -41,6 +42,7 @@ export class AppComponent {
     //     this.userName = null; // Resetea el nombre si no hay usuario
     //   }
     // });
+
   }
 
 
