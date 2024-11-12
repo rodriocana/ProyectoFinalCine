@@ -5,7 +5,7 @@
     [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path" [alt]="movie.title" class="poster-image" (error)="onImageError($event)">
         <div class="button-container">
       <button (click)="verSinopsis()" id="sinopsis">Ver Sinopsis</button>
-      <button id="comprarEntrada">Comprar Entrada</button>
+      <button id="comprarEntrada" *ngIf="isNowPlaying">Comprar Entrada</button>
       <button id="verTrailer" *ngIf="trailerUrl" (click)="openTrailer()">Ver Trailer</button>
 
       <!-- Contenedor con fondo de color para el botón de favoritos -->

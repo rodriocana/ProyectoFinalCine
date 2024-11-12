@@ -55,15 +55,15 @@ nav a i {
 }
 
 nav a:hover {
-  color: #1ef8af;
+  color: #ee850d;
 }
 
 .nav-item a.active {
-  color: #1ef8af;
+  color: #ee850d;
 }
 
 .opciones-user a:hover, .opciones-user a.active {
-  color: #1ef8af;
+  color: #ee850d;
 }
 
 
@@ -101,7 +101,7 @@ nav a:hover {
   padding-left: 10px;
   font-family: 'Orbitron', sans-serif;
   font-weight: 700;
-  color: #1ef8af;
+  color: #ee850d;
 }
 
 .user-info {
@@ -110,7 +110,7 @@ nav a:hover {
 }
 .dividerUser {
   border: none;
-  border-top: 2px solid #1ef8af;
+  border-top: 2px solid #ee850d;
   margin: 10px 0px;
   width: 110%;
 }
@@ -127,6 +127,7 @@ nav a:hover {
   justify-content: center; /* Centra horizontalmente */
   flex-direction: column; /* Apila los elementos verticalmente */
   padding: 10px; /* Ajusta el padding según sea necesario */
+  padding-top: 20px;
 }
 
 .user-name{
@@ -135,7 +136,7 @@ nav a:hover {
 }
 
 .avatar {
-  height: 90px;
-  width: 90px;
+  height: 110px;
+  width: 110px;
   padding: 0; /* Elimina el padding para centrar mejor */
 }

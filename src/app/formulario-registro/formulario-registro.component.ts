@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Firestore, collection, doc, setDoc } from '@angular/fire/firestore'; // Actualizado
-import { AngularFireAuth} from '@angular/fire/compat/auth'; // Actualizado
+import { AngularFireAuth } from '@angular/fire/compat/auth'; // Actualizado
 import { FormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-formulario-registro',
@@ -14,8 +13,14 @@ export class FormularioRegistroComponent {
   correo: string = '';
   contrasena: string = '';
   saldo: number | null = null; // Cambié el tipo a number | null
+  avatarSeleccionado: string | null = null; // Propiedad para almacenar la ruta del avatar
 
   constructor(private auth: AngularFireAuth, private firestore: Firestore) {}
+
+  // Método para seleccionar el avatar
+  seleccionarAvatar(avatar: string) {
+    this.avatarSeleccionado = avatar;
+  }
 
   async onRegister() {
     try {
@@ -30,6 +35,7 @@ export class FormularioRegistroComponent {
           contrasena: this.contrasena,
           correo: this.correo,
           saldo: this.saldo,
+          avatar: this.avatarSeleccionado, // Guardamos la ruta del avatar
         });
         console.log("Usuario registrado correctamente.");
       }

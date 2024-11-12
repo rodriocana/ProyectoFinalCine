@@ -9,7 +9,7 @@
   z-index: 999;
 }
 
-/* Contenedor principal del contenido modal */
+/* Contenedor principal del contenido modal LOGIN */
 .modal-content {
   position: fixed;
   top: 50%;
@@ -18,7 +18,7 @@
   background: #ffffff; /* Fondo blanco para el modal */
   padding: 30px;
   border-radius: 12px;
-  width: 320px;
+  width: 300px;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
   z-index: 1000;
   text-align: center;
@@ -30,13 +30,13 @@
   color: #333;
   font-size: 1.5em;
   margin-bottom: 20px;
-  font-weight: bold;
+   font-weight: bold;
 }
 
 /* Estilos de los inputs */
 .modal-content input {
   width: 100%;
-  padding: 12px;
+  padding: 6px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -61,6 +61,7 @@
   cursor: pointer;
   font-size: 1em;
   font-weight: bold;
+  margin-bottom: 5px;
   transition: background-color 0.3s ease;
 }
 
@@ -69,6 +70,25 @@
 }
 .modal-content button[type="submit"]:disabled {
   background-color: grey; /* Color al pasar el ratón */
+}
+
+.btn-registar{
+  width: 100%;
+  padding: 12px;
+  background-color: #f87d2b;
+  color: white;
+  margin-top: -300px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-registar:hover{
+  background-color: #fa6400 /* Color al pasar el ratón */
+
 }
 
 /* Estilo para el enlace de registro */
@@ -90,4 +110,37 @@
   color: #ff4d4f;
   font-size: 0.9em;
   margin-bottom: 10px;
+}
+
+
+/* Contenedor de los avatares */
+/* Contenedor de los avatares */
+.avatar-container {
+  display: flex;
+  flex-wrap: wrap;  /* Permite que los avatares se ajusten a nuevas líneas */
+  justify-content: center;  /* Centra los avatares en la fila */
+  gap: 10px;  /* Espacio entre los avatares */
+  margin-top: 20px;  /* Espacio superior */
+}
+
+/* Estilo de cada avatar */
+.avatar {
+  height: 90px;
+  width: 90px;
+  padding: 0; /* Elimina el padding para centrar mejor */
+  border-radius: 50%;  /* Hace que los avatares sean redondos */
+  cursor: pointer;  /* Cambia el cursor al pasar sobre el avatar */
+  transition: transform 0.3s ease;  /* Animación al pasar el ratón */
+}
+
+/* Efecto de hover sobre los avatares */
+.avatar:hover {
+  transform: scale(1.1);  /* Aumenta el tamaño del avatar cuando el ratón pasa sobre él */
+}
+
+/* Para asegurarse de que los avatares se mantengan en una fila */
+@media (max-width: 768px) {
+  .avatar-container {
+    justify-content: space-around;  /* En pantallas más pequeñas, distribuye los avatares */
+  }
 }

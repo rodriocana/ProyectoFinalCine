@@ -45,6 +45,7 @@ export class UserService {
               nombre: form.nombre,
               correo: form.correo,
               saldo: form.saldo,
+              avatar: form.avatar
             });
             this.authStatus.next(true);  // Emitir `true` al registrarse exitosamente
           }

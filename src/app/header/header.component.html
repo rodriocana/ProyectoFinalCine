@@ -21,12 +21,12 @@
     </div>
     <hr class="divider">
     <div class="nav-item">
-      <a *ngIf="!userName" (click)="openModal()"><i class="fas fa-sign-in-alt"></i> Login</a>
-      <a *ngIf="userName" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Salir</a>
+      <a *ngIf="!userName" (click)="openModal()" routerLink="/movieList" ><i class="fas fa-sign-in-alt"></i> Login</a>
+      <a *ngIf="userName" (click)="logout()" routerLink="/movieList"><i class="fas fa-sign-out-alt"></i> Salir</a>
     </div>
     <div *ngIf="userName" class="opciones-user">
-     <img class="avatar" src="https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png" >
-      <div *ngIf="userName" class="user-info">
+     <img class="avatar" src="{{avatar}}" >
+      <div class="user-info">
         <p class="user-name">Bienvenido, {{ userName }}</p>
       </div>
       <hr class="dividerUser">

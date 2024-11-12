@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ImageCacheService, MovieService } from '../movie.service';
-import { forkJoin } from 'rxjs';
 import { AuthService } from '../services/auth-service.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-
 
 @Component({
   selector: 'app-movie-detail',
@@ -17,67 +15,76 @@ export class MovieDetailComponent implements OnInit {
   trailerUrl: string | null = null;
   user: any;
   selectedImage: string | null = null;
-  actors: any[] = [];  // Añadir esta propiedad para almacenar los actores
-  isFavorite = false; // Estado de favoritos para la película actual
+  actors: any[] = [];
+  isFavorite = false;
   selectedTrailerUrl: SafeResourceUrl;
   showTrailerModal: boolean = false;
-
-
+  isNowPlaying: boolean = false; // Nueva propiedad para verificar si está en cartelera
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
     private router: Router,
-    private imageCacheService: ImageCacheService, // Inyectar el servicio de caché,
+    private imageCacheService: ImageCacheService,
     private authService: AuthService,
     private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
-    this.user = this.authService.getCurrentUser(); // Para traer al usuario logueado
+    this.user = this.authService.getCurrentUser();
     const movieId = this.activatedRoute.snapshot.params['id'];
+
     if (movieId) {
-      // Obtener detalles de la película
-      this.movieService.getMovieDetails(+movieId).subscribe(
-        response => {
+      this.movieService.getMovieDetails(+movieId).subscribe({
+        next: (response) => {
           this.movie = response.body;
+          this.checkIfNowPlaying(); // Llamamos al método para verificar si está en cartelera
         },
-        error => {
+        error: (error) => {
           console.error('Error al obtener detalles de la película', error);
         }
-      );
+      });
 
-      // Obtener las imágenes de fondo
-      this.movieService.getMovieImages(+movieId).subscribe(
-        response => {
+      this.movieService.getMovieImages(+movieId).subscribe({
+        next: (response) => {
           this.backdrops = response.backdrops.slice(0, 20).map((img: any) => `https://image.tmdb.org/t/p/original${img.file_path}`);
         },
-        error => {
+        error: (error) => {
           console.error('Error al obtener imágenes de la película', error);
         }
-      );
+      });
 
-      // Obtener el trailer
-      this.movieService.getMovieVideos(+movieId).subscribe(
-        response => {
+      this.movieService.getMovieVideos(+movieId).subscribe({
+        next: (response) => {
           const trailer = response.results.find((video: any) => video.type === 'Trailer');
           this.trailerUrl = trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
         },
-        error => {
+        error: (error) => {
           console.error('Error al obtener videos de la película', error);
         }
-      );
+      });
 
-      // Obtener el elenco de la película
-      this.movieService.getMovieCredits(+movieId).subscribe(
-        response => {
-          this.actors = response.cast.slice(0, 5); // Obtener los primeros 5 actores, puedes modificar esto según tu necesidad
+      this.movieService.getMovieCredits(+movieId).subscribe({
+        next: (response) => {
+          this.actors = response.cast.slice(0, 5);
         },
-        error => {
+        error: (error) => {
           console.error('Error al obtener el elenco de la película', error);
         }
-      );
+      });
     }
+  }
+
+  checkIfNowPlaying(): void {
+    this.movieService.getMovies().subscribe({
+      next: (response) => {
+        const nowPlayingMovies = response.body.results;
+        this.isNowPlaying = nowPlayingMovies.some((movie: any) => movie.id === this.movie.id);
+      },
+      error: (error) => {
+        console.error('Error al verificar si la película está en cartelera', error);
+      }
+    });
   }
 
   toggleFavorite() {

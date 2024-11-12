@@ -20,6 +20,7 @@ export class HeaderComponent {
   userName: string | null = null; // Para almacenar el nombre del usuario
   token:string = "";
   menuOpen: boolean = false; // Variable para controlar el estado del menú
+  avatar: any;
 
   constructor(private router: Router, private afAuth: AngularFireAuth, private firestore: AngularFirestore, private auth:AuthService) {}
 
@@ -28,14 +29,18 @@ export class HeaderComponent {
     this.user$.subscribe(user => {
       if (user) {
         console.log("Usuario autenticado:", user);
-        this.firestore.collection('Usuarios').doc(user.uid).valueChanges().subscribe((userData: any) => {
-          if (userData) {
-            this.userName = userData.nombreUsuario; // Asumiendo que 'nombre' es un campo en tu colección de usuarios
-            this.closeModal();
-            console.log(this.auth.isLoggedIn());
-
-          }
-         });
+        this.firestore.collection('Usuarios').doc(user.uid).valueChanges().subscribe({
+          next: (resp:any) => {
+            if (resp) {
+              this.userName = resp.nombre;
+              this.avatar = resp.avatar
+              this.closeModal();
+              console.log(this.auth.isLoggedIn());
+            }
+          },
+          error: error => {
+          },
+        });
 
         localStorage.setItem("token", user.refreshToken);
 
