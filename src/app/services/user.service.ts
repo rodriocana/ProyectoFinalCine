@@ -34,6 +34,7 @@ export class UserService {
     });
   }
 
+  // aqui creamos el usuario en la base de datos FIREBASE
   registerUser(form: any): Observable<any> {
     return new Observable(observer => {
       this.auth.createUserWithEmailAndPassword(form.correo, form.contrasena)
@@ -61,14 +62,8 @@ export class UserService {
             .catch(error => {
               console.error('Error al guardar información del usuario:', error);
             });
-
             this.authStatus.next(true);  // Emitir `true` al registrarse exitosamente
           }
-          observer.next(userCredential);
-          observer.complete();
-        })
-        .catch(error => {
-          observer.error(error);
         });
     });
   }

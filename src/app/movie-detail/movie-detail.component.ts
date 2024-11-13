@@ -94,12 +94,24 @@ export class MovieDetailComponent implements OnInit {
 
     if (this.isFavorite) {
       this.authService.addFavoriteMovie(movieId)
-        .then(() => console.log('Película añadida a favoritos'))
-        .catch(error => console.error('Error al añadir a favoritos', error));
+      .subscribe({
+        next: resp => {
+          console.log("Se ha agrageado a favoritos la pelicula " + this.movie.title )
+        },
+        error: error => {
+          console.log("No se ha podido agregar la pelicula");
+        }
+      });
     } else {
       this.authService.removeFavoriteMovie(movieId)
-        .then(() => console.log('Película eliminada de favoritos'))
-        .catch(error => console.error('Error al eliminar de favoritos', error));
+      .subscribe({
+        next: resp => {
+          console.log("Se ha borrado la pelicula " + this.movie.title )
+        },
+        error: error => {
+            console.log("No se ha podido eliminar la pelicula");
+        }
+      });
     }
   }
 

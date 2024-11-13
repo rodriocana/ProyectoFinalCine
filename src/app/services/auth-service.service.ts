@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { from, Observable } from 'rxjs';
+import { from, Observable, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,33 +31,40 @@ export class AuthService {
   }
 
   addFavoriteMovie(movieId: number) {
-    return this.afAuth.currentUser.then(user => {
+    return this.afAuth.authState.pipe(
+      switchMap(user => {
       if (user) {
-        const userRef = this.firestore.collection('users').doc(user.uid);
-        return userRef.collection('favorites').doc(movieId.toString()).set({ movieId });
+        const userRef = this.firestore.collection('Usuarios').doc(user.uid);
+        return userRef.collection('favoritos').doc(movieId.toString()).set({ movieId });
       }
       return Promise.reject('User not authenticated');
-    });
+    }))
   }
 
   removeFavoriteMovie(movieId: number) {
-    return this.afAuth.currentUser.then(user => {
+    return this.afAuth.authState.pipe(
+      switchMap(user => {
       if (user) {
-        const userRef = this.firestore.collection('users').doc(user.uid);
-        return userRef.collection('favorites').doc(movieId.toString()).delete();
+        const userRef = this.firestore.collection('Usuarios').doc(user.uid);
+        return userRef.collection('favoritos').doc(movieId.toString()).delete();
       }
       return Promise.reject('User not authenticated');
-    });
+    }))
   }
 
-  getFavoriteMovies() {
-    return this.afAuth.currentUser.then(user => {
-      if (user) {
-        const userRef = this.firestore.collection('users').doc(user.uid);
-        return userRef.collection('favorites').valueChanges();
-      }
-      return null;
-    });
+  getFavoriteMovies(): Observable<any[]> {
+    // Retorna un observable que espera a que el usuario esté disponible
+    return this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          const userRef = this.firestore.collection('Usuarios').doc(user.uid);
+          return userRef.collection('favoritos').valueChanges(); // Devuelve los favoritos
+        } else {
+          return []; // Si no hay usuario, retorna un array vacío
+        }
+      })
+    );
   }
+
 
 }
