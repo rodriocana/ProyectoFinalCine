@@ -12,6 +12,7 @@ import { Top250MoviesComponent } from './top250-movies/top250-movies.component';
 import { ActorMoviesDetailComponent } from './actor-movies-detail/actor-movies-detail.component';
 import { ContactComponent } from './contact/contact.component';
 import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
+import { MyListComponent } from './my-list/my-list.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'top250', component: Top250MoviesComponent},
   { path: 'actor/:id', component: ActorMoviesDetailComponent },
   {path: 'contacto', component: ContactComponent},
-  {path: 'buyTicket/:id', component: BuyTicketComponent}
+  {path: 'buyTicket/:id', component: BuyTicketComponent},
+  {path: 'myList', component: MyListComponent}
 ];
 
 @NgModule({

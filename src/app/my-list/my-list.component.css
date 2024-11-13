@@ -1,0 +1,96 @@
+/* Estilos para el contenedor de las películas favoritas */
+.favorite-movie-list {
+  padding: 20px;
+}
+
+/* Título de las películas favoritas */
+.favorite-movie-list h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Contenedor de cada película favorita */
+.favorite-movie {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Efecto de hover en las cajas de películas */
+.favorite-movie:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen de la película favorita */
+.favorite-movie img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Estilo del título de la película */
+.favorite-movie h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Estilos para el botón de eliminar */
+.favorite-movie button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.favorite-movie button:hover {
+  background-color: #c0392b;
+}
+
+/* Estilos para el mensaje cuando no hay favoritos */
+.noFavoritos {
+  font-size: 20px;
+  color: #777;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos para el botón "Volver al menú principal" */
+.back-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #2980b9;
+}
+
+/* Asegúrate de que el contenedor de "noFavorites" tenga una posición relativa para posicionar el botón correctamente */
+.ng-template {
+  position: relative;
+}

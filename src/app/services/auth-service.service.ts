@@ -30,4 +30,34 @@ export class AuthService {
     return null;
   }
 
+  addFavoriteMovie(movieId: number) {
+    return this.afAuth.currentUser.then(user => {
+      if (user) {
+        const userRef = this.firestore.collection('users').doc(user.uid);
+        return userRef.collection('favorites').doc(movieId.toString()).set({ movieId });
+      }
+      return Promise.reject('User not authenticated');
+    });
+  }
+
+  removeFavoriteMovie(movieId: number) {
+    return this.afAuth.currentUser.then(user => {
+      if (user) {
+        const userRef = this.firestore.collection('users').doc(user.uid);
+        return userRef.collection('favorites').doc(movieId.toString()).delete();
+      }
+      return Promise.reject('User not authenticated');
+    });
+  }
+
+  getFavoriteMovies() {
+    return this.afAuth.currentUser.then(user => {
+      if (user) {
+        const userRef = this.firestore.collection('users').doc(user.uid);
+        return userRef.collection('favorites').valueChanges();
+      }
+      return null;
+    });
+  }
+
 }

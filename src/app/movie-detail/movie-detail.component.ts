@@ -90,12 +90,16 @@ export class MovieDetailComponent implements OnInit {
 
   toggleFavorite() {
     this.isFavorite = !this.isFavorite;
+    const movieId = this.movie.id;
+
     if (this.isFavorite) {
-      // Lógica para añadir a favoritos
-      console.log('Película añadida a favoritos');
+      this.authService.addFavoriteMovie(movieId)
+        .then(() => console.log('Película añadida a favoritos'))
+        .catch(error => console.error('Error al añadir a favoritos', error));
     } else {
-      // Lógica para eliminar de favoritos
-      console.log('Película eliminada de favoritos');
+      this.authService.removeFavoriteMovie(movieId)
+        .then(() => console.log('Película eliminada de favoritos'))
+        .catch(error => console.error('Error al eliminar de favoritos', error));
     }
   }
 
