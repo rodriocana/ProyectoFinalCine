@@ -46,7 +46,22 @@ export class UserService {
               correo: form.correo,
               saldo: form.saldo,
               avatar: form.avatar
+            })
+            .then(() => {
+              // Crear la subcolección 'favoritos' inicializándola con un documento vacío
+              this.firestore.collection('Usuarios').doc(userId)
+                .collection('favoritos').doc('_placeholder').set({})
+                .then(() => {
+                  console.log('Subcolección favoritos creada exitosamente.');
+                })
+                .catch(error => {
+                  console.error('Error al crear la subcolección favoritos:', error);
+                });
+            })
+            .catch(error => {
+              console.error('Error al guardar información del usuario:', error);
             });
+
             this.authStatus.next(true);  // Emitir `true` al registrarse exitosamente
           }
           observer.next(userCredential);
@@ -57,4 +72,5 @@ export class UserService {
         });
     });
   }
+
 }

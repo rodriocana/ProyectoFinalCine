@@ -16,10 +16,10 @@ export class MovieDetailComponent implements OnInit {
   user: any;
   selectedImage: string | null = null;
   actors: any[] = [];
-  isFavorite = false;
+  isFavorite:boolean = false;
   selectedTrailerUrl: SafeResourceUrl;
   showTrailerModal: boolean = false;
-  isNowPlaying: boolean = false; // Nueva propiedad para verificar si está en cartelera
+  isNowPlaying: boolean = false; // Nueva propiedad para verificar en el html si está en cartelera para que no salga el boton comprarEntrada.
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -75,11 +75,12 @@ export class MovieDetailComponent implements OnInit {
     }
   }
 
+  // esta funcion para poder crear una condicion if en el html y mostrar el boton comprarEntrada en las peliculas en estreno solo, las de la funcion getMovies.
   checkIfNowPlaying(): void {
     this.movieService.getMovies().subscribe({
       next: (response) => {
         const nowPlayingMovies = response.body.results;
-        this.isNowPlaying = nowPlayingMovies.some((movie: any) => movie.id === this.movie.id);
+        this.isNowPlaying = nowPlayingMovies.some((movie: any) => movie.id === this.movie.id); // some devuelve true o false, si isNowPlaying es true, mostrará el boton comprarEntrada en el html
       },
       error: (error) => {
         console.error('Error al verificar si la película está en cartelera', error);
@@ -100,6 +101,12 @@ export class MovieDetailComponent implements OnInit {
 
     goToActorMovies(actorId: number) {
       this.router.navigate(['/actor', actorId]); // Aquí se asume que tienes una ruta '/actor/:id'
+  }
+
+     goToBuyTicket(movieId:number){
+
+      this.router.navigate(['buyTicket', movieId]);
+
   }
 
   showSynopsisModal: boolean = false;

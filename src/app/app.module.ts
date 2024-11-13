@@ -23,6 +23,8 @@ import { ActorMoviesDetailComponent } from './actor-movies-detail/actor-movies-d
 import { HeaderComponent } from './header/header.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { ContactComponent } from './contact/contact.component';
+import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
+import { MyListComponent } from './my-list/my-list.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { ContactComponent } from './contact/contact.component';
     ActorMoviesDetailComponent,
     HeaderComponent,
     ContactComponent,
+    BuyTicketComponent,
+    MyListComponent,
 
   ],
   imports: [

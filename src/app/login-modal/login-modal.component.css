@@ -16,11 +16,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: #ffffff; /* Fondo blanco para el modal */
-  padding: 30px;
+  padding: 20px;
   border-radius: 12px;
   width: 300px;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
   z-index: 1000;
+  border: 2px solid #f87d2b;
   text-align: center;
   font-family: Arial, sans-serif;
 }
@@ -36,7 +37,7 @@
 /* Estilos de los inputs */
 .modal-content input {
   width: 100%;
-  padding: 6px;
+  padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -62,6 +63,7 @@
   font-size: 1em;
   font-weight: bold;
   margin-bottom: 5px;
+  margin-top: 20px;
   transition: background-color 0.3s ease;
 }
 
@@ -71,7 +73,6 @@
 .modal-content button[type="submit"]:disabled {
   background-color: grey; /* Color al pasar el ratón */
 }
-
 .btn-registar{
   width: 100%;
   padding: 12px;
