@@ -37,55 +37,71 @@ export class MovieDetailComponent implements OnInit {
     const movieId = this.activatedRoute.snapshot.params['id'];
 
     if (movieId) {
-      this.movieService.getMovieDetails(+movieId).subscribe({
-        next: (response) => {
-          this.movie = response.body;
-
-          this.loadFavoriteMovies();
-          console.log("hola " + this.movie.backdrop_path);
-          this.backdropUrl = `https://image.tmdb.org/t/p/original${this.movie.backdrop_path}`;
-          this.checkIfNowPlaying(); // Llamamos al método para verificar si está en cartelera
-        },
-        error: (error) => {
-          console.error('Error al obtener detalles de la película', error);
-        }
-      });
-
-      this.movieService.getMovieImages(+movieId).subscribe({
-        next: (response) => {
-          this.backdrops = response.backdrops.slice(0, 20).map((img: any) => `https://image.tmdb.org/t/p/original${img.file_path}`);
-        },
-        error: (error) => {
-          console.error('Error al obtener imágenes de la película', error);
-        }
-      });
-
-      this.movieService.getMovieVideos(+movieId).subscribe({
-        next: (response) => {
-          const trailer = response.results.find((video: any) => video.type === 'Trailer');
-          this.trailerUrl = trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
-        },
-        error: (error) => {
-          console.error('Error al obtener videos de la película', error);
-        }
-      });
-
-      this.movieService.getMovieCredits(+movieId).subscribe({
-        next: (response) => {
-          this.actors = response.cast.slice(0, 5);
-        },
-        error: (error) => {
-          console.error('Error al obtener el elenco de la película', error);
-        }
-      });
+      this.loadMovieDetails(+movieId);
+      this.loadMovieImages(+movieId);
+      this.loadMovieVideos(+movieId);
+      this.loadMovieCredits(+movieId);
     }
   }
+
+
+private loadMovieCredits(movieId: number): void {
+  this.movieService.getMovieCredits(movieId).subscribe({
+    next: (response) => {
+      this.actors = response.cast.slice(0, 5);
+    },
+    error: (error) => {
+      console.error('Error al obtener el elenco de la película', error);
+    }
+  });
+}
+
+  private loadMovieVideos(movieId: number): void {
+    this.movieService.getMovieVideos(movieId).subscribe({
+      next: (response) => {
+        const trailer = response.results.find((video: any) => video.type === 'Trailer');
+        this.trailerUrl = trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
+      },
+      error: (error) => {
+        console.error('Error al obtener videos de la película', error);
+      }
+    });
+  }
+
+  private loadMovieImages(movieId: number): void {
+    this.movieService.getMovieImages(movieId).subscribe({
+      next: (response) => {
+        this.backdrops = response.backdrops.slice(0, 20).map((img: any) => `https://image.tmdb.org/t/p/original${img.file_path}`);
+      },
+      error: (error) => {
+        console.error('Error al obtener imágenes de la película', error);
+      }
+    });
+  }
+
+  private loadMovieDetails(movieId: number): void {
+    this.movieService.getMovieDetails(movieId).subscribe({
+      next: (response) => {
+        this.movie = response.body;
+        this.loadFavoriteMovies();
+        console.log("hola " + this.movie.backdrop_path);
+        this.backdropUrl = `https://image.tmdb.org/t/p/original${this.movie.backdrop_path}`;
+        this.checkIfNowPlaying(); // Llamamos al método para verificar si está en cartelera
+      },
+      error: (error) => {
+        console.error('Error al obtener detalles de la película', error);
+      }
+    });
+  }
+
   // Cargar las películas favoritas del usuario
   loadFavoriteMovies(): void {
     this.authService.getFavoriteMovies().subscribe((favorites) => {
       this.favoriteMovieIds = new Set(favorites.map((fav) => fav.movieId));
     });
   }
+
+
 
   // Verificar si una película está en favoritos
   isFavorite(movieId: number): any {
@@ -110,7 +126,6 @@ export class MovieDetailComponent implements OnInit {
   toggleFavorite() {
     const movieId = this.movie.id;
     this.isFavorite(movieId);
-
     if (!this.isFavorite(movieId)) {
       this.authService.addFavoriteMovie(movieId)
       .subscribe({

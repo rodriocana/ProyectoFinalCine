@@ -23,7 +23,18 @@ export class MovieListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Obtener las películas
+    this.loadMovies();
+    this.loadSliderImages();
+    this.loadFavoriteMovies();
+  }
+
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+
+  private loadMovies(): void {
     this.movieService.getMovies().subscribe({
       next: (resp) => {
         this.movies = resp.body.results;
@@ -34,8 +45,9 @@ export class MovieListComponent implements OnInit, OnDestroy {
         }
       },
     });
+  }
 
-    // Obtener imágenes para el slider
+  private loadSliderImages(): void {
     this.movieService.getSliderImages().subscribe({
       next: (resp) => {
         this.sliderImages = resp.results;
@@ -45,15 +57,6 @@ export class MovieListComponent implements OnInit, OnDestroy {
         console.log('Error al obtener imágenes para el slider', error);
       },
     });
-
-    // Cargar las películas favoritas
-    this.loadFavoriteMovies();
-  }
-
-  ngOnDestroy(): void {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
   }
 
   // Iniciar el slider
