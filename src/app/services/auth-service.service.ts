@@ -31,6 +31,7 @@ export class AuthService {
   }
 
   addFavoriteMovie(movieId: number) {
+
     return this.afAuth.authState.pipe(
       switchMap(user => {
       if (user) {

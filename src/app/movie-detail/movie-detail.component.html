@@ -10,8 +10,8 @@
 
       <!-- Contenedor con fondo de color para el botón de favoritos -->
       <div class="favorite-container">
-        <button id="favoritos" (click)="toggleFavorite()" [ngClass]="{'favorited': isFavorite}">
-          <span class="heart-icon" [ngClass]="{'favorited': isFavorite}">❤</span>
+        <button id="favoritos" (click)="toggleFavorite()" [ngClass]="{'favorited': isFavorite(movie.id)}">
+          <span class="heart-icon" [ngClass]="{'favorited': isFavorite(movie.id)}">❤</span>
           Añadir a Favoritos
         </button>
       </div>

@@ -42,6 +42,11 @@ export class MovieService {
     return this.http.get<any>(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${this.apiKey}&language=es-ES`);
   }
 
+ // Método para obtener imágenes para el slider (por ejemplo, películas en tendencia o populares)
+ getSliderImages(): Observable<any> {
+  const url = `https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=es-ES&page=1`; // Cambiar esta URL según la fuente de las imágenes
+  return this.http.get<any>(url);
+}
 
 
  // Método para obtener las películas de un actor

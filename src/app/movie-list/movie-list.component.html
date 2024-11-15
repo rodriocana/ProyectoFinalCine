@@ -1,9 +1,25 @@
 <section class="movie-container">
+  <div *ngIf="sliderImages.length > 0" class="slider-container">
+    <div class="slide">
+      <img [src]="'https://image.tmdb.org/t/p/original' + sliderImages[currentIndex].backdrop_path" [alt]="sliderImages[currentIndex].title">
+      <div class="slider-title-container">
+        <h1>{{ sliderImages[currentIndex].title }}</h1>
+        <h2>{{ sliderImages[currentIndex].overview }}</h2>
+      </div>
+    </div>
+  </div>
 
+  <!-- Contenedor de las películas -->
   <div *ngFor="let movie of movies" class="movie-card" (click)="goToMovieDetails(movie.id)">
     <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" [alt]="movie.title" class="poster-image" (error)="onImageError($event)">
     <div class="title-container">
       <h1>{{ movie.title }}</h1>
     </div>
+
+    <!-- Icono de favorito -->
+    <button (click)="toggleFavorite(movie, $event)" class="favorite-icon" [class.favorited]="isFavorite(movie.id)">
+      <span *ngIf="isFavorite(movie.id)">❤️</span>
+      <span *ngIf="!isFavorite(movie.id)">🤍</span>
+    </button>
   </div>
 </section>

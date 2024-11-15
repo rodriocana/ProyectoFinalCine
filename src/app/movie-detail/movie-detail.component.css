@@ -1,5 +1,8 @@
 /* Asegúrate de que el fondo ocupe toda la pantalla */
+
 .movie-details {
+  margin: 1px;
+  padding: 2px;
   position: fixed;
   top: 0;
   left: 0;
@@ -160,7 +163,7 @@
 .button-container {
   display: flex; /* Alinear el contenido en el contenedor */
   align-items: flex-end; /* Alinear el botón en la parte inferior */
-  gap: 7px;
+  gap: 5px;
   padding-top: 10px;
   margin-left: -14px;
 }
@@ -184,7 +187,7 @@
   border-radius: 5px; /* Bordes redondeados */
   cursor: pointer; /* Cambia el cursor al pasar el ratón */
   font-size: 12px; /* Tamaño de fuente */
-  width: 90px; /* Ancho del botón */
+  width: 110px; /* Ancho del botón */
   height: 40px; /* Alto del botón */
   transition: background-color 0.3s ease; /* Suaviza el cambio de color al pasar el ratón */
 }
@@ -316,7 +319,6 @@ iframe {
   padding: 10px;
   padding-top: 10px; /* Asegura un padding-top consistente */
   border-radius: 10px;
-
   width: 1000px;
   border: #e98009 solid 3px;
   margin-bottom: 400px;
@@ -384,26 +386,21 @@ iframe {
 
 /* BOTON FAVORTIOS */
 /* Contenedor con fondo de color */
-.favorite-container {
-  background-color: #0fa6e2; /* Color de fondo */
-  border-radius: 4px; /* Bordes redondeados */
-  padding: 12px; /* Espacio alrededor del botón */
-  display: inline-flex; /* Alineación del contenido */
-  height: 15px;
-  width: auto;
-}
 
 /* Botón de favoritos con el nuevo contenedor */
 .button-container #favoritos {
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 7px;
   background-color: transparent;
   border: none;
+  border-radius: 5px;
   color: #ffffff;
   cursor: pointer;
   font-size: 12px;
-  padding: 6px;
+  background-color: #45aedf;
+
 }
 
 /* Estilos del ícono de corazón */

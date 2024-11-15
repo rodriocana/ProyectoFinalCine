@@ -1,31 +1,22 @@
-/* Fondo general para el contenedor de películas */
+/* Estilo para el contenedor principal de películas */
+/* Estilo para el contenedor principal de películas */
 .movie-container {
-  background-image: url('wallpaper.jpg'); /* Cambia esta ruta a la imagen que desees */
-  background-size: cover; /* La imagen cubrirá todo el fondo */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que se repita */
-  padding-left: 245px;
-  padding-right: 30px;
-  padding-top: 15px;
-  display: grid; /* Mantiene el diseño de grid */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Crea columnas automáticas */
-  gap: 15px; /* Espacio entre las tarjetas de películas */
-  row-gap: 15px;
-  min-height: 100vh; /* Asegura que la altura mínima sea 100% de la vista */
-  justify-items: center; /* Centra cada elemento dentro de la celda de la cuadrícula */
-  position: relative; /* Para posicionar el h2 en el contenedor */
+  background-image: url('wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  padding-left: 110px;
+  padding-right: 50px;
+  padding-bottom: 30px;
+  position: relative; /* Esto es importante para que el slider se posicione sobre las películas */
+  padding-top: 500px; /* Deja espacio para el slider arriba */
+  z-index: 1; /* Asegura que las películas estén por debajo del slider */
 }
 
-.movie-container h2 {
-  font-size: 44px;
-  color: rgb(178 25 25);
-  text-align: left;
-  margin-bottom: 0px;
-  width: 100%;
-  grid-column: 1 / -1; /* Hace que el título ocupe todo el ancho del grid */
-}
-
-/* Estilos para las tarjetas */
+/* Estilos para las tarjetas de películas */
 .movie-card {
   position: relative;
   overflow: visible;
@@ -37,33 +28,99 @@
 }
 
 .movie-card img {
-  width: 360px;
-  height: 100%;
+  width: 100%;
+  height: auto;
   max-width: 100%;
   border: 2px solid #ee850d;
   border-radius: 8px;
-  box-shadow: 2px 10px 6px rgba(0, 0, 0, 0.8);
+  box-shadow: 7px 15px 6px rgba(0, 0, 0, 0.8);
 }
 
-/* Estilos para el contenedor del título */
+/* Estilo para el contenedor del título en cada tarjeta */
 .title-container {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  font-size: 15px;
   background-color: rgba(50, 50, 50, 0.7);
   color: white;
   padding: 10px;
   text-align: center;
   opacity: 0;
+  font-family: 'roboto';
   transition: opacity 0.3s ease;
 }
 
-/* Muestra el título al pasar el ratón */
+/* Mostrar el título cuando se pasa el ratón */
 .movie-card:hover .title-container {
   opacity: 1;
 }
 
-h1{
-  font-size: 25px;
+
+/* Estilos para el contenedor del slider */
+.slider-container {
+  position: absolute; /* Coloca el slider sobre la cuadrícula de películas */
+  top: 0;
+  left: 0;
+  width: 100%; /* Hace que el slider ocupe todo el ancho */
+  z-index: 10; /* Asegura que el slider esté por encima de las películas */
+  margin-bottom: 20px;
+}
+
+
+/* Estilos para las imágenes del slider */
+.slider-container .slide img {
+  margin-left: 136px;
+  margin-top: 20px;
+  border-radius: 8px;
+  width: 1300px;
+  height: 450px;
+  border: 1px solid #ee850d;
+  box-shadow: 7px 15px 6px rgba(0, 0, 0, 0.8);
+  object-fit: cover; /* Asegura que las imágenes del slider se ajusten sin distorsionarse */
+}
+/* Contenedor del título en el slider */
+.slider-title-container {
+  position: absolute;
+  bottom: 20px; /* Espacio desde la parte inferior */
+  left: 180px; /* Espacio desde la izquierda */
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ee850d;
+  padding: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  border-radius:10px;
+  margin-right: 150px;
+}
+
+/* Título dentro de movie-container */
+.movie-container h2 {
+  font-size: 17px;
+  color: rgb(253, 253, 253);
+  text-align: justify;
+  font-family: "Roboto", sans-serif;
+  margin-right: 30px;
+  margin-bottom: 0px;
+  grid-column: 1 / -1; /* Hace que el título ocupe todo el ancho del grid */
+}
+
+.slider-title-container h1 {
+  font-size: 30px; /* Ajusta el tamaño del texto */
+  margin: 0;
+}
+
+
+.favorite-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.favorite-icon.favorited {
+  color: red;
 }

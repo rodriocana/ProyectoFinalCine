@@ -1,38 +1,106 @@
-// src/app/movie-list/movie-list.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MovieService } from '../movie.service';
+ // Importa el servicio de autenticación
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth-service.service';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
-  styleUrls: ['./movie-list.component.css']
+  styleUrls: ['./movie-list.component.css'],
 })
-export class MovieListComponent implements OnInit {
-  movies: any[] = [];
+export class MovieListComponent implements OnInit, OnDestroy {
+  movies: any[] = []; // Películas para mostrar
+  sliderImages: any[] = []; // Imágenes para el slider
+  currentIndex = 0; // Índice actual del slider
+  intervalId: any; // ID del intervalo para cambiar las imágenes
+  favoriteMovieIds: Set<number> = new Set(); // IDs de las películas favoritas
 
-  constructor(private movieService: MovieService, private router: Router) {}
+  constructor(
+    private movieService: MovieService,
+    private authService: AuthService, // Servicio de autenticación para favoritos
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    // Obtener las películas
     this.movieService.getMovies().subscribe({
-      next: resp =>{
+      next: (resp) => {
         this.movies = resp.body.results;
       },
-      error: error =>{
-        if (error.error.code === 404){
+      error: (error) => {
+        if (error.error.code === 404) {
           console.log(error.error.error);
-
         }
       },
     });
+
+    // Obtener imágenes para el slider
+    this.movieService.getSliderImages().subscribe({
+      next: (resp) => {
+        this.sliderImages = resp.results;
+        this.startSlider();
+      },
+      error: (error) => {
+        console.log('Error al obtener imágenes para el slider', error);
+      },
+    });
+
+    // Cargar las películas favoritas
+    this.loadFavoriteMovies();
   }
 
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+
+  // Iniciar el slider
+  startSlider(): void {
+    this.intervalId = setInterval(() => {
+      this.currentIndex = (this.currentIndex + 1) % this.sliderImages.length;
+    }, 3000);
+  }
+
+  // Navegar a los detalles de la película
   goToMovieDetails(movieId: number): void {
     this.router.navigate(['/movieDetail', movieId]);
   }
 
-  onImageError(event: Event) {
+  // Manejar errores de carga de imágenes
+  onImageError(event: Event): void {
     const imgElement = event.target as HTMLImageElement;
     imgElement.src = 'https://www.serieslike.com/img/shop_01.png';
+  }
+
+  // Cargar las películas favoritas del usuario
+  loadFavoriteMovies(): void {
+    this.authService.getFavoriteMovies().subscribe((favorites) => {
+      this.favoriteMovieIds = new Set(favorites.map((fav) => fav.movieId));
+    });
+  }
+
+  // Verificar si una película está en favoritos
+  isFavorite(movieId: number): boolean {
+    return this.favoriteMovieIds.has(movieId);
+  }
+
+  // Añadir o quitar de favoritos
+  toggleFavorite(movie: any, event: Event): void {
+    event.stopPropagation(); // Evita que se navegue a los detalles al hacer clic en el icono de favorito
+    if (this.authService.isLoggedIn()) {
+      if (this.isFavorite(movie.id)) {
+        this.authService.removeFavoriteMovie(movie.id).subscribe(() => {
+          this.favoriteMovieIds.delete(movie.id);
+        });
+      } else {
+        this.authService.addFavoriteMovie(movie.id).subscribe(() => {
+          this.favoriteMovieIds.add(movie.id);
+        });
+      }
+    } else {
+      alert('registrate');
+    }
   }
 }

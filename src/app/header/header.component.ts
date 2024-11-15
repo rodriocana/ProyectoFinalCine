@@ -52,7 +52,7 @@ export class HeaderComponent {
   }
 
   isMovieDetailsPage(): boolean {
-    return this.router.url.includes('movieList') || this.router.url.includes('tienda') || this.router.url.includes('top250');
+    return this.router.url.includes('movieList') || this.router.url.includes('tienda') || this.router.url.includes('top250') || this.router.url.includes("contacto");
   }
 
   openModal() {
@@ -77,5 +77,12 @@ export class HeaderComponent {
    toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
   }
+
+  // En tu componente TypeScript
+isSidebarOpen: boolean = false;
+
+toggleSidebar() {
+  this.isSidebarOpen = !this.isSidebarOpen;
+}
 }
 

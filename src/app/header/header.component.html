@@ -1,42 +1,67 @@
-<header *ngIf="isMovieDetailsPage()">
-  <div class="icon-container">
+<header *ngIf="isMovieDetailsPage()" [class.sidebar-open]="isSidebarOpen" [class.sidebar-closed]="!isSidebarOpen">
+  <!-- Contenedor del icono y logo -->
+  <div class="icon-container" (click)="toggleSidebar()">
     <i class="fa-solid fa-ticket" id="icono"></i>
-    <span class="tituloLogo">CINEMA</span>
+    <span class="tituloLogo" *ngIf="isSidebarOpen">CINEMA</span>
   </div>
+
+  <!-- Menú de navegación -->
   <nav>
     <div class="nav-item">
-      <a [routerLink]="['/']"><i class="fas fa-home"></i> Inicio</a>
+      <a [routerLink]="['/']"><i class="fas fa-home"></i> <span *ngIf="isSidebarOpen">Inicio</span></a>
     </div>
     <hr class="divider">
+
     <div class="nav-item">
-      <a [routerLink]="['/movieList']" routerLinkActive="active"><i class="fa-solid fa-film"></i> Cartelera</a>
+      <a [routerLink]="['/movieList']" routerLinkActive="active"><i class="fa-solid fa-film"></i> <span *ngIf="isSidebarOpen">Cartelera</span></a>
     </div>
     <hr class="divider">
+
     <div class="nav-item">
-      <a routerLink="/tienda" routerLinkActive="active"><i class="fas fa-shopping-cart"></i> Tienda</a>
+      <a routerLink="/tienda" routerLinkActive="active"><i class="fas fa-shopping-cart"></i> <span *ngIf="isSidebarOpen">Tienda</span></a>
     </div>
     <hr class="divider">
+
     <div class="nav-item">
-      <a routerLink="/contacto" routerLinkActive="active"><i class="fas fa-envelope"></i> Contacto</a>
+      <a routerLink="/contacto" routerLinkActive="active"><i class="fas fa-envelope"></i> <span *ngIf="isSidebarOpen">Contacto</span></a>
     </div>
     <hr class="divider">
+
+    <!-- Enlace de login/logout -->
     <div class="nav-item">
-      <a *ngIf="!userName" (click)="openModal()" routerLink="/movieList" ><i class="fas fa-sign-in-alt"></i> Login</a>
-      <a *ngIf="userName" (click)="logout()" routerLink="/movieList"><i class="fas fa-sign-out-alt"></i> Salir</a>
+      <a *ngIf="!userName" (click)="openModal()" routerLink="/movieList"><i class="fas fa-sign-in-alt"></i> <span *ngIf="isSidebarOpen">Login</span></a>
+      <a *ngIf="userName" (click)="logout()" routerLink="/movieList"><i class="fas fa-sign-out-alt"></i> <span *ngIf="isSidebarOpen">Salir</span></a>
     </div>
+    <hr class="divider">
+
+    <!-- Opciones de usuario adicionales, visibles solo si hay un usuario logueado -->
     <div *ngIf="userName" class="opciones-user">
-     <img class="avatar" src="{{avatar}}" >
-      <div class="user-info">
+      <div class="user-icons">
+        <a routerLink="/myList" routerLinkActive="active">
+          <i class="fa-solid fa-clapperboard"></i>
+          <span *ngIf="isSidebarOpen">Mi lista</span>
+        </a>
+        <hr *ngIf="isSidebarOpen" class="dividerUser">
+
+        <a routerLink="/top250" routerLinkActive="active">
+          <i class="fa-solid fa-trophy"></i>
+          <span *ngIf="isSidebarOpen">Top 250</span>
+        </a>
+        <hr *ngIf="isSidebarOpen" class="dividerUser">
+
+        <a routerLink="/perfil" routerLinkActive="active">
+          <i class="fa-solid fa-head-side-virus"></i>
+          <span *ngIf="isSidebarOpen">Perfil</span>
+        </a>
+      </div>
+
+      <div class="user-info" *ngIf="isSidebarOpen">
+        <img class="avatar" src="{{ avatar }}" alt="Avatar del usuario">
         <p class="user-name">Bienvenido, {{ userName }}</p>
       </div>
-      <hr class="dividerUser">
-      <a routerLink="/myList" routerLinkActive="active"><i class="fa-solid fa-clapperboard"></i> Mi lista</a>
-      <hr class="dividerUser">
-      <a routerLink="/top250" routerLinkActive="active"><i class="fa-solid fa-trophy"></i> Top 250</a>
-      <hr class="dividerUser">
-      <a routerLink="/perfil" routerLinkActive="active"><i class="fa-solid fa-head-side-virus"></i> Ver perfil</a>
     </div>
   </nav>
 </header>
 
+<!-- Modal de Login -->
 <app-login-modal *ngIf="isModalOpen" (close)="closeModal()"></app-login-modal>

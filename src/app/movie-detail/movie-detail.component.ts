@@ -8,6 +8,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css'],
+// Asegura la encapsulación
 })
 export class MovieDetailComponent implements OnInit {
   movie: any;
@@ -16,18 +17,19 @@ export class MovieDetailComponent implements OnInit {
   user: any;
   selectedImage: string | null = null;
   actors: any[] = [];
-  isFavorite:boolean = false;
   selectedTrailerUrl: SafeResourceUrl;
   showTrailerModal: boolean = false;
   isNowPlaying: boolean = false; // Nueva propiedad para verificar en el html si está en cartelera para que no salga el boton comprarEntrada.
+  backdropUrl: string;
+  favoriteMovieIds: Set<any>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
     private router: Router,
-    private imageCacheService: ImageCacheService,
     private authService: AuthService,
     private sanitizer: DomSanitizer
+
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +40,10 @@ export class MovieDetailComponent implements OnInit {
       this.movieService.getMovieDetails(+movieId).subscribe({
         next: (response) => {
           this.movie = response.body;
+
+          this.loadFavoriteMovies();
+          console.log("hola " + this.movie.backdrop_path);
+          this.backdropUrl = `https://image.tmdb.org/t/p/original${this.movie.backdrop_path}`;
           this.checkIfNowPlaying(); // Llamamos al método para verificar si está en cartelera
         },
         error: (error) => {
@@ -74,6 +80,19 @@ export class MovieDetailComponent implements OnInit {
       });
     }
   }
+  // Cargar las películas favoritas del usuario
+  loadFavoriteMovies(): void {
+    this.authService.getFavoriteMovies().subscribe((favorites) => {
+      this.favoriteMovieIds = new Set(favorites.map((fav) => fav.movieId));
+    });
+  }
+
+  // Verificar si una película está en favoritos
+  isFavorite(movieId: number): any {
+    if(this.favoriteMovieIds){
+      return this.favoriteMovieIds.has(movieId);
+    }
+  }
 
   // esta funcion para poder crear una condicion if en el html y mostrar el boton comprarEntrada en las peliculas en estreno solo, las de la funcion getMovies.
   checkIfNowPlaying(): void {
@@ -89,10 +108,10 @@ export class MovieDetailComponent implements OnInit {
   }
 
   toggleFavorite() {
-    this.isFavorite = !this.isFavorite;
     const movieId = this.movie.id;
+    this.isFavorite(movieId);
 
-    if (this.isFavorite) {
+    if (!this.isFavorite(movieId)) {
       this.authService.addFavoriteMovie(movieId)
       .subscribe({
         next: resp => {

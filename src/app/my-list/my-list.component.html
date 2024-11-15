@@ -1,17 +1,17 @@
-<div *ngIf="favoriteMovies.length > 0; else noFavorites" class="favorite-movie-container">
-  <div *ngFor="let movie of favoriteMovies" class="favorite-movie-card">
-    <h3>{{ movie.title }}</h3>
-    <img [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path" [alt]="movie.title">
-    <button (click)="removeFromFavorites(movie)" class="remove-btn">X</button>
+<div class="favorite-movies-background">
+  <div *ngIf="favoriteMovies.length > 0; else noFavorites" class="favorite-movie-container">
+    <div *ngFor="let movie of favoriteMovies" class="favorite-movie-card">
+      <h3>{{ movie.title }}</h3>
+      <img [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path" [alt]="movie.title">
+      <button (click)="removeFromFavorites(movie)" class="remove-btn">X</button>
+    </div>
   </div>
+
+  <button (click)="goToHome()" class="back-button">
+    <i class="fa-solid fa-arrow-left-long"></i>
+  </button>
 </div>
-<button (click)="goToHome()" class="back-button">
-  <i class="fa-solid fa-arrow-left-long"></i>
-</button>
 
 <ng-template #noFavorites>
   <h2 class="noFavoritesMessage">La lista está vacía...</h2>
 </ng-template>
-
-<!-- Botón fijo en la esquina -->
-
