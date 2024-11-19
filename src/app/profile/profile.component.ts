@@ -181,39 +181,30 @@ export class ProfileComponent implements OnInit {
 
   // Guardar producto
   saveProduct(): void {
-    if (this.productForm.valid) {
-      const updatedProduct: Producto = {
-        ...this.selectedProduct!,
-        ...this.productForm.value
-      };
-      console.log('Producto a guardar:', updatedProduct); // Agregar un log
+    if (this.productForm.invalid) {
+      return;
+    }
 
-      if (this.selectedProduct?.id) {
-        // Si es una actualización
-        this.productService.updateProducto(this.selectedProduct.id, updatedProduct).then(() => {
-          console.log('Producto actualizado');
-          alert('Producto actualizado correctamente');
-          this.loadProducts();
-          this.selectedProduct = null;
-          this.productForm.reset();
-          this.showAddProductModal = false;
-        }).catch((error) => {
-          console.error('Error al actualizar el producto:', error);
-        });
-      } else {
-        // Si es un nuevo producto
-        this.productService.addProducto(updatedProduct).then(() => {
-          console.log('Producto agregado');
-          alert('Producto agregado correctamente');
-          this.loadProducts();
-          this.productForm.reset();
-          this.showAddProductModal = false;
-        }).catch((error) => {
-          console.error('Error al agregar el producto:', error);
-        });
-      }
+    const productData: Producto = this.productForm.value;
+
+    if (this.isEditMode && this.selectedProduct) {
+      // Si estamos en modo edición, actualizamos el producto
+      this.productService.updateProducto(this.selectedProduct.id, productData).then(() => {
+        alert('Producto actualizado correctamente');
+        this.loadProducts();  // Cargar los productos nuevamente
+        this.closeAddProductModal();  // Cerrar el modal
+      }).catch(error => {
+        console.error('Error al actualizar el producto:', error);
+      });
     } else {
-      console.error('Formulario inválido');
+      // Si estamos en modo añadir, creamos un nuevo producto
+      this.productService.addProducto(productData).then(() => {
+        alert('Producto añadido correctamente');
+        this.loadProducts();  // Cargar los productos nuevamente
+        this.closeAddProductModal();  // Cerrar el modal
+      }).catch(error => {
+        console.error('Error al añadir el producto:', error);
+      });
     }
   }
 

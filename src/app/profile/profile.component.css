@@ -259,10 +259,13 @@ button[type="submit"] {
   font-size: 1em;
   margin-left: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  width: 76px;
+  transition: background-color 0.2s ease;
 }
 
-
+button[type="submit"]:hover {
+  background-color: #0099ff; /* Cambia el color de fondo cuando el cursor está encima */
+}
 
 /* Close button */
 .close-btn {
@@ -273,7 +276,6 @@ button[type="submit"] {
   border-radius: 5px;
   font-size: 1em;
   cursor: pointer;
-  margin-top: 20px;
   margin-left: 5px;
 
 }
@@ -326,4 +328,12 @@ button[type="submit"] {
   object-fit: cover;
   margin-right: 10px;
 
+}
+
+.user-avatar{
+  width: 65px;
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-right: 10px;
 }

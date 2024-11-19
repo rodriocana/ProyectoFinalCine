@@ -29,6 +29,7 @@
     <table>
       <thead>
         <tr>
+          <th>Avatar</th>
           <th>Nombre</th>
           <th>Email</th>
           <th>Acciones</th>
@@ -36,6 +37,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users">
+          <td><img [src]="user.avatar" alt="Avatar de usuario" class="user-avatar" /></td>
           <td>{{ user.nombre }}</td>
           <td>{{ user.email }}</td>
           <td>
@@ -79,25 +81,71 @@
         </tr>
       </tbody>
     </table>
-    <button class="close-btn" (click)="closeManageShopModal()">Cerrar</button>
     <button class="add-btn" (click)="addNewProduct()">Añadir</button>
+    <button class="close-btn" (click)="closeManageShopModal()">Cerrar</button>
   </div>
 </div>
 
 
-<!-- Modal para agregar  o editar un producto -->
+<!-- Modal para agregar o editar un producto -->
 <div class="modal-backdrop" *ngIf="showAddProductModal">
   <div class="modal-container">
     <h3>{{ isEditMode ? 'Editar Producto' : 'Añadir Producto' }}</h3>
-    <form [formGroup]="productForm" (ngSubmit)="isEditMode ? saveProduct() : saveProduct()">
+    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
       <input formControlName="nombreProducto" placeholder="Nombre del Producto" />
       <input formControlName="precioProducto" placeholder="Precio" type="number" />
       <input formControlName="imgProducto" placeholder="Imagen URL" />
       <input formControlName="categoriaProducto" placeholder="Categoría" />
+      <button type="submit" [disabled]="productForm.invalid">
+        {{ isEditMode ? 'Guardar Cambios' : 'Añadir Producto' }}
+      </button>
     </form>
     <button class="close-btn" (click)="closeAddProductModal()">Cerrar</button>
-    <button type="Submit" [disabled]="productForm.invalid">
-      {{ isEditMode ? 'Guardar Cambios' : 'Añadir Producto' }}
-    </button>
+  </div>
+</div>
+<!-- Modal para agregar o editar un producto -->
+<div class="modal-backdrop" *ngIf="showAddProductModal">
+  <div class="modal-container">
+    <h3>{{ isEditMode ? 'Editar Producto' : 'Añadir Producto' }}</h3>
+    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+      <input formControlName="nombreProducto" placeholder="Nombre del Producto" />
+      <input formControlName="precioProducto" placeholder="Precio" type="number" />
+      <input formControlName="imgProducto" placeholder="Imagen URL" />
+      <input formControlName="categoriaProducto" placeholder="Categoría" />
+      <button type="submit" [disabled]="productForm.invalid">
+        {{ isEditMode ? 'Guardar Cambios' : 'Añadir Producto' }}
+      </button>
+    </form>
+    <button class="close-btn" (click)="closeAddProductModal()">Cerrar</button>
+  </div>
+</div><!-- Modal para agregar o editar un producto -->
+<div class="modal-backdrop" *ngIf="showAddProductModal">
+  <div class="modal-container">
+    <h3>{{ isEditMode ? 'Editar Producto' : 'Añadir Producto' }}</h3>
+    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+      <input formControlName="nombreProducto" placeholder="Nombre del Producto" />
+      <input formControlName="precioProducto" placeholder="Precio" type="number" />
+      <input formControlName="imgProducto" placeholder="Imagen URL" />
+      <input formControlName="categoriaProducto" placeholder="Categoría" />
+      <button type="submit" [disabled]="productForm.invalid">
+        {{ isEditMode ? 'Guardar Cambios' : 'Añadir Producto' }}
+      </button>
+    </form>
+    <button class="close-btn" (click)="closeAddProductModal()">Cerrar</button>
+  </div>
+</div><!-- Modal para agregar o editar un producto -->
+<div class="modal-backdrop" *ngIf="showAddProductModal">
+  <div class="modal-container">
+    <h3>{{ isEditMode ? 'Editar Producto' : 'Añadir Producto' }}</h3>
+    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+      <input formControlName="nombreProducto" placeholder="Nombre del Producto" />
+      <input formControlName="precioProducto" placeholder="Precio" type="number" />
+      <input formControlName="imgProducto" placeholder="Imagen URL" />
+      <input formControlName="categoriaProducto" placeholder="Categoría" />
+      <button type="submit" [disabled]="productForm.invalid">
+        {{ isEditMode ? 'Guardar Cambios' : 'Añadir' }}
+      </button>
+    </form>
+    <button class="close-btn" (click)="closeAddProductModal()">Cerrar</button>
   </div>
 </div>
