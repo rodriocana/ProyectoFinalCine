@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="profile-container" *ngIf="userName">
+    <h2 class="ProfileText">PERFIL DE USUARIO</h2>
+    <div class="avatar-container">
+      <img [src]="avatar" alt="Avatar de usuario" class="avatar" />
+    </div>
+    <div class="user-info">
+      <h1 class="user-name">{{ userName }}</h1>
+      <p class="user-email">{{ userEmail }}</p>
+      <p class="user-saldo">Saldo restante: {{ userSaldo }} euros</p>
+    </div>
+
+    <!-- Opciones exclusivas para admin -->
+    <div class="admin-options" *ngIf="isAdmin">
+      <h3>Opciones de Administrador</h3>
+      <button (click)="manageUsers()">Gestionar Usuarios</button>
+      <button (click)="viewReports()">Ver Reportes</button>
+      <button (click)="ManageShop()">Gestionar productos a tienda</button>
+    </div>
+  </div>
+
+  <button class="back-to-home" (click)="goToHome()">Volver al Menú Principal</button>
+</div>
+
+<!-- Modal para gestionar usuarios -->
+<div class="modal-backdrop" *ngIf="showManageUsersModal">
+  <div class="modal-container">
+    <h3>Gestionar Usuarios</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button class="delete-btn" (click)="deleteUser(user.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="close-btn" (click)="closeManageUsersModal()">Cerrar</button>
+
+  </div>
+</div>
+
+<!-- Modal para gestionar productos -->
+<div class="modal-backdrop" *ngIf="showManageShopModal">
+  <div class="modal-container">
+    <h3>Gestionar Productos</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Categoría</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of productos">
+          <td>
+            <!-- Mostrar imagen del producto en miniatura -->
+            <img [src]="product.imgProducto" alt="{{product.nombreProducto}}" class="product-image" />
+          </td>
+          <td>{{ product.nombreProducto }}</td>
+          <td>{{ product.precioProducto }}€</td>
+          <td>{{ product.categoriaProducto }}</td>
+          <td>
+            <button class="EditDeleteButton" (click)="editProduct(product)">Editar</button>
+            <button class="delete-btn" (click)="deleteProduct(product.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="close-btn" (click)="closeManageShopModal()">Cerrar</button>
+    <button class="add-btn" (click)="addNewProduct()">Añadir</button>
+  </div>
+</div>
+
+
+<!-- Modal para agregar  o editar un producto -->
+<div class="modal-backdrop" *ngIf="showAddProductModal">
+  <div class="modal-container">
+    <h3>{{ isEditMode ? 'Editar Producto' : 'Añadir Producto' }}</h3>
+    <form [formGroup]="productForm" (ngSubmit)="isEditMode ? saveProduct() : saveProduct()">
+      <input formControlName="nombreProducto" placeholder="Nombre del Producto" />
+      <input formControlName="precioProducto" placeholder="Precio" type="number" />
+      <input formControlName="imgProducto" placeholder="Imagen URL" />
+      <input formControlName="categoriaProducto" placeholder="Categoría" />
+    </form>
+    <button class="close-btn" (click)="closeAddProductModal()">Cerrar</button>
+    <button type="Submit" [disabled]="productForm.invalid">
+      {{ isEditMode ? 'Guardar Cambios' : 'Añadir Producto' }}
+    </button>
+  </div>
+</div>

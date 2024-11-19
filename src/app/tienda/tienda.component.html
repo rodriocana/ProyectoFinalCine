@@ -1,12 +1,12 @@
 <div class="tienda-container">
   <!-- Icono de cesta -->
   <div class="cesta-icon" (click)="toggleCesta()">
-    <i class="fas fa-shopping-cart"></i> Cesta ({{ productosEnCesta.length }})
+    <i class="fas fa-shopping-cart"></i> <span class="texto-cesta">Cesta</span> ({{ productosEnCesta.length }})
   </div>
 
   <!-- Sección de la cesta (desplegable) -->
   <div class="cesta" *ngIf="isCestaVisible">
-    <h2>Cesta</h2>
+    <h2 class="cestaTexto">Cesta</h2>
 
     <div *ngFor="let producto of productosEnCesta" class="producto-cesta">
       <img [src]="producto.imgProducto" alt="{{ producto.nombreProducto }}" class="imagen-cesta">

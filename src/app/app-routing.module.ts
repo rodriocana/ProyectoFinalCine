@@ -13,6 +13,7 @@ import { ActorMoviesDetailComponent } from './actor-movies-detail/actor-movies-d
 import { ContactComponent } from './contact/contact.component';
 import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 import { MyListComponent } from './my-list/my-list.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'actor/:id', component: ActorMoviesDetailComponent },
   {path: 'contacto', component: ContactComponent},
   {path: 'buyTicket/:id', component: BuyTicketComponent},
-  {path: 'myList', component: MyListComponent}
+  {path: 'myList', component: MyListComponent},
+  {path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({

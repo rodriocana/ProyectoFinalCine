@@ -51,7 +51,8 @@ export class HeaderComponent {
     });
   }
 
-  isMovieDetailsPage(): boolean {
+  // aqui hago que el header se muestre o no depende de en que ruta.
+  isHeaderVisible(): boolean {
     return this.router.url.includes('movieList') || this.router.url.includes('tienda') || this.router.url.includes('top250') || this.router.url.includes("contacto");
   }
 

@@ -106,4 +106,9 @@ export class MovieListComponent implements OnInit, OnDestroy {
       alert('registrate');
     }
   }
+
+  // Verifica si el usuario está logueado para mostrar el botón de favoritos
+  showFavoriteButton(): boolean {
+    return this.authService.isLoggedIn();
+  }
 }

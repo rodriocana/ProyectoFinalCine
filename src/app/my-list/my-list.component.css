@@ -36,7 +36,7 @@
 }
 
 .favorite-movie-card:hover {
-  transform: scale(1.02);
+  transform: scale(1.1);
 }
 
 .favorite-movie-card img {
@@ -50,7 +50,7 @@
 
 /* Estilos para el botón de eliminar de favoritos */
 .remove-btn {
-  background-color: #ee850d;
+  background-color: #e75050;
   color: white;
   border: none;
   padding: 5px 15px;
@@ -60,11 +60,11 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.6s ease;
 }
 
 .remove-btn:hover {
-  background-color: #d0760a;
+  background-color: #ec0404;
 }
 
 h3 {

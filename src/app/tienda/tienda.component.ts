@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { AuthService } from '../services/auth-service.service';
+import { Producto } from '../interfaces/producto.model';
 
 
 
@@ -10,8 +11,8 @@ import { AuthService } from '../services/auth-service.service';
   styleUrls: ['./tienda.component.css'],
 })
 export class TiendaComponent implements OnInit {
-  productos: any[] = [];
-  productosFiltrados: any[] = [];
+  productos: Producto[] = [];
+  productosFiltrados: Producto[] = [];
   productosEnCesta: any[] = []; // Arreglo para almacenar los productos añadidos a la cesta
   filtroCategoria: string = '';
   filtroPrecioMin: number | null = null;
@@ -20,21 +21,22 @@ export class TiendaComponent implements OnInit {
   user: any;
   token = '';
 
+
   constructor(
     private productService: ProductService,
     private authService: AuthService
-  ) {}
+  ) { }
+
 
   ngOnInit(): void {
-    this.token = localStorage.getItem("token")
+    this.token = localStorage.getItem("token");
 
-    if(!this.token){
-
+    if (!this.token) {
       alert("Para acceder a la tienda debes estar logueado");
-    }else{
+    } else {
       this.productService.getProductos().subscribe({
         next: (productos) => {
-          this.productos = productos;
+          this.productos = productos; // Asigna los productos al array 'productos'
           this.productosFiltrados = productos; // Inicialmente muestra todos
         },
         error: (err) => {
@@ -42,13 +44,12 @@ export class TiendaComponent implements OnInit {
         },
       });
     }
-
   }
 
   filtrarProductos(): void {
     this.productosFiltrados = this.productos.filter((producto) => {
       const cumpleCategoria = this.filtroCategoria
-        ? producto.categoriaProducto === this.filtroCategoria
+        ? producto['categoriaProducto'] === this.filtroCategoria
         : true;
       const cumplePrecioMin =
         this.filtroPrecioMin !== null

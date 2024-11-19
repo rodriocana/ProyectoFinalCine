@@ -25,6 +25,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import { ContactComponent } from './contact/contact.component';
 import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 import { MyListComponent } from './my-list/my-list.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MyListComponent } from './my-list/my-list.component';
     ContactComponent,
     BuyTicketComponent,
     MyListComponent,
+    ProfileComponent,
 
   ],
   imports: [

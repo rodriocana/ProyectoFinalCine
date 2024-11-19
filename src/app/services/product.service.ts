@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, query, orderBy, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, query, orderBy, collectionData, doc, updateDoc, deleteDoc, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
 
 interface Producto {
   id?: string;
@@ -14,6 +15,7 @@ interface Producto {
   providedIn: 'root'
 })
 export class ProductService {
+
   // Esta variable ya es un Observable<Producto[]> y no necesitamos hacer cast.
   private productosCollection: Observable<Producto[]>;
 
@@ -32,4 +34,27 @@ export class ProductService {
   getProductos(): Observable<Producto[]> {
     return this.productosCollection; // Retorna directamente el observable de productos
   }
+
+  updateProducto(id: string, data: Partial<Producto>): Promise<void> {
+    const productRef = doc(this.firestore, `Producto/${id}`);
+    return updateDoc(productRef, data);
+  }
+
+  deleteProducto(id: string): Promise<void> {
+    const productRef = doc(this.firestore, `Producto/${id}`);
+    return deleteDoc(productRef);
+  }
+
+  // Añade un nuevo producto
+  addProducto(newProduct: Producto): Promise<void> {
+    const productosRef = collection(this.firestore, "Producto");
+    return addDoc(productosRef, newProduct)
+      .then(() => {
+        console.log('Producto añadido correctamente');
+      })
+      .catch((error) => {
+        console.error('Error al añadir el producto:', error);
+      });
+  }
 }
+
