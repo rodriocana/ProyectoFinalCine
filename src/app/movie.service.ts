@@ -49,17 +49,25 @@ export class MovieService {
   }
 
 
-  // Método para obtener las películas de un actor
 
-  // Método para obtener las películas de un actor
+
+  // Método para obtener las películas de un actor ordenadas por fecha orden ascendente
   getMoviesByActor(actorId: number): Observable<any[]> {
     const apiUrl = `https://api.themoviedb.org/3/person/${actorId}/movie_credits?api_key=${this.apiKey}&language=es-ES`;
     return this.http.get<any>(apiUrl).pipe(
       map(response => {
         console.log('Respuesta de la API:', response); // Verifica la estructura aquí
-        return response.cast; // Asegúrate de que 'cast' contiene los objetos con 'title', 'release_date', 'poster_path'
+        return response.cast
+          .filter(movie => movie.release_date) // Filtra películas sin fecha de lanzamiento
+          .sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime()); // Ordena por fecha
       })
     );
+  }
+
+  // para acceder a la foto y nombre de los actores
+  getActorDetails(actorId: number): Observable<any> {
+    const apiUrl = `https://api.themoviedb.org/3/person/${actorId}?api_key=${this.apiKey}&language=es-ES`;
+    return this.http.get<any>(apiUrl);
   }
 
 }

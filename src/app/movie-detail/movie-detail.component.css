@@ -24,18 +24,53 @@
   font-size: 3em;
   font-weight: bold;
   font-family: 'Orbitron', sans-serif;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Sombra para mejor visibilidad */
+}
+
+.poster-container {
+  position: relative;
+  display: inline-block;
 }
 
 /* Imagen del póster */
 .poster-image {
-  width: 275px;
-  height: auto;
-  margin-top: -20px;
-  border-radius: 10px;
-  border: 2px solid rgb(230, 127, 31);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
+  width: 280px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e67f1f;
+}
+
+
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.favorite-button:hover {
+  background: rgba(255, 0, 0, 0.8);
+}
+
+.heart-icon {
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.heart-icon.favorited {
+  color: red;
 }
 
 .thumbnail-button-container {
@@ -43,14 +78,7 @@
   align-items: flex-end; /* Alinear los elementos en la parte inferior */
 }
 
-/* Contenedor de las miniaturas y actores */
-.thumbnail-container {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-  position: relative;
-  animation: slide 10s infinite linear; /* Añadido para aplicar la animación continua */
-}
+
 
 /* Contenedor de los actores */
 .actors-container {
@@ -100,17 +128,17 @@
 /* Miniaturas */
 .thumbnail-container {
   display: flex;
-  gap: 10px; /* Espacio entre las miniaturas */
-  margin-top: 15px;
+  gap: 5px; /* Espacio entre las miniaturas */
+  margin-top: 10px;
   animation: marquee 30s linear infinite;
   animation-play-state: paused;
 }
 
 .thumbnail {
-  width: 240px; /* Ajusta el tamaño de las miniaturas */
+  width: 255px; /* Ajusta el tamaño de las miniaturas */
   height: auto;
   border-radius: 5px;
-  border: 2px solid rgb(230, 127, 31);
+  border: 2px solid #e67f1f;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
@@ -145,7 +173,7 @@
 /* Estilos de la descripción */
 .movie-details p {
   font-size: 1.1em;
-  padding-bottom: 10px;
+  padding-bottom: -15px;
   border-radius: 8px;
   margin: 5px 0;
 }
@@ -174,7 +202,7 @@
   border: none; /* Sin borde */
   border-radius: 5px; /* Bordes redondeados */
   cursor: pointer; /* Cambia el cursor al pasar el ratón */
-  font-size: 12px; /* Tamaño de fuente */
+
   width: 90px; /* Ancho del botón */
   height: 40px; /* Alto del botón */
   transition: background-color 0.3s ease; /* Suaviza el cambio de color al pasar el ratón */
@@ -199,7 +227,7 @@
   border: none; /* Sin borde */
   border-radius: 5px; /* Bordes redondeados */
   cursor: pointer; /* Cambia el cursor al pasar el ratón */
-  font-size: 12px; /* Tamaño de fuente */
+
   width: 80px; /* Ancho del botón */
   height: 40px; /* Alto del botón */
   transition: background-color 0.3s ease; /* Suaviza el cambio de color al pasar el ratón */
@@ -314,30 +342,40 @@ iframe {
 }
 
 .modal-content {
-  background-color: #ffffff;
-  color: #333;
+  background-color: #0B3954;
+  color: #e67f1f;
   padding: 10px;
   padding-top: 10px; /* Asegura un padding-top consistente */
   border-radius: 10px;
   width: 1000px;
   border: #e98009 solid 3px;
   margin-bottom: 400px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
   text-align: center;
   animation: zoomIn 0.3s ease;
   flex-direction: column;
   align-items: center;   /* Asegura que los elementos dentro estén centrados */
 }
 
+.p-review{
+
+  color:white;
+
+}
 .modal-content h3 {
   font-size: 1.5em;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.release-date {
+  color: #e67f1f; /* Cambia el color del texto a naranja */
+  font-weight: bold; /* (Opcional) Resalta la fecha con negrita */
 }
 
 .modal-content p {
   font-size: 1.1em;
-  color: rgb(0, 0, 0);
-
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
   text-align: center; /* Centra el texto dentro del párrafo */
 }
 
@@ -357,7 +395,7 @@ iframe {
 
 .trailer-button:hover{
 
-  background-color: #cc3939; /* Color de fondo al pasar el ratón */
+  background-color: #cc3939;
 }
 .modal-content button {
   background-color: #e98009;
@@ -365,6 +403,7 @@ iframe {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
+  margin-top: 10px;
   cursor: pointer;
   font-size: 1em;
 }
@@ -419,8 +458,35 @@ iframe {
 }
 
 .divider-actor {
-  border: none;                /* Elimina el borde por defecto */
-  height: 1px;                 /* Ajusta el grosor de la línea */
-  background-color: #e98009;   /* Establece el color de la línea */
-  margin: 10px 0;              /* Añade un margen para separarla de otros elementos */
+  border: none;
+  height: 1px;
+  background-color: #e98009;
+  margin: 10px 0;
+}
+
+
+/* Estilo para el contenedor de géneros */
+.genres-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  gap:3px;
+  justify-content: center;
+  align-items: center;
+}
+/* Estilo para cada género */
+.genre-badge {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  cursor: default;
+  transition: background-color 0.3s ease;
+}
+
+.genre-badge:hover {
+  background-color: #0056b3;
 }

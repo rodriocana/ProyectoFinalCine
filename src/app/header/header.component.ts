@@ -53,7 +53,8 @@ export class HeaderComponent {
 
   // aqui hago que el header se muestre o no depende de en que ruta.
   isHeaderVisible(): boolean {
-    return this.router.url.includes('movieList') || this.router.url.includes('tienda') || this.router.url.includes('top250') || this.router.url.includes("contacto");
+    return this.router.url.includes('movieList') || this.router.url.includes('tienda') || this.router.url.includes('top250') || this.router.url.includes("contacto")
+    || this.router.url.includes('profile');
   }
 
   openModal() {

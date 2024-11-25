@@ -26,6 +26,8 @@ import { ContactComponent } from './contact/contact.component';
 import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 import { MyListComponent } from './my-list/my-list.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +58,11 @@ import { ProfileComponent } from './profile/profile.component';
     AngularFirestoreModule,
     FirestoreModule,
     FirebaseAppModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireMessagingModule
+
+
 
   ],
   providers: [ {

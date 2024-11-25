@@ -43,8 +43,23 @@ export class TiendaComponent implements OnInit {
           console.error('Error al obtener productos', err);
         },
       });
-    }
+
+      // ----- aqui llamo a los productos de la base de datos sql ---- //
+    //   this.productService.getProductosSql().subscribe({
+    //     next: (productos) => {
+    //       console.log('Productos recibidos:', productos); // Verifica la estructura de los datos
+
+    //       this.productos = productos; // Asigna los productos al array 'productos'
+    //       this.productosFiltrados = productos; // Inicialmente muestra todos
+    //     },
+    //     error: (err) => {
+    //       console.error('Error al obtener productos', err);
+    //     },
+    //   });
+    // }
   }
+
+}
 
   filtrarProductos(): void {
     this.productosFiltrados = this.productos.filter((producto) => {

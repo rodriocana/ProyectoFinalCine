@@ -32,6 +32,8 @@ export class ProfileComponent implements OnInit {
   productForm: FormGroup; // Define el formulario reactivo
   isEditMode: boolean = false; // Determina si estamos en modo edición o adición
 
+
+
   constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore, private router: Router, private authService: AuthService,
     private productService: ProductService, private fb: FormBuilder) {
 
@@ -97,15 +99,9 @@ export class ProfileComponent implements OnInit {
 
   // Métodos para las acciones de administrador
   manageUsers(): void {
-    console.log('Abriendo modal de gestión de usuarios');
     this.showManageUsersModal = true; // Mostrar el modal
     this.loadUsers(); // Cargar la lista de usuarios desde Firestore
   }
-  viewReports(): void {
-    console.log('Ver Reportes');
-    // Lógica para ver reportes
-  }
-
   ManageShop(): void {
     console.log('Gestionar tienda');
     this.openManageShopModal();

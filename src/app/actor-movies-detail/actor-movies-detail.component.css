@@ -49,18 +49,12 @@
   font-size: 16px;
   font-weight: bold;
   color:#ffbb00;
-  margin: 0px 0px 0px;
+  margin: 0px 0px -15px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-/* Estilo para la fecha de estreno */
-.movie-release-date {
-  font-size: 14px;
-  color: #ccc;
-  margin: 0;
-}
 
 /* Mensaje cuando no se encuentran películas */
 .no-movies-message {
@@ -94,4 +88,31 @@
 
 .back-to-home:focus {
   outline: none;
+}
+
+
+.actor-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ee850d;
+}
+
+.actor-name {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+
+.actor-photo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
 }

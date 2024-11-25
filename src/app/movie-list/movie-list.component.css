@@ -1,5 +1,5 @@
 /* Estilo para el contenedor principal de películas */
-/* Estilo para el contenedor principal de películas */
+
 .movie-container {
   background-image: url('wallpaper.jpg');
   background-size: cover;
@@ -123,4 +123,56 @@
 
 .favorite-icon.favorited {
   color: red;
+}
+
+
+/* Estilos responsivos para dispositivos más pequeños */
+@media (max-width: 430px) { /* Tamaño típico del iPhone 14 Pro Max */
+  .movie-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Ajustar columnas más pequeñas */
+    padding-top: 0;
+  }
+
+  .movie-card img {
+    width: 130px; /* Reducir tamaño de las imágenes */
+    height: auto; /* Mantener proporción */
+    border: 1px solid #ee850d;
+    border-radius: 4px;
+    box-shadow: 3px 6px 3px rgba(0, 0, 0, 0.6); /* Reducir sombra */
+  }
+
+  .title-container {
+    font-size: 12px; /* Reducir tamaño de texto */
+    padding: 5px;
+  }
+
+  .slider-container {
+    display: none; /* Oculta el slider completamente */
+  }
+
+  .slider-title-container {
+    bottom: 10px; /* Ajustar margen inferior */
+    left: 20px; /* Reducir espacio desde la izquierda */
+    padding: 5px;
+    font-size: 14px; /* Reducir tamaño del texto */
+  }
+
+  .slider-title-container h1 {
+    font-size: 18px; /* Reducir tamaño del título */
+  }
+
+  .movie-container h2 {
+    font-size: 14px; /* Ajustar tamaño del texto */
+    margin-right: 10px;
+  }
+
+  .favorite-icon {
+    font-size: 18px; /* Reducir tamaño del ícono */
+    top: 5px; /* Ajustar posición superior */
+    right: 5px; /* Ajustar posición derecha */
+  }
 }

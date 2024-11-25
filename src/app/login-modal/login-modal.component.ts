@@ -34,8 +34,8 @@ export class LoginModalComponent implements OnInit {
     });
 
     this.inicioForm = this.fb.group({
-      email: ['rodrogo92@gmail.com', Validators.required],
-      password: ['123456', [Validators.required, Validators.minLength(6)]],
+      email: ['admin@gmail.com', Validators.required],
+      password: ['admin1234', [Validators.required, Validators.minLength(6)]],
     });
   }
 

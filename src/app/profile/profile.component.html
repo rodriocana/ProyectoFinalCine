@@ -14,12 +14,11 @@
     <div class="admin-options" *ngIf="isAdmin">
       <h3>Opciones de Administrador</h3>
       <button (click)="manageUsers()">Gestionar Usuarios</button>
-      <button (click)="viewReports()">Ver Reportes</button>
-      <button (click)="ManageShop()">Gestionar productos a tienda</button>
+      <button (click)="ManageShop()">Gestionar Tienda</button>
     </div>
   </div>
 
-  <button class="back-to-home" (click)="goToHome()">Volver al Menú Principal</button>
+  <!-- <button class="back-to-home" (click)="goToHome()">Volver al Menú Principal</button> -->
 </div>
 
 <!-- Modal para gestionar usuarios -->
@@ -41,16 +40,15 @@
           <td>{{ user.nombre }}</td>
           <td>{{ user.email }}</td>
           <td>
-            <button class="delete-btn" (click)="deleteUser(user.id)">Eliminar</button>
+            <!-- Mostrar el botón de eliminar solo si el usuario NO es 'admin' -->
+            <button *ngIf="user.nombre !== 'admin'" class="delete-btn" (click)="deleteUser(user.id)">Eliminar</button>
           </td>
         </tr>
       </tbody>
     </table>
     <button class="close-btn" (click)="closeManageUsersModal()">Cerrar</button>
-
   </div>
 </div>
-
 <!-- Modal para gestionar productos -->
 <div class="modal-backdrop" *ngIf="showManageShopModal">
   <div class="modal-container">
@@ -97,53 +95,7 @@
       <input formControlName="imgProducto" placeholder="Imagen URL" />
       <input formControlName="categoriaProducto" placeholder="Categoría" />
       <button type="submit" [disabled]="productForm.invalid">
-        {{ isEditMode ? 'Guardar Cambios' : 'Añadir Producto' }}
-      </button>
-    </form>
-    <button class="close-btn" (click)="closeAddProductModal()">Cerrar</button>
-  </div>
-</div>
-<!-- Modal para agregar o editar un producto -->
-<div class="modal-backdrop" *ngIf="showAddProductModal">
-  <div class="modal-container">
-    <h3>{{ isEditMode ? 'Editar Producto' : 'Añadir Producto' }}</h3>
-    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
-      <input formControlName="nombreProducto" placeholder="Nombre del Producto" />
-      <input formControlName="precioProducto" placeholder="Precio" type="number" />
-      <input formControlName="imgProducto" placeholder="Imagen URL" />
-      <input formControlName="categoriaProducto" placeholder="Categoría" />
-      <button type="submit" [disabled]="productForm.invalid">
-        {{ isEditMode ? 'Guardar Cambios' : 'Añadir Producto' }}
-      </button>
-    </form>
-    <button class="close-btn" (click)="closeAddProductModal()">Cerrar</button>
-  </div>
-</div><!-- Modal para agregar o editar un producto -->
-<div class="modal-backdrop" *ngIf="showAddProductModal">
-  <div class="modal-container">
-    <h3>{{ isEditMode ? 'Editar Producto' : 'Añadir Producto' }}</h3>
-    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
-      <input formControlName="nombreProducto" placeholder="Nombre del Producto" />
-      <input formControlName="precioProducto" placeholder="Precio" type="number" />
-      <input formControlName="imgProducto" placeholder="Imagen URL" />
-      <input formControlName="categoriaProducto" placeholder="Categoría" />
-      <button type="submit" [disabled]="productForm.invalid">
-        {{ isEditMode ? 'Guardar Cambios' : 'Añadir Producto' }}
-      </button>
-    </form>
-    <button class="close-btn" (click)="closeAddProductModal()">Cerrar</button>
-  </div>
-</div><!-- Modal para agregar o editar un producto -->
-<div class="modal-backdrop" *ngIf="showAddProductModal">
-  <div class="modal-container">
-    <h3>{{ isEditMode ? 'Editar Producto' : 'Añadir Producto' }}</h3>
-    <form [formGroup]="productForm" (ngSubmit)="saveProduct()">
-      <input formControlName="nombreProducto" placeholder="Nombre del Producto" />
-      <input formControlName="precioProducto" placeholder="Precio" type="number" />
-      <input formControlName="imgProducto" placeholder="Imagen URL" />
-      <input formControlName="categoriaProducto" placeholder="Categoría" />
-      <button type="submit" [disabled]="productForm.invalid">
-        {{ isEditMode ? 'Guardar Cambios' : 'Añadir' }}
+        {{ isEditMode ? 'Guardar' : 'Añadir' }}
       </button>
     </form>
     <button class="close-btn" (click)="closeAddProductModal()">Cerrar</button>

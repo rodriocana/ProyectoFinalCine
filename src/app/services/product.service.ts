@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, query, orderBy, collectionData, doc, updateDoc, deleteDoc, addDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 
 
 interface Producto {
@@ -9,6 +11,7 @@ interface Producto {
   precioProducto: number;
   imgProducto: string;
   categoriaProducto: string;
+
 }
 
 @Injectable({
@@ -16,10 +19,13 @@ interface Producto {
 })
 export class ProductService {
 
+  private apiUrl = 'http://localhost:3000/producto';  // Cambia esta URL si tu servidor Express está en otro puerto o dominio
+
+
   // Esta variable ya es un Observable<Producto[]> y no necesitamos hacer cast.
   private productosCollection: Observable<Producto[]>;
 
-  constructor(private firestore: Firestore) {
+  constructor(private firestore: Firestore, private http: HttpClient) {
     // Referencia a la colección 'productos' en Firestore
     const productosRef = collection(this.firestore, "Producto");
 
@@ -30,10 +36,17 @@ export class ProductService {
     this.productosCollection = collectionData(consulta, { idField: 'id' });
   }
 
-  // Obtiene todos los productos
+  // Obtiene todos los productos DE FIREBASE
   getProductos(): Observable<Producto[]> {
     return this.productosCollection; // Retorna directamente el observable de productos
   }
+
+  // para acceder a los productos de SQL
+  getProductosSql(): Observable<Producto[]> {
+    return this.http.get<Producto[]>(this.apiUrl);  // Hace la solicitud GET al backend
+  }
+
+
 
   updateProducto(id: string, data: Partial<Producto>): Promise<void> {
     const productRef = doc(this.firestore, `Producto/${id}`);
