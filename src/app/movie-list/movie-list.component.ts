@@ -3,6 +3,7 @@ import { MovieService } from '../movie.service';
  // Importa el servicio de autenticación
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth-service.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-movie-list',
@@ -19,13 +20,15 @@ export class MovieListComponent implements OnInit, OnDestroy {
   constructor(
     private movieService: MovieService,
     private authService: AuthService, // Servicio de autenticación para favoritos
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.loadMovies();
     this.loadSliderImages();
     this.loadFavoriteMovies();
+    this.messageService.add({ severity: 'info', summary: '', detail: 'CARTELERA', life: 1500 });
   }
 
   ngOnDestroy(): void {

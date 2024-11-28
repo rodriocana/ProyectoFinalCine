@@ -310,7 +310,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000; /* Asegura que esté por encima de otros elementos */
-  padding-bottom: 500px;
+
 }
 
 /* Contenedor del modal que incluye el iframe */
@@ -318,7 +318,7 @@
   position: relative;
   background-color: #e7e7e7;
   padding: 10px;
-  max-width: 75%; /* Tamaño máximo del modal */
+  max-width: 85%; /* Tamaño máximo del modal */
   max-height: 92%; /* Tamaño máximo del modal */
   border: #e98009 solid 4px;
   height: 1000px;

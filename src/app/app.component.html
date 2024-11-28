@@ -15,5 +15,14 @@
 </footer> -->
 
 <!-- Modal de Login, se abre solo si isModalOpen es true -->
-<app-login-modal *ngIf="isModalOpen" (close)="closeModal()"></app-login-modal>
+<!-- <app-login-modal *ngIf="isModalOpen" (close)="closeModal()"></app-login-modal> -->
 
+<!-- Toast para mostrar mensajes -->
+<p-toast position="top-right" [baseZIndex]="10000">
+  <ng-template let-message pTemplate="message">
+    <div class="custom-toast" [ngClass]="message.severity">
+      <span class="toast-summary">{{ message.summary }}</span>
+      <span class="toast-detail">{{ message.detail }}</span>
+    </div>
+  </ng-template>
+</p-toast>

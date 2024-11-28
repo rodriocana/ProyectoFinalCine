@@ -8,6 +8,7 @@ import { Usuario } from '../interfaces/usuario.model';
 import { Producto } from '../interfaces/producto.model';
 import { ProductService } from '../services/product.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore, private router: Router, private authService: AuthService,
-    private productService: ProductService, private fb: FormBuilder) {
+    private productService: ProductService, private fb: FormBuilder, private messageService: MessageService) {
 
     this.productForm = this.fb.group({
       nombreProducto: ['', Validators.required],
@@ -46,8 +47,9 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user$ = this.afAuth.authState;
+    this.messageService.add({ severity: 'info', summary: '', detail: 'MI PERFIL', life: 1500 });
 
+    this.user$ = this.afAuth.authState;
     // Suscripción al estado de autenticación
     this.user$.subscribe(user => {
       if (user) {

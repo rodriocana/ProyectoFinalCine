@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormularioService } from '../formulario.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-contact',
@@ -12,9 +13,11 @@ export class ContactComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private formularioService: FormularioService, private router:Router ) {}
+  constructor(private formBuilder: FormBuilder,private formularioService: FormularioService, private router:Router , private messageService: MessageService) {}
 
   ngOnInit(): void {
+    this.messageService.add({ severity: 'info', summary: '', detail: 'Formulario de contacto', life: 1500 });
+
     this.formulario = this.formBuilder.group({
       nombre: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],  // Validador de email

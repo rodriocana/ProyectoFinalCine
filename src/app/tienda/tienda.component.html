@@ -11,11 +11,11 @@
     <div *ngFor="let producto of productosEnCesta" class="producto-cesta">
       <img [src]="producto.imgProducto" alt="{{ producto.nombreProducto }}" class="imagen-cesta">
       <h2>{{ producto.nombreProducto }}</h2>
-      <p>Precio: {{ producto.precioProducto | currency }}</p>
+      <p>Precio: {{ producto.precioProducto}} €</p>
       <i class="fas fa-trash" (click)="eliminarDeCesta(producto)" title="Eliminar producto"></i>
 
     </div>
-    <h3>Total: {{ getTotalCesta() | currency }}</h3>
+    <h3>Total: {{ getTotalCesta()}} €</h3>
     <div *ngIf="productosEnCesta.length === 0">No hay productos en la cesta.</div>
   </div>
 
@@ -58,7 +58,7 @@
     <div *ngFor="let producto of productosFiltrados" class="producto-card">
       <img [src]="producto.imgProducto" alt="{{ producto.nombreProducto }}" class="producto-imagen">
       <h2 class="nombreProducto">{{ producto.nombreProducto }}</h2>
-      <p>Precio: {{ producto.precioProducto | currency }}</p>
+      <p>Precio: {{ producto.precioProducto }} €</p>
       <button (click)="agregarACesta(producto)">Comprar</button>
     </div>
   </div>

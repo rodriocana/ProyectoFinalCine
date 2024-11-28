@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { AuthService } from '../services/auth-service.service';
 import { Producto } from '../interfaces/producto.model';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -24,12 +25,14 @@ export class TiendaComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService
   ) { }
 
 
   ngOnInit(): void {
     this.token = localStorage.getItem("token");
+    this.messageService.add({ severity: 'info', summary: '', detail: 'Bienvenido a la tienda', life: 1500 });
 
     if (!this.token) {
       alert("Para acceder a la tienda debes estar logueado");
@@ -45,17 +48,17 @@ export class TiendaComponent implements OnInit {
       });
 
       // ----- aqui llamo a los productos de la base de datos sql ---- //
-    //   this.productService.getProductosSql().subscribe({
-    //     next: (productos) => {
-    //       console.log('Productos recibidos:', productos); // Verifica la estructura de los datos
+      // this.productService.getProductosSql().subscribe({
+      //   next: (productos) => {
+      //     console.log('Productos recibidos de sql:', productos); // Verifica la estructura de los datos
 
-    //       this.productos = productos; // Asigna los productos al array 'productos'
-    //       this.productosFiltrados = productos; // Inicialmente muestra todos
-    //     },
-    //     error: (err) => {
-    //       console.error('Error al obtener productos', err);
-    //     },
-    //   });
+      //     this.productos = productos; // ----- Asignar los productos al array 'productos' ----
+      //     this.productosFiltrados = productos; //  --- muestro todos inicialmente
+      //   },
+      //   error: (err) => {
+      //     console.error('Error al obtener productos', err);
+      //   },
+      // });
     // }
   }
 

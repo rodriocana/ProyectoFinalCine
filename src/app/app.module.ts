@@ -27,6 +27,10 @@ import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
 import { MyListComponent } from './my-list/my-list.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+import { MessageService } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'primeng/toast';
+
 
 
 @NgModule({
@@ -47,6 +51,7 @@ import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
     MyListComponent,
     ProfileComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -60,16 +65,20 @@ import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
     FirebaseAppModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireMessagingModule
-
-
+    AngularFireMessagingModule,
+    BrowserAnimationsModule,
+    ToastModule
 
   ],
-  providers: [ {
+  providers: [
+    [MessageService],
+
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
-    multi: true
+    multi: true,
   }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

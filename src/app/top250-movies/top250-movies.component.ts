@@ -3,6 +3,7 @@ import { MovieService } from '../movie.service';
 import { Router } from '@angular/router';
 import { concatMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-top250-movies',
@@ -12,10 +13,12 @@ import { of } from 'rxjs';
 export class Top250MoviesComponent implements OnInit {
   movies: any[] = [];
 
-  constructor(private movieService: MovieService, private router: Router) {}
+  constructor(private movieService: MovieService, private router: Router, private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.loadTop250Movies();
+    this.messageService.add({ severity: 'info', summary: '', detail: 'TOP 250', life: 1500 });
+
   }
 
   // esta funcion está mejorada para que cargue las paginas de la 1 a la 4 correctamente.

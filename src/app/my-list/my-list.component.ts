@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { AuthService } from '../services/auth-service.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-my-list',
@@ -14,11 +15,12 @@ export class MyListComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private movieService: MovieService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
-    console.log('entró');
+    this.messageService.add({ severity: 'info', summary: '', detail: 'MI LISTA', life: 1500 });
     this.authService.getFavoriteMovies().subscribe(
       (favorites) => {
         // Primero limpiamos la lista para no acumular repetidos en futuras suscripciones
