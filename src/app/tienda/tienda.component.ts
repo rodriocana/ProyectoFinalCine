@@ -3,6 +3,10 @@ import { ProductService } from '../services/product.service';
 import { AuthService } from '../services/auth-service.service';
 import { Producto } from '../interfaces/producto.model';
 import { MessageService } from 'primeng/api';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { Usuario } from '../interfaces/usuario.model';
 
 
 
@@ -12,6 +16,10 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./tienda.component.css'],
 })
 export class TiendaComponent implements OnInit {
+
+  user$: Observable<any> | undefined;
+  saldoUser: number;
+  userId:string;
   productos: Producto[] = [];
   productosFiltrados: Producto[] = [];
   productosEnCesta: any[] = []; // Arreglo para almacenar los productos añadidos a la cesta
@@ -21,12 +29,17 @@ export class TiendaComponent implements OnInit {
   isCestaVisible: boolean = false; // Propiedad para controlar la visibilidad de la cesta
   user: any;
   token = '';
+  users: Usuario[] = []; // Lista de usuarios
+
 
 
   constructor(
     private productService: ProductService,
     private authService: AuthService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private afAuth: AngularFireAuth,
+    private firestore: AngularFirestore,
+    private auth:AuthService
   ) { }
 
 
@@ -39,6 +52,7 @@ export class TiendaComponent implements OnInit {
     } else {
       this.productService.getProductos().subscribe({
         next: (productos) => {
+          console.log(productos)
           this.productos = productos; // Asigna los productos al array 'productos'
           this.productosFiltrados = productos; // Inicialmente muestra todos
         },
@@ -54,15 +68,38 @@ export class TiendaComponent implements OnInit {
 
       //     this.productos = productos; // ----- Asignar los productos al array 'productos' ----
       //     this.productosFiltrados = productos; //  --- muestro todos inicialmente
+
+      //     console.log("hola" + this.productosFiltrados);
+      //     console.log("adios" + this.productos);
+
       //   },
       //   error: (err) => {
       //     console.error('Error al obtener productos', err);
       //   },
       // });
-    // }
+
+      this.user$ = this.afAuth.authState;
+      this.user$.subscribe(user => {
+        if (user) {
+          this.firestore.collection('Usuarios').doc(user.uid).valueChanges().subscribe({
+            next: (resp:any) => {
+              if (resp) {
+                this.saldoUser = resp.saldo;
+                this.userId = user.uid
+               }
+            },
+            error: error => {
+            },
+          });
+
+        } else {
+          console.log("No hay usuario autenticado");
+
+        }
+      });
   }
 
-}
+  }
 
   filtrarProductos(): void {
     this.productosFiltrados = this.productos.filter((producto) => {
@@ -112,4 +149,49 @@ export class TiendaComponent implements OnInit {
       0
     );
   }
+
+  ComprarProdCesta(userId: string): void {
+
+    const saldoTotalCesta = this.getTotalCesta(); // Calcula el total de la compra
+    const saldoRestante = this.saldoUser - saldoTotalCesta; // Resta el total de la compra al saldo del usuario
+
+    if (saldoRestante < 0) {
+      alert('Saldo insuficiente para realizar la compra');
+      return; // Si no hay suficiente saldo, se termina la función
+    }
+
+    console.log(`Saldo restante: ${saldoRestante}`);
+
+    this.updateUserSaldo(userId, saldoRestante);
+
+    this.isCestaVisible = !this.isCestaVisible;
+  }
+
+    updateUserSaldo(userId: string, nuevoSaldo: number): void {
+      this.firestore.collection('Usuarios').doc(userId).update({ saldo: nuevoSaldo })
+        .then(() => {
+          alert('Saldo actualizado correctamente');
+          this.loadUsers();
+        })
+        .catch((error) => {
+          console.error('Error al actualizar el saldo del usuario:', error);
+        });
+    }
+
+    // para volver a cargar el usuario actualizado de firebase
+    loadUsers(): void {
+      this.firestore.collection<Usuario>('Usuarios').snapshotChanges().subscribe({
+        next: (changes) => {
+          this.users = changes.map((change) => {
+            const data = change.payload.doc.data() as Usuario;
+            const id = change.payload.doc.id;
+            return { id, ...data };
+          });
+          console.log('Usuarios cargados:', this.users);
+        },
+        error: (error) => {
+          console.error('Error al cargar usuarios:', error);
+        }
+      });
+    }
 }

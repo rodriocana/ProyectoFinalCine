@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { AuthService } from '../services/auth-service.service';
 
@@ -20,12 +20,13 @@ export class BuyTicketComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.user = this.authService.getCurrentUser();
-    const movieId = this.activatedRoute.snapshot.params['id'];
+    const movieId = this.activatedRoute.snapshot.params['id'];  // aqui recojo el id de la ruta movieDetail/id y lo guardo en movieId
 
     if (movieId) {
       this.movieService.getMovieDetails(+movieId).subscribe({
@@ -50,9 +51,8 @@ export class BuyTicketComponent implements OnInit {
     return total;
   }
 
- volver(){
-
-
-
- }
+  volver(movieId:number){
+  console.log("hola");
+  this.router.navigate(['/movieDetail', movieId]);
+}
 }

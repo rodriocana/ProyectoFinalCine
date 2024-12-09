@@ -66,8 +66,6 @@ export class ProfileComponent implements OnInit {
 
               // Verificar si el usuario es admin
               this.isAdmin = resp.nombre === 'admin';
-
-              console.log('Datos del usuario cargados:', resp);
             }
           },
           error: error => {

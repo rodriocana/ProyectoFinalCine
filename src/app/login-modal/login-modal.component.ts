@@ -16,7 +16,7 @@ import { ToastModule } from 'primeng/toast';
 })
 export class LoginModalComponent implements OnInit {
 
-  @Input() isLogin: boolean = true;  // este true en el formulario es el que hace que salga form de inicio de sesion.
+  isLogin: boolean = true;  // este true en el formulario es el que hace que salga form de inicio de sesion.
   @Output() close = new EventEmitter<void>();
   registroForm: FormGroup;
   inicioForm: FormGroup;

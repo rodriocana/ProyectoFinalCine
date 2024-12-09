@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ImageCacheService, MovieService } from '../movie.service';
+import {  MovieService } from '../movie.service';
 import { AuthService } from '../services/auth-service.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 

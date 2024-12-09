@@ -2,7 +2,7 @@
 
   <!-- Caja para la foto del actor -->
   <div class="actor-photo-card">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + actorProfilePath"
+    <img [src]="'https://image.tmdb.org/t/p/original' + actorProfilePath"
          [alt]="actorName"
          class="actor-photo"
          (error)="onImageError($event)">

@@ -28,7 +28,7 @@
       <label for="telefono">Teléfono:</label>
       <input type="text" id="telefono" formControlName="telefono" placeholder="Introduce tu teléfono...">
       <div *ngIf="formulario.get('telefono')?.invalid && formulario.get('telefono')?.touched">
-        <small class="error">El teléfono es obligatorio y debe tener 10 dígitos.</small>
+        <small class="error">El teléfono es obligatorio y debe tener 9 dígitos.</small>
       </div>
     </div>
 

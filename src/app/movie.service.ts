@@ -72,21 +72,21 @@ export class MovieService {
 
 }
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ImageCacheService {
-  private cache: { [url: string]: boolean } = {};
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class ImageCacheService {
+//   private cache: { [url: string]: boolean } = {};
 
-  preloadImage(url: string): void {
-    if (!this.cache[url]) {
-      const img = new Image();
-      img.src = url;
-      this.cache[url] = true;
-    }
-  }
+//   preloadImage(url: string): void {
+//     if (!this.cache[url]) {
+//       const img = new Image();
+//       img.src = url;
+//       this.cache[url] = true;
+//     }
+//   }
 
-  isImageCached(url: string): boolean {
-    return !!this.cache[url];
-  }
-}
+//   isImageCached(url: string): boolean {
+//     return !!this.cache[url];
+//   }
+// }

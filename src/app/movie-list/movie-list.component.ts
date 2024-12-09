@@ -28,7 +28,7 @@ export class MovieListComponent implements OnInit, OnDestroy {
     this.loadMovies();
     this.loadSliderImages();
     this.loadFavoriteMovies();
-    this.messageService.add({ severity: 'info', summary: '', detail: 'CARTELERA', life: 1500 });
+    // this.messageService.add({ severity: 'info', summary: '', detail: 'CARTELERA', life: 1500 });
   }
 
   ngOnDestroy(): void {
