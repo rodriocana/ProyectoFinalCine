@@ -22,7 +22,7 @@ export class ContactComponent implements OnInit {
   emailUser:string | null = null;
 
   constructor(private formBuilder: FormBuilder,private formularioService: FormularioService, private router:Router , private messageService: MessageService,
-    private afAuth: AngularFireAuth, private firestore: AngularFirestore, private auth:AuthService) {}
+    private afAuth: AngularFireAuth, private firestore: AngularFirestore) {}
 
   ngOnInit(): void {
 
@@ -61,8 +61,6 @@ export class ContactComponent implements OnInit {
       }
     });
   }
-
-
 
   enviarFormulario(): void {
     if (this.formulario.valid) {

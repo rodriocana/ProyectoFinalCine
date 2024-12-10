@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'movieList', component: MovieListComponent },
   { path: 'movieDetail/:id', component: MovieDetailComponent },
-  { path: 'registro', component: FormularioRegistroComponent }, // Nueva ruta para el registro
-  // { path: 'tienda', component: TiendaComponent , canActivate:[AuthGuardService]},
+  { path: 'registro', component: FormularioRegistroComponent },
+  // { path: 'tienda', component: TiendaComponent , canActivate:[AuthGuardService]}, //  para acceder a la tienda con authguard autorizado, si es true.
   { path: 'tienda', component: TiendaComponent},
   {path: 'top250', component: Top250MoviesComponent},
   { path: 'actor/:id', component: ActorMoviesDetailComponent },

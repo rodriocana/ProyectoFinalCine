@@ -6,8 +6,10 @@ import { from, Observable, switchMap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class AuthService {
-  private user: any; // Almacenar la información del usuario
+  private user: any;
 
   constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {
     this.afAuth.authState.subscribe(user => {

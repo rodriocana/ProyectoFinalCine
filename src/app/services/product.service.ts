@@ -19,17 +19,15 @@ interface Producto {
 })
 export class ProductService {
 
-  private apiUrl = 'http://localhost:3000/producto';  // Cambia esta URL si tu servidor Express está en otro puerto o dominio
+  private apiUrl = 'http://localhost:3000/producto';
 
 
-  // Esta variable ya es un Observable<Producto[]> y no necesitamos hacer cast.
   private productosCollection: Observable<Producto[]>;
 
   constructor(private firestore: Firestore, private http: HttpClient) {
-    // Referencia a la colección 'productos' en Firestore
     const productosRef = collection(this.firestore, "Producto");
 
-    // Crear una consulta ordenando por 'nombreProducto'
+    // para ordenar por nombreProducto
     const consulta = query(productosRef, orderBy('nombreProducto', 'asc'));
 
     // Obtener los datos de los productos y almacenarlos en la variable 'productosCollection'

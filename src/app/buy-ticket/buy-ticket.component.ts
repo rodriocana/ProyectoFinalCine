@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth-service.service';
   styleUrls: ['./buy-ticket.component.css'],
 })
 export class BuyTicketComponent implements OnInit {
+
   movie: any;
   user: any;
   selectedTickets: number = 1;
@@ -55,4 +56,11 @@ export class BuyTicketComponent implements OnInit {
   console.log("hola");
   this.router.navigate(['/movieDetail', movieId]);
 }
+
+ConfirmarCompra() {
+
+  const total = this.calculateTotal();
+  console.log(this.selectedTime, this.selectedTickets, total +  " euros");
+  }
+
 }

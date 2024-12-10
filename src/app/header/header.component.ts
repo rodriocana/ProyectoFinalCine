@@ -36,6 +36,7 @@ export class HeaderComponent {
               this.avatar = resp.avatar
               this.closeModal();
               console.log(this.auth.isLoggedIn());
+              console.log(this.auth.getCurrentUser());
             }
           },
           error: error => {

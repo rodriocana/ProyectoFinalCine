@@ -154,9 +154,7 @@ private loadMovieCredits(movieId: number): void {
   }
 
      goToBuyTicket(movieId:number){
-
-      this.router.navigate(['buyTicket', movieId]);
-
+    this.router.navigate(['buyTicket', movieId]);
   }
 
   showSynopsisModal: boolean = false;
@@ -186,7 +184,7 @@ private loadMovieCredits(movieId: number): void {
   openTrailer() {
     const videoId = this.trailerUrl.split('v=')[1]; // Extrae el ID del video de la URL
     const unsafeUrl = `https://www.youtube.com/embed/${videoId}`;
-    this.selectedTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl); // Sanitiza la URL
+    this.selectedTrailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl); // Le da un tratamiento a la url para que sea segura
     this.showTrailerModal = true; // Muestra el modal del trailer
   }
 

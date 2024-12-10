@@ -6,7 +6,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
+// User Service para comprobar usuarios en firebase Authentication.
 export class UserService {
+
   private authStatus = new BehaviorSubject<boolean>(false);
 
   constructor(private auth: AngularFireAuth, private firestore: AngularFirestore) {
@@ -20,6 +23,7 @@ export class UserService {
     return this.authStatus.asObservable();
   }
 
+  // en este login, comprobamos si existe el correo y contraseña de firebase authenticator, y si existe, nos logueamos con ese usuario.
   loginUser(form: any): Observable<any> {
     return new Observable(observer => {
       this.auth.signInWithEmailAndPassword(form.email, form.password)
@@ -34,14 +38,14 @@ export class UserService {
     });
   }
 
-  // aqui creamos el usuario en la base de datos FIREBASE
+  // aqui creamos el usuario en la base de datos FIREBASE authentication, además de guardarlos en la coleccion Usuarios.
   registerUser(form: any): Observable<any> {
     return new Observable(observer => {
-      this.auth.createUserWithEmailAndPassword(form.correo, form.contrasena)
+      this.auth.createUserWithEmailAndPassword(form.correo, form.contrasena) // aqui se crea en authentication.
         .then(userCredential => {
           const userId = userCredential.user?.uid;
           if (userId) {
-            // Guardar información adicional del usuario en Firestore
+            // Guardar información adicional del usuario en Firestore coleccion Usuarios.
             this.firestore.collection('Usuarios').doc(userId).set({
               nombre: form.nombre,
               correo: form.correo,

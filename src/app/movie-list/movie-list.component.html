@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <!-- Contenedor de las películas -->
+  <!-- Contenedor de peliculas. -->
   <div *ngFor="let movie of movies" class="movie-card" (click)="goToMovieDetails(movie.id)">
     <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" [alt]="movie.title" class="poster-image"
       (error)="onImageError($event)">
@@ -19,8 +19,7 @@
       <h1>{{ movie.title }}</h1>
     </div>
 
-    <!-- Icono de favorito -->
-    <!-- Icono de favorito, solo visible si el usuario está logueado -->
+    <!-- Icono de corazon favoritos, solo visible si el usuario está logueado -->
     <button *ngIf="showFavoriteButton()" (click)="toggleFavorite(movie, $event)" class="favorite-icon"
       [class.favorited]="isFavorite(movie.id)">
       <span *ngIf="isFavorite(movie.id)">❤️</span>
