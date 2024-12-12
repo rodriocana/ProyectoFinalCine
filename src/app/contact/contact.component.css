@@ -1,21 +1,21 @@
 /* Contenedor general del formulario */
 .FormContainer {
   display: flex;
-  justify-content: center; /* Centra el formulario en el eje horizontal */
-  align-items: center; /* Centra el formulario en el eje vertical */
-  height: 100vh; /* Altura completa de la pantalla */
-  background-image: url('napoleon.jpg'); /* Fondo con imagen */
-  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
-  background-position: center; /* Centra la imagen de fondo */
-  background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('napoleon.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Estilos del formulario */
 .Form {
   width: 100%;
-  max-width: 400px; /* Máxima anchura del formulario */
+  max-width: 400px;
   padding: 2rem;
-  background-color: #f9f9f9; /* Fondo blanco */
+  background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   font-family: Arial, sans-serif;
@@ -30,8 +30,8 @@
 }
 
 #icono {
-  font-size: 40px; /* Tamaño del icono */
-  color: #000000; /* Color del icono */
+  font-size: 40px;
+  color: #000000;
   margin-right: 10px;
 }
 
@@ -102,18 +102,18 @@ button[type="submit"]:hover {
 }
 
 button[type="submit"]:disabled {
-  background-color: #bbb; /* Color gris cuando el formulario está deshabilitado */
+  background-color: #bbb;
   cursor: not-allowed;
 }
 
 /* Estilos globales para los elementos label en el formulario */
 .Form label {
-  display: block;         /* Asegura que el label ocupe todo el ancho disponible */ /* Añade espacio debajo del label */
+  display: block;
   color: #333;
-  margin-top: 20px;          /* Establece el color del texto */
-  font-size: 1rem;        /* Establece un tamaño de fuente consistente */
-  font-weight: bold;      /* Hace que el texto del label sea negrita */
-  font-family: Arial, sans-serif;  /* Establece una fuente legible */
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
 }
 
 

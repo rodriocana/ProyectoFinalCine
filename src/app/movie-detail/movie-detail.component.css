@@ -10,13 +10,13 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Cambiado a flex-start para alinear a la izquierda */
+  align-items: flex-start;
   background-size: cover;
   background-position: center;
   color: #ffffff;
   padding-left: 26px;
   padding-top: 0px;
-   backdrop-filter: blur(5px); /* Añade un efecto de desenfoque en el fondo */
+   backdrop-filter: blur(5px);
 }
 
 /* Estilos del título */
@@ -26,7 +26,7 @@
   font-family: 'Orbitron', sans-serif;
   margin-top: 10px;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Sombra para mejor visibilidad */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .poster-container {
@@ -74,8 +74,8 @@
 }
 
 .thumbnail-button-container {
-  display: flex; /* Usar flexbox para alinear horizontalmente */
-  align-items: flex-end; /* Alinear los elementos en la parte inferior */
+  display: flex;
+  align-items: flex-end;
 }
 
 
@@ -85,11 +85,11 @@
   display: flex;
   justify-content: center;
   gap: 5px;
-  position: absolute; /* Los actores estarán posicionados de manera absoluta dentro de la miniatura */
-  top: 64%; /* Aparecen arriba de la miniatura */
-  left: 50%; /* Centrados horizontalmente sobre las miniaturas */
-  transform: translateX(-50%); /* Centrado perfecto */
-  z-index: 2; /* Asegura que los actores estén por encima de las miniaturas */
+  position: absolute;
+  top: 64%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
 }
 
 /* Tarjetas de los actores */
@@ -103,7 +103,7 @@
 
   background-color: rgba(0, 0, 0, 0.6);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  margin-top: -140px;/* Margen superior para separar los actores */
+  margin-top: -140px;
 }
 /* Imagen de los actores */
 .actor-card img {
@@ -116,26 +116,26 @@
 /* Nombres de los actores */
 .modal-content .actor-name {
   color: #ffffff;
-  font-size: 1.5em; /* O el tamaño que prefieras */
+  font-size: 1.5em;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .modal-content .actor-character {
   color: #ffffff;
-  font-size: 1.2em; /* O el tamaño que prefieras */
+  font-size: 1.2em;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 /* Miniaturas */
 .thumbnail-container {
   display: flex;
-  gap: 5px; /* Espacio entre las miniaturas */
+  gap: 5px;
   margin-top: 10px;
   animation: marquee 30s linear infinite;
   animation-play-state: paused;
 }
 
 .thumbnail {
-  width: 255px; /* Ajusta el tamaño de las miniaturas */
+  width: 255px;
   height: auto;
   border-radius: 5px;
   border: 2px solid #e67f1f;
@@ -144,7 +144,7 @@
 }
 
 .thumbnail-container:hover {
-  animation-play-state: running; /* Pausa la animación cuando el ratón está encima */
+  animation-play-state: running;
 }
 
 @keyframes slide {
@@ -179,7 +179,7 @@
 }
 
 .movie-details p strong {
-  color: #ffcc00; /* Color para destacar los títulos */
+  color: #ffcc00;
 }
 
 /* Efectos de entrada en el detalle */
@@ -189,60 +189,60 @@
 
 
 .button-container {
-  display: flex; /* Alinear el contenido en el contenedor */
-  align-items: flex-end; /* Alinear el botón en la parte inferior */
+  display: flex;
+  align-items: flex-end;
   gap: 5px;
   padding-top: 10px;
   margin-left: -14px;
 }
 
 #sinopsis {
-  background-color: #e98009; /* Color de fondo */
-  color: white; /* Color del texto */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  background-color: #e98009;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 
-  width: 90px; /* Ancho del botón */
-  height: 40px; /* Alto del botón */
-  transition: background-color 0.3s ease; /* Suaviza el cambio de color al pasar el ratón */
+  width: 90px;
+  height: 40px;
+  transition: background-color 0.3s ease;
 }
 
 #comprarEntrada {
-  background-color: #e98009; /* Color de fondo */
-  color: white; /* Color del texto */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar el ratón */
-  font-size: 12px; /* Tamaño de fuente */
-  width: 110px; /* Ancho del botón */
-  height: 40px; /* Alto del botón */
-  transition: background-color 0.3s ease; /* Suaviza el cambio de color al pasar el ratón */
+  background-color: #e98009;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  width: 110px;
+  height: 40px;
+  transition: background-color 0.3s ease;
 }
 
 #verTrailer{
 
-  background-color: #e98009; /* Color de fondo */
-  color: white; /* Color del texto */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  background-color: #e98009;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 
-  width: 80px; /* Ancho del botón */
-  height: 40px; /* Alto del botón */
-  transition: background-color 0.3s ease; /* Suaviza el cambio de color al pasar el ratón */
+  width: 80px;
+  height: 40px;
+  transition: background-color 0.3s ease;
 }
 
 #verTrailer:hover{
-  background-color: #cc3939; /* Color de fondo al pasar el ratón */
+  background-color: #cc3939;
 }
 
 #sinopsis:hover {
-  background-color: #cc3939; /* Color de fondo al pasar el ratón */
+  background-color: #cc3939;
 }
 
 #comprarEntrada:hover {
-  background-color: #cc3939; /* Color de fondo al pasar el ratón */
+  background-color: #cc3939;
 }
 
 .overlay {
@@ -305,11 +305,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  z-index: 1000;
 
 }
 
@@ -318,8 +318,8 @@
   position: relative;
   background-color: #e7e7e7;
   padding: 10px;
-  max-width: 85%; /* Tamaño máximo del modal */
-  max-height: 92%; /* Tamaño máximo del modal */
+  max-width: 85%;
+  max-height: 92%;
   border: #e98009 solid 4px;
   height: 1000px;
   width: 1200px;
@@ -329,14 +329,14 @@
   align-items: center;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  overflow: hidden; /* Asegura que no se desborde el contenido */
+  overflow: hidden;
 }
 
 /* Estilo para el iframe */
 iframe {
   width: 1170px;
-  height: 900px; /* Altura fija para el video */
-  border-radius: 5px; /* Bordes redondeados para el iframe */
+  height: 900px;
+  border-radius: 5px;
 
 
 }
@@ -345,7 +345,7 @@ iframe {
   background-color: #0B3954;
   color: #e67f1f;
   padding: 10px;
-  padding-top: 10px; /* Asegura un padding-top consistente */
+  padding-top: 10px;
   border-radius: 10px;
   width: 1000px;
   border: #e98009 solid 3px;
@@ -354,7 +354,7 @@ iframe {
   text-align: center;
   animation: zoomIn 0.3s ease;
   flex-direction: column;
-  align-items: center;   /* Asegura que los elementos dentro estén centrados */
+  align-items: center;
 }
 
 .p-review{
@@ -368,15 +368,15 @@ iframe {
 }
 
 .release-date {
-  color: #e67f1f; /* Cambia el color del texto a naranja */
-  font-weight: bold; /* (Opcional) Resalta la fecha con negrita */
+  color: #e67f1f;
+  font-weight: bold;
 }
 
 .modal-content p {
   font-size: 1.1em;
   margin-bottom: 10px;
   color: rgb(255, 255, 255);
-  text-align: center; /* Centra el texto dentro del párrafo */
+  text-align: center;
 }
 
 .trailer-button{
@@ -423,8 +423,7 @@ iframe {
   }
 }
 
-/* BOTON FAVORTIOS */
-/* Contenedor con fondo de color */
+
 
 /* Botón de favoritos con el nuevo contenedor */
 .button-container #favoritos {
@@ -450,11 +449,11 @@ iframe {
 }
 
 .heart-icon.favorited {
-  color: red; /* Cambia de color cuando esté en favoritos */
+  color: red;
 }
 
 .button-container #favoritos:hover .heart-icon {
-  color: #ff4d4d; /* Color de corazón al pasar el cursor */
+  color: #ff4d4d;
 }
 
 .divider-actor {
@@ -489,4 +488,198 @@ iframe {
 
 .genre-badge:hover {
   background-color: #0056b3;
+}
+
+
+@media (max-width: 393px) {
+
+  .movie-details {
+    margin: 1px;
+    padding: 2px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding-left: 26px;
+    padding-top: 0px;
+     backdrop-filter: blur(5px);
+  }
+
+  .poster-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Imagen del póster */
+  .poster-image {
+    width: 243px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e67f1f;
+  }
+
+  .movie-details h2 {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  }
+
+  .button-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    padding-top: 10px;
+    margin-left: -14px;
+  }
+
+  #sinopsis {
+    background-color: #e98009;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+    transition: background-color 0.3s ease;
+  }
+
+  #comprarEntrada {
+    background-color: #e98009;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    width: 110px;
+    height: 40px;
+    transition: background-color 0.3s ease;
+  }
+
+  #verTrailer{
+
+    background-color: #e98009;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    width: 80px;
+    height: 40px;
+    transition: background-color 0.3s ease;
+  }
+
+
+
+  /* Tarjetas de los actores */
+.actor-card {
+  text-align: center;
+  width: 68px;
+  font-size: 0.75em;
+  border: 2px solid rgb(230, 127, 31);
+  border-radius: 8px;
+  padding: 5px;
+
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  margin-top: -140px;
+}
+/* Imagen de los actores */
+.actor-card img {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+}
+
+/* Nombres de los actores */
+.modal-content .actor-name {
+  color: #ffffff;
+  font-size: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.modal-content .actor-character {
+  color: #ffffff;
+  font-size: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.modal-content {
+  background-color: #0B3954;
+  color: #e67f1f;
+  padding: 10px;
+  padding-top: 10px;
+  border-radius: 10px;
+  width: 300px;
+  height: 200px;
+  border: #e98009 solid 3px;
+  margin-bottom: 400px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  animation: zoomIn 0.3s ease;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-content p{
+
+  font-size: 10px;
+}
+
+.modal-content-trailer {
+  position: relative;
+  background-color: #e7e7e7;
+  padding: 10px;
+  max-width: 96%;
+  max-height: 40%;
+  border: #e98009 solid 4px;
+  height: 1000px;
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+iframe {
+  width: 330px;
+  height: 250px;
+  border-radius: 5px;
+}
+
+.enlarged-image{
+
+  width: 367px;
+  height: 213px;
+  margin-bottom: 100px ;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease;
+  z-index: 1000;
+}
+
+
+
+
 }

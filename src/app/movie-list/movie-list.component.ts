@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MovieService } from '../movie.service';
+import { MovieService } from '../services/movie.service';
  // Importa el servicio de autenticación
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth-service.service';

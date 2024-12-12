@@ -9,12 +9,14 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private router: Router) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // No interceptar las solicitudes que vayan a la ruta de includes
-    if (this.router.url.includes('movieList') || (this.router.url.includes("/"))){
+
+    // en esta funcion dejo pasar estas rutas para mostrar los datos de la api sin necesidad de estar logueado y tener un token el cual comparo en cada
+    // componente
+    if (this.router.url.includes('movieList') || (this.router.url.includes(""))){
       return next.handle(request);
     }
 
-    const token = localStorage.getItem('token');  // Método para obtener el token guardado
+    const token = localStorage.getItem('token');
 
     if (!token) {
       // Si no hay token, se genera un error HTTP 401

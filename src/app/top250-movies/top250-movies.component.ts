@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService } from '../movie.service';
+import { MovieService } from '../services/movie.service';
 import { Router } from '@angular/router';
 import { concatMap } from 'rxjs/operators';
 import { of } from 'rxjs';

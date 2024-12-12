@@ -1,6 +1,6 @@
 // src/app/slider/slider.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MovieService } from '../movie.service';
+import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-slider',

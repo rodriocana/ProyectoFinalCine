@@ -12,7 +12,6 @@ header {
   position: fixed;
   height: 100vh;
   width: 70px;
-  /* Tamaño inicial cerrado */
   z-index: 10;
   border-right: 2px solid white;
   padding: 20px 0;
@@ -22,7 +21,7 @@ header {
 
 header.sidebar-open {
   width: 220px;
-  /* Ancho cuando el sidebar está abierto */
+
 }
 
 .icon-container {

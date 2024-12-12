@@ -1,11 +1,8 @@
 .tienda-container {
   text-align: center;
-  /* Cambiar a left si quieres que el contenido esté alineado a la izquierda */
   padding: 20px;
-  /* Ajusta el padding si necesitas espacio en el contenedor */
   margin-left: 220px;
   position: relative;
-  /* Necesario para el posicionamiento absoluto de la cesta */
   background-color: #242729;
 }
 
@@ -13,7 +10,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  /* Alinea los productos a la izquierda */
   gap: 20px;
 }
 
@@ -74,9 +70,7 @@
   cursor: pointer;
   color: white;
   font-size: 24px;
-  /* Tamaño del icono */
   margin-bottom: 20px;
-  /* Espacio debajo del icono */
 }
 
 .cesta {
@@ -96,41 +90,58 @@
 
 }
 
+
+.btn-comprar-cesta {
+  --bg: #000;
+  --hover-bg: #6db7e2;
+  --hover-text: #000;
+  color: #fff;
+  cursor: pointer;
+  width: 120px;
+  padding: 5px;
+  border-radius: 6px;
+  align-self: center;
+  border: 1px solid var(--bg);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--bg);
+  transition: 0.2s;
+}
+
+.btn-comprar-cesta:hover {
+  color: var(--hover-text);
+  transform: translate(-0.25rem, -0.25rem);
+  background: var(--hover-bg);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+}
+
+.btn-comprar-cesta:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+
+
 .producto-card button {
   background-color: #4CAF50;
-  /* Verde atractivo */
   color: white;
-  /* Texto blanco */
   border: none;
-  /* Sin borde */
   padding: 10px 20px;
-  /* Espaciado interno */
   text-align: center;
-  /* Centrado del texto */
   font-size: 16px;
-  /* Tamaño del texto */
   border-radius: 5px;
-  /* Bordes redondeados */
   cursor: pointer;
-  /* Cambiar el cursor a puntero */
   transition: all 0.3s ease;
-  /* Suavizar las animaciones */
 }
 
 .producto-card button:hover {
   background-color: #45a049;
-  /* Cambiar a un verde más oscuro */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  /* Sombra en hover */
   transform: scale(1.05);
-  /* Ligeramente más grande */
 }
 
 .producto-card button:active {
   background-color: #3e8e41;
-  /* Más oscuro al hacer clic */
   transform: scale(0.95);
-  /* Ligeramente más pequeño */
 }
 
 
@@ -158,22 +169,15 @@ h2 {
 
 .imagen-cesta {
   width: 50px;
-  /* Ancho fijo de la imagen */
   height: auto;
-  /* Mantener la proporción de la imagen */
   border-radius: 5px;
-  /* Bordes redondeados para la imagen */
   margin-right: 15px;
-  /* Espacio entre la imagen y el texto */
 }
 
 .producto-cesta h2 {
   font-size: 1.2em;
-  /* Tamaño de fuente para el nombre del producto */
   color: #333;
-  /* Color del texto */
   flex: 1;
-  /* Permitir que el nombre del producto use el espacio disponible */
 }
 
 .producto-cesta p {
@@ -199,3 +203,106 @@ h2 {
   color: #666;
 
 }
+
+@media (max-width:393px){
+
+  .tienda-container {
+    text-align: center;
+    padding: 20px;
+    margin-left: 101px;
+    position: relative;
+    background-color: #242729;
+  }
+
+
+.producto-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+  color: white;
+}
+
+.producto-imagen {
+  width: 56%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.nombreProducto {
+  color: white;
+  font-size: 12px;
+}
+
+.cesta {
+  position: initial;
+  top: 60px;
+  right: 0;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  padding: 10px;
+  margin-right: 300px;
+  height: auto;
+  width: 244px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.btn-comprar-cesta {
+  --bg: #000;
+  --hover-bg: #6db7e2;
+  --hover-text: #000;
+  color: #fff;
+  cursor: pointer;
+  width: 120px;
+  height: 39px;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  align-self: center;
+  border: 1px solid var(--bg);
+  border-radius: 4px;
+  padding: 0.8em 2em;
+  background: var(--bg);
+  transition: 0.2s;
+}
+
+.texto-cesta {
+  color: rgb(255, 255, 255);
+  padding-left: 5px;
+  font-family: "Orbitron", sans-serif;
+}
+
+.cestaTexto {
+
+  font-family: "Orbitron", sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  margin-bottom: -10px;
+}
+
+.producto-cesta h2 {
+  font-size: 16px;
+  color: #333;
+  flex: 1;
+  padding-right: 20px;
+}
+
+.producto-cesta p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+}
+
+
+
+
+

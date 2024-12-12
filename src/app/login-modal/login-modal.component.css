@@ -5,7 +5,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6); /* Fondo oscuro y semitransparente */
+  background: rgba(0, 0, 0, 0.6);
   z-index: 999;
 }
 
@@ -15,7 +15,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #ffffff; /* Fondo blanco para el modal */
+  background: #ffffff;
   padding: 20px;
   border-radius: 12px;
   width: 350px;
@@ -48,7 +48,7 @@
 }
 
 .modal-content input:focus {
-  border-color: #007bff; /* Color de borde en foco */
+  border-color: #007bff;
 }
 
 /* Estilo del botón de login */
@@ -68,10 +68,10 @@
 }
 
 .modal-content button[type="submit"]:hover {
-  background-color: #0056b3; /* Color al pasar el ratón */
+  background-color: #0056b3;
 }
 .modal-content button[type="submit"]:disabled {
-  background-color: grey; /* Color al pasar el ratón */
+  background-color: grey;
 }
 .btn-registar{
   width: 100%;
@@ -88,7 +88,7 @@
 }
 
 .btn-registar:hover{
-  background-color: #fa6400 /* Color al pasar el ratón */
+  background-color: #fa6400
 
 }
 
@@ -115,49 +115,48 @@
 
 
 /* Contenedor de los avatares */
-/* Contenedor de los avatares */
 .avatar-container {
   display: flex;
-  flex-wrap: wrap;  /* Permite que los avatares se ajusten a nuevas líneas */
-  justify-content: center;  /* Centra los avatares en la fila */
-  gap: 10px;  /* Espacio entre los avatares */
-  margin-top: 20px;  /* Espacio superior */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 /* Estilo de cada avatar */
 .avatar {
   height: 90px;
   width: 90px;
-  padding: 0; /* Elimina el padding para centrar mejor */
-  border-radius: 50%;  /* Hace que los avatares sean redondos */
-  cursor: pointer;  /* Cambia el cursor al pasar sobre el avatar */
-  transition: transform 0.3s ease;  /* Animación al pasar el ratón */
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 /* Efecto de hover sobre los avatares */
 .avatar:hover {
-  transform: scale(1.1);  /* Aumenta el tamaño del avatar cuando el ratón pasa sobre él */
+  transform: scale(1.1);
 }
 
 /* Para asegurarse de que los avatares se mantengan en una fila */
 @media (max-width: 768px) {
   .avatar-container {
-    justify-content: space-around;  /* En pantallas más pequeñas, distribuye los avatares */
+    justify-content: space-around;
   }
 }
 
-/* Estilo básico para el Toast */
+
 /* Estilo para el contenedor principal del mensaje */
 p-toast .ui-toast-message {
-  background-color: #f10000; /* Fondo claro */
-  border-left: 5px solid #8c00ff; /* Línea indicadora */
+  background-color: #f10000;
+  border-left: 5px solid #8c00ff;
   padding: 10px;
-  border-radius: 5px; /* Bordes redondeados */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
 }
 
-/* Estilo para el texto del mensaje */
+
 
 /* Posicionamiento del Toast */
 .custom-toast {

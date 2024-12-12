@@ -11,9 +11,9 @@
   padding-left: 110px;
   padding-right: 50px;
   padding-bottom: 30px;
-  position: relative; /* Esto es importante para que el slider se posicione sobre las películas */
-  padding-top: 500px; /* Deja espacio para el slider arriba */
-  z-index: 1; /* Asegura que las películas estén por debajo del slider */
+  position: relative;
+  padding-top: 500px;
+  z-index: 1;
 }
 
 /* Estilos para las tarjetas de películas */
@@ -60,11 +60,11 @@
 
 /* Estilos para el contenedor del slider */
 .slider-container {
-  position: absolute; /* Coloca el slider sobre la cuadrícula de películas */
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%; /* Hace que el slider ocupe todo el ancho */
-  z-index: 10; /* Asegura que el slider esté por encima de las películas */
+  width: 100%;
+  z-index: 10;
   margin-bottom: 20px;
 }
 
@@ -78,13 +78,13 @@
   height: 450px;
   border: 1px solid #ee850d;
   box-shadow: 7px 15px 6px rgba(0, 0, 0, 0.8);
-  object-fit: cover; /* Asegura que las imágenes del slider se ajusten sin distorsionarse */
+  object-fit: cover;
 }
 /* Contenedor del título en el slider */
 .slider-title-container {
   position: absolute;
-  bottom: 20px; /* Espacio desde la parte inferior */
-  left: 180px; /* Espacio desde la izquierda */
+  bottom: 20px;
+  left: 180px;
   background-color: rgba(0, 0, 0, 0.8);
   color: #ee850d;
   padding: 10px;
@@ -102,11 +102,11 @@
   font-family: "Roboto", sans-serif;
   margin-right: 30px;
   margin-bottom: 0px;
-  grid-column: 1 / -1; /* Hace que el título ocupe todo el ancho del grid */
+  grid-column: 1 / -1;
 }
 
 .slider-title-container h1 {
-  font-size: 30px; /* Ajusta el tamaño del texto */
+  font-size: 30px;
   margin: 0;
 }
 
@@ -127,52 +127,50 @@
 
 
 /* Estilos responsivos para dispositivos más pequeños */
-@media (max-width: 430px) { /* Tamaño típico del iPhone 14 Pro Max */
+@media (max-width: 393px) {
   .movie-container {
-    padding-left: 20px;
-    padding-right: 20px;
     padding-bottom: 20px;
     gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Ajustar columnas más pequeñas */
-    padding-top: 0;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    padding-top: 30px;
   }
 
   .movie-card img {
-    width: 130px; /* Reducir tamaño de las imágenes */
-    height: auto; /* Mantener proporción */
+    width: 130px;
+    height: auto;
     border: 1px solid #ee850d;
     border-radius: 4px;
-    box-shadow: 3px 6px 3px rgba(0, 0, 0, 0.6); /* Reducir sombra */
+    box-shadow: 3px 6px 3px rgba(0, 0, 0, 0.6);
   }
 
   .title-container {
-    font-size: 12px; /* Reducir tamaño de texto */
+    font-size: 12px;
     padding: 5px;
   }
 
   .slider-container {
-    display: none; /* Oculta el slider completamente */
+    display: none;
   }
 
   .slider-title-container {
-    bottom: 10px; /* Ajustar margen inferior */
-    left: 20px; /* Reducir espacio desde la izquierda */
+    bottom: 10px;
+    left: 20px;
     padding: 5px;
-    font-size: 14px; /* Reducir tamaño del texto */
+    font-size: 14px;
   }
 
   .slider-title-container h1 {
-    font-size: 18px; /* Reducir tamaño del título */
+    font-size: 18px;
   }
 
   .movie-container h2 {
-    font-size: 14px; /* Ajustar tamaño del texto */
+    font-size: 14px;
     margin-right: 10px;
   }
 
   .favorite-icon {
-    font-size: 18px; /* Reducir tamaño del ícono */
-    top: 5px; /* Ajustar posición superior */
-    right: 5px; /* Ajustar posición derecha */
+    font-size: 15px;
+    top: 5px;
+    right: -10px;
   }
 }

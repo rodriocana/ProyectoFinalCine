@@ -16,7 +16,7 @@
 
     </div>
     <h3>Total: {{ getTotalCesta()}} €</h3>
-    <button (click)="ComprarProdCesta(userId)">Comprar</button>
+    <button class="btn-comprar-cesta" (click)="ComprarProdCesta(userId)">Comprar</button>
     <div *ngIf="productosEnCesta.length === 0">No hay productos en la cesta.</div>
   </div>
 
