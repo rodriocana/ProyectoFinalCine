@@ -20,7 +20,7 @@ la gestión de datos, el proyecto utiliza Firebase y Firestore, asegurando una b
 datos en tiempo real en la cual se puede hacer LOGIN a un usuario ya existente y ver 
 sus datos, o registrarse para poder añadir uno a la base de datos ya creada.
 
-![image](https://github.com/user-attachments/assets/03e23aec-a188-4216-864d-4abd71d667f2)
+![proyectogithub](https://github.com/user-attachments/assets/26e91f9e-c1de-4e5a-b48c-8f6361b7dd0a)
 
 ![mufasa](https://github.com/user-attachments/assets/fdc1e655-f327-41cf-b505-b459a22c114b)
 
