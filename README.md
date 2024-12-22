@@ -22,7 +22,7 @@ sus datos, o registrarse para poder añadir uno a la base de datos ya creada.
 
 ![proyectogithub](https://github.com/user-attachments/assets/26e91f9e-c1de-4e5a-b48c-8f6361b7dd0a)
 
-![mufasa](https://github.com/user-attachments/assets/fdc1e655-f327-41cf-b505-b459a22c114b)
+![vaiana](https://github.com/user-attachments/assets/10f9724b-941c-4a01-9d83-4be72c9c39b1)
 
 
 
