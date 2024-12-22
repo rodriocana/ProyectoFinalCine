@@ -2,10 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
 Este proyecto que he desarrollado en el framework Angular consiste en una página web 
 de cine el cual permite a los usuarios explorar y comprar entradas para las películas 
 actualmente en cartelera. La aplicación ofrece una experiencia de usuario intuitiva y 
@@ -23,3 +19,9 @@ navegación fluida y componentes reusables que facilitan la interacción del usu
 la gestión de datos, el proyecto utiliza Firebase y Firestore, asegurando una base de 
 datos en tiempo real en la cual se puede hacer LOGIN a un usuario ya existente y ver 
 sus datos, o registrarse para poder añadir uno a la base de datos ya creada.
+
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
