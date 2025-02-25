@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /* Estilos generales para el p-toast */
 .custom-toast {
   font-family: 'Poppins', sans-serif; /* Fuente personalizada */
@@ -68,74 +68,3 @@
   top: 20px; /* Ajusta la distancia desde la parte superior */
   right: 90px; /* Ajusta la distancia desde la parte derecha */
 }
-=======
-/* Estilos generales para el p-toast */
-.custom-toast {
-  font-family: 'Poppins', sans-serif; /* Fuente personalizada */
-  padding: 10px;
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  color: #fff; /* Texto blanco */
-  display: flex;
-
-}
-
-/* Estilo para los mensajes de éxito */
-.custom-toast.success {
-  background-color: #28a745; /* Fondo verde */
-}
-
-/* Estilo para los mensajes informativos */
-.custom-toast.info {
-  background-color: #17a2b8; /* Fondo azul */
-}
-
-/* Ajuste del título del mensaje */
-.toast-summary {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-right: 10px;
-}
-
-/* Ajuste del detalle del mensaje */
-.toast-detail {
-  font-size: 0.9rem;
-  color: #e0e0e0; /* Color más claro para el detalle */
-}
-
-/* Estilos para el icono (opcional, si deseas agregar iconos) */
-.custom-toast .toast-summary::before {
-  content: '\f00c'; /* Icono de ejemplo (puedes cambiarlo según tu preferencia) */
-  font-family: 'FontAwesome';
-  margin-right: 10px;
-}
-
-/* Estilos cuando el toast tiene un ícono (si se añade) */
-.custom-toast .toast-summary, .custom-toast .toast-detail {
-  display: flex;
-  align-items: center;
-}
-
-/* Animación de aparición del toast */
-.custom-toast {
-  animation: fadeInToast 0.3s ease-out;
-}
-
-/* Animación de desaparición del toast */
-@keyframes fadeInToast {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Modificar la posición del toast si es necesario */
-.p-toast-top-right {
-  top: 20px; /* Ajusta la distancia desde la parte superior */
-  right: 90px; /* Ajusta la distancia desde la parte derecha */
-}
->>>>>>> 82394f3 (Subiendo el código del proyecto)

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <div class="actor-movies-container">
 
   <!-- Caja para la foto del actor -->
@@ -31,37 +31,3 @@
 </div>
 
 <button class="back-to-home" (click)="goToHome()">Volver al Menú Principal</button>
-=======
-<div class="actor-movies-container">
-
-  <!-- Caja para la foto del actor -->
-  <div class="actor-photo-card">
-    <img [src]="'https://image.tmdb.org/t/p/original' + actorProfilePath"
-         [alt]="actorName"
-         class="actor-photo"
-         (error)="onImageError($event)">
-    <div class="title-container-actor">
-      <h3 class="actor-name">{{ actorName }}</h3>
-    </div>
-  </div>
-
-  <!-- Cajas para las películas -->
-  <div *ngFor="let movie of actorMovies" class="movie-card" (click)="goToMovieDetails(movie.id)">
-    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-         [alt]="movie.title"
-         class="poster-image"
-         (error)="onImageError($event)">
-    <div class="title-container">
-      <h3 class="movie-title">{{ movie.title }}</h3>
-      <h4>{{ movie.release_date | date:'yyyy' }}</h4>
-    </div>
-  </div>
-
-</div>
-
-<div *ngIf="actorMovies.length === 0" class="no-movies-message">
-  <p>No se encontraron películas para este actor.</p>
-</div>
-
-<button class="back-to-home" (click)="goToHome()">Volver al Menú Principal</button>
->>>>>>> 82394f3 (Subiendo el código del proyecto)
