@@ -1,0 +1,119 @@
+/* Contenedor general del formulario */
+.FormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('napoleon.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Estilos del formulario */
+.Form {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+/* Contenedor para el icono y título */
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+#icono {
+  font-size: 40px;
+  color: #000000;
+  margin-right: 10px;
+}
+
+.tituloLogo {
+  font-size: 30px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  color: #ee850d;
+}
+
+/* Título del formulario */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos de los campos de entrada */
+.Form input[type="text"],
+.Form input[type="email"],
+.Form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.Form input[type="text"]:focus,
+.Form input[type="email"]:focus,
+.Form textarea:focus {
+  border-color: #6c63ff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.2);
+}
+
+/* Estilo para el textarea (mensaje) */
+.mensaje {
+  resize: none;
+  height: 120px; /* Altura del textarea */
+}
+
+/* Estilos para los mensajes de error */
+.error {
+  color: red;
+  font-size: 14px;
+
+}
+
+/* Estilos del botón de envío */
+button[type="submit"] {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #6c63ff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #574bce;
+}
+
+button[type="submit"]:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+/* Estilos globales para los elementos label en el formulario */
+.Form label {
+  display: block;
+  color: #333;
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+

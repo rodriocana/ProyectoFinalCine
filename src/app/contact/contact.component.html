@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div class="FormContainer">
   <form [formGroup]="formulario" class="Form" (ngSubmit)="enviarFormulario()">
@@ -47,3 +48,54 @@
 
 
 </div>
+=======
+
+<div class="FormContainer">
+  <form [formGroup]="formulario" class="Form" (ngSubmit)="enviarFormulario()">
+    <div class="icon-container">
+      <i class="fa-solid fa-ticket" id="icono"></i>
+      <span class="tituloLogo">CINEMA</span>
+    </div>
+    <h2>Formulario de Contacto</h2>
+
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" formControlName="nombre" placeholder="Introduce tu nombre...">
+      <div *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched">
+        <small class="error">El nombre es obligatorio.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" placeholder="Introduce tu email...">
+      <div *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched">
+        <small class="error" *ngIf="formulario.get('email')?.hasError('required')">El email es obligatorio.</small>
+        <small class="error" *ngIf="formulario.get('email')?.hasError('email')">Formato de email incorrecto.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" formControlName="telefono" placeholder="Introduce tu teléfono...">
+      <div *ngIf="formulario.get('telefono')?.invalid && formulario.get('telefono')?.touched">
+        <small class="error">El teléfono es obligatorio y debe tener 9 dígitos.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="mensaje">Mensaje:</label>
+      <textarea id="mensaje" class="mensaje" formControlName="mensaje" placeholder="Escribe tu mensaje..." rows="4"></textarea>
+      <div *ngIf="formulario.get('mensaje')?.invalid && formulario.get('mensaje')?.touched">
+        <small class="error">El mensaje es obligatorio.</small>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="formulario.invalid">Enviar</button>
+
+
+  </form>
+
+
+</div>
+>>>>>>> 82394f3 (Subiendo el código del proyecto)

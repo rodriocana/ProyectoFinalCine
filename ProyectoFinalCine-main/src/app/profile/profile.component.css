@@ -1,0 +1,507 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('dunee2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #007bff;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-info {
+  text-align: center;
+}
+
+.ProfileText {
+
+  font-family: "Orbitron", sans-serif;
+  color: white;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 10px 0;
+}
+
+.user-email {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.user-saldo {
+  font-size: 1rem;
+  color: #fffefe;
+}
+
+.no-user {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #ff0000;
+}
+
+/* Estilo para el botón "Volver al Menú Principal" */
+.back-to-home {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-home:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.back-to-home:focus {
+  outline: none;
+}
+
+/* Opciones de administrador */
+.admin-options {
+  margin-top: 30px;
+  padding: 20px;
+  border: 2px solid #ff5722;
+  border-radius: 8px;
+  background-color: #fff3e0;
+}
+
+.admin-options h3 {
+  color: #e64a19;
+  margin-bottom: 15px;
+}
+
+/* Estilo para los botones de administrador */
+.admin-options button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #ee850d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.admin-options button:hover {
+  background-color: #e64a19;
+  transform: scale(1.05);
+}
+
+.admin-options button:active {
+  background-color: #d84315;
+  transform: scale(0.95);
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 900px;
+  width: 900px;
+}
+
+.modal-container h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+thead th {
+  background: #ee850d;
+  color: white;
+  padding: 10px;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.delete-btn {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: #d32f2f;
+  color: white;
+  border: none;
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #d32f2f;
+}
+
+.close-btn {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: #ee850d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #e47900;
+}
+
+.EditDeleteButton {
+  margin-top: 10px;
+  padding: 10px 15px;
+  margin-left: 5px;
+  font: 1em;
+  background: #3d9ddd;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.EditDeleteButton:hover {
+  background: #00a2ff;
+}
+
+/* Form fields */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  margin: 10px 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form input:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Submit button */
+button[type="submit"] {
+  background-color: #46a5db;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-left: 5px;
+  cursor: pointer;
+  width: 86px;
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0099ff;
+}
+
+/* Close button */
+.close-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-left: 5px;
+
+}
+
+.close-btn:hover {
+  background-color: #c82333;
+}
+
+.add-btn {
+  background-color: #46a5db;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-left: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+
+}
+
+.add-btn:hover {
+  background-color: #00a2ff;
+}
+
+
+/* Estilo para la imagen del producto */
+.product-image {
+  width: 45px;
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-right: 10px;
+
+}
+
+.user-avatar{
+  width: 65px;
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+
+@media (max-width: 393px) {
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('dunee2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-left: 70px;
+    padding-bottom: 70px;
+  }
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 270px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .avatar-container {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #007bff;
+    margin-bottom: 20px;
+  }
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .user-info {
+    text-align: center;
+  }
+
+  .ProfileText {
+
+    font-family: "Orbitron", sans-serif;
+    color: white;
+    font-size: 12px;
+  }
+
+  .user-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 10px 0;
+  }
+
+  .user-email {
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  .user-saldo {
+    font-size: 1rem;
+    color: #fffefe;
+  }
+
+
+  .admin-options {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #ff5722;
+    border-radius: 8px;
+    background-color: #fff3e0;
+  }
+
+  .admin-options h3 {
+    color: #e64a19;
+    margin-bottom: 15px;
+    font-size: 10px;
+  }
+
+  /* Estilo para los botones de administrador */
+  .admin-options button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #ee850d;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .admin-options button:hover {
+    background-color: #e64a19;
+    transform: scale(1.05);
+  }
+
+  .admin-options button:active {
+    background-color: #d84315;
+    transform: scale(0.95);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+
+  thead th {
+    background: #ee850d;
+    color: white;
+    padding: 10px;
+    font-size: 10px;
+  }
+
+  tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .modal-container {
+    width: 90%;
+  }
+
+  .modal-container h3 {
+    font-size: 10px;
+  }
+
+  form input {
+    padding: 10px;
+  }
+
+  button[type="submit"] {
+    padding: 10px;
+  }
+
+  .user-avatar{
+    width: 35px;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+  .delete-btn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #d32f2f;
+    color: white;
+    height: 31px;
+    width: 57px;
+    border: none;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+
+  .EditDeleteButton {
+    margin-top: 10px;
+    padding: 10px 15px;
+    margin-left: 5px;
+    font: 1em;
+    height: 31px;
+    width: 57px;
+    background: #3d9ddd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+
+}

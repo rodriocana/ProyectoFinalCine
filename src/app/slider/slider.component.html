@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- src/app/slider/slider.component.html -->
 <div class="slider-container" *ngIf="movies.length > 0">
   <button class="nav-button prev" (click)="previousSlide()">&#10094;</button>
@@ -8,4 +9,16 @@
   </div>
 
   <button class="nav-button next" (click)="nextSlide()">&#10095;</button>
+=======
+<!-- src/app/slider/slider.component.html -->
+<div class="slider-container" *ngIf="movies.length > 0">
+  <button class="nav-button prev" (click)="previousSlide()">&#10094;</button>
+
+  <div class="slide">
+    <img [src]="'https://image.tmdb.org/t/p/w500' + movies[currentIndex].poster_path"
+      [alt]="movies[currentIndex].title">
+  </div>
+
+  <button class="nav-button next" (click)="nextSlide()">&#10095;</button>
+>>>>>>> 82394f3 (Subiendo el código del proyecto)
 </div>

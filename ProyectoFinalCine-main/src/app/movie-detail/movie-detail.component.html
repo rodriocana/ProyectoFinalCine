@@ -1,0 +1,64 @@
+<div *ngIf="movie" class="movie-details" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + movie.backdrop_path + ')'}">
+  <h2>{{ movie.title }}</h2>
+  <div class="main-content">
+    <div class="poster-container">
+      <img
+        [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+        [alt]="movie.title"
+        class="poster-image"
+        (error)="onImageError($event)"
+      >
+      <!-- Botón de favoritos dentro de la imagen -->
+      <button id="favoritos" (click)="toggleFavorite()"
+        [ngClass]="{'favorited': isFavorite(movie.id)}"
+        class="favorite-button">
+        <span class="heart-icon" [ngClass]="{'favorited': isFavorite(movie.id)}">❤</span>
+      </button>
+    </div>
+    <div class="button-container">
+      <button (click)="verSinopsis()" id="sinopsis">Ver Sinopsis</button>
+      <button (click)="goToBuyTicket(movie.id)" id="comprarEntrada" *ngIf="isNowPlaying">Comprar Entrada</button>
+      <button id="verTrailer" *ngIf="trailerUrl" (click)="openTrailer()">Ver Trailer</button>
+      <p *ngIf="movie.genres && movie.genres.length > 0" class="genres-container">
+        <span *ngFor="let genre of movie.genres" class="genre-badge">
+          {{ genre.name }}
+        </span>
+      </p>
+    </div>
+    <div class="thumbnail-image-container">
+      <div class="thumbnail-container">
+        <img *ngFor="let backdrop of backdrops" [src]="backdrop" class="thumbnail" (click)="openImage(backdrop)">
+      </div>
+    </div>
+    <!-- Contenedor para la imagen ampliada -->
+    <div *ngIf="selectedImage" class="overlay" (click)="closeImage()">
+      <img [src]="selectedImage" class="enlarged-image">
+    </div>
+    <!-- Modal para mostrar el trailer -->
+    <div *ngIf="showTrailerModal" class="modal-overlay-trailer" (click)="closeTrailerModal()">
+      <div class="modal-content-trailer" (click)="$event.stopPropagation()">
+        <iframe [src]="selectedTrailerUrl" frameborder="0" allowfullscreen></iframe>
+        <button class="trailer-button" (click)="closeTrailerModal()">Cerrar</button>
+      </div>
+    </div>
+    <!-- Modal para mostrar la sinopsis -->
+    <div *ngIf="showSynopsisModal" class="modal-overlay" (click)="closeSynopsisModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h3>Sinopsis</h3>
+        <div class="actors-container">
+          <div *ngFor="let actor of actors" class="actor-card" (click)="goToActorMovies(actor.id)">
+            <img *ngIf="actor.profile_path" [src]="'https://image.tmdb.org/t/p/original' + actor.profile_path" [alt]="actor.name">
+            <p class="actor-name">{{ actor.name }}</p>
+            <hr class="divider-actor">
+            <p class="actor-character">{{ actor.character }}</p>
+          </div>
+        </div>
+        <p>{{ movie.overview }}</p>
+        <p>
+          Fecha de estreno: <span class="release-date">{{ movie.release_date }}</span>
+        </p>
+        <button (click)="closeSynopsisModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

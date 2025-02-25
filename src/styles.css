@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Asegura que el body ocupe toda la pantalla y usa flexbox para su contenido */
 body, html {
   height: 100%;
@@ -34,3 +35,41 @@ footer p {
   }
 }
 
+=======
+/* Asegura que el body ocupe toda la pantalla y usa flexbox para su contenido */
+body, html {
+  height: 100%;
+  margin: 0.02px;
+  background-color:#242729;
+  display: flex;
+  flex-direction: column;
+}
+
+/* El contenedor principal ocupará todo el espacio restante */
+main {
+  flex: 1;
+}
+
+/* Estilos para el pie de página */
+footer {
+  background-color: rgb(179, 80, 15);
+  text-align: center;
+  padding: 10px;
+  color: #ffffff;
+  border-top: 2px solid #002244;
+  font-size: 0.9em;
+}
+
+footer p {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 600px) {
+  footer {
+      font-size: 0.8em;
+  }
+}
+
+>>>>>>> 82394f3 (Subiendo el código del proyecto)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
@@ -22,3 +23,29 @@
     </div>
   </ng-template>
 </p-toast>
+=======
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<!--Menu bar lateral -->
+<app-header></app-header>
+<!--Las demás rutas -->
+<router-outlet></router-outlet>
+
+
+<!-- Modal de Login, se abre solo si isModalOpen es true -->
+<!-- <app-login-modal *ngIf="isModalOpen" (close)="closeModal()"></app-login-modal> -->
+
+<!-- Toast para mostrar mensajes -->
+<p-toast position="top-right" [baseZIndex]="10000">
+  <ng-template let-message pTemplate="message">
+    <div class="custom-toast" [ngClass]="message.severity">
+      <span class="toast-summary">{{ message.summary }}</span>
+      <span class="toast-detail">{{ message.detail }}</span>
+    </div>
+  </ng-template>
+</p-toast>
+>>>>>>> 82394f3 (Subiendo el código del proyecto)

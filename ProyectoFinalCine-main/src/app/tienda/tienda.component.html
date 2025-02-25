@@ -1,0 +1,66 @@
+<div class="tienda-container">
+  <!-- Icono de cesta -->
+  <div class="cesta-icon" (click)="toggleCesta()">
+    <i class="fas fa-shopping-cart"></i> <span class="texto-cesta">Cesta</span> ({{ productosEnCesta.length }})
+  </div>
+
+  <!-- cesta  desplegada-->
+  <div class="cesta" *ngIf="isCestaVisible">
+    <h2 class="cestaTexto">Cesta</h2>
+
+    <div *ngFor="let producto of productosEnCesta" class="producto-cesta">
+      <img [src]="producto.imgProducto" alt="{{ producto.nombreProducto }}" class="imagen-cesta">
+      <h2>{{ producto.nombreProducto }}</h2>
+      <p>Precio: {{ producto.precioProducto}} €</p>
+      <i class="fas fa-trash" (click)="eliminarDeCesta(producto)" title="Eliminar producto"></i>
+
+    </div>
+    <h3>Total: {{ getTotalCesta()}} €</h3>
+    <button class="btn-comprar-cesta" (click)="ComprarProdCesta(userId)">Comprar</button>
+    <div *ngIf="productosEnCesta.length === 0">No hay productos en la cesta.</div>
+  </div>
+
+  <!-- Barra de filtros -->
+  <div class="filtros">
+    <label for="categoria">Categoría:</label>
+    <select id="categoria" [(ngModel)]="filtroCategoria" (change)="filtrarProductos()">
+      <option value="">Todas</option>
+      <option value="Star Wars">Star Wars</option>
+      <option value="Vengadores">Vengadores</option>
+      <option value="Harry Potter">Harry Potter</option>
+      <!-- Añade más opciones de categoría según tus necesidades -->
+    </select>
+
+    <label for="precioMin">Precio mínimo:</label>
+    <select id="precioMin" [(ngModel)]="filtroPrecioMin" (change)="filtrarProductos()">
+      <option [ngValue]="null">Sin mínimo</option>
+      <option [ngValue]="10">10</option>
+      <option [ngValue]="50">50</option>
+      <option [ngValue]="100">100</option>
+      <option [ngValue]="500">500</option>
+      <!-- Añade más opciones según tus necesidades -->
+    </select>
+
+    <label for="precioMax">Precio máximo:</label>
+    <select id="precioMax" [(ngModel)]="filtroPrecioMax" (change)="filtrarProductos()">
+      <option [ngValue]="null">Sin máximo</option>
+      <option [ngValue]="50">50</option>
+      <option [ngValue]="100">100</option>
+      <option [ngValue]="500">500</option>
+      <option [ngValue]="1000">1000</option>
+      <!-- Añade más opciones según tus necesidades -->
+    </select>
+
+    <button (click)="ReiniciarFiltro()">Reiniciar</button>
+  </div>
+
+  <!-- Lista de productos -->
+  <div class="productos">
+    <div *ngFor="let producto of productosFiltrados" class="producto-card">
+      <img [src]="producto.imgProducto" alt="{{ producto.nombreProducto }}" class="producto-imagen">
+      <h2 class="nombreProducto">{{ producto.nombreProducto }}</h2>
+      <p>Precio: {{ producto.precioProducto }} €</p>
+      <button (click)="agregarACesta(producto)">Comprar</button>
+    </div>
+  </div>
+</div>
